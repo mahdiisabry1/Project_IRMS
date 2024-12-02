@@ -1,24 +1,26 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿/* Default state */
+/*default side bar text and colour and when hover sidebar colour*/
+.sidebar .nav-link {
+    color: white;
+    font-size:x-large;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
-}
+    .sidebar .nav-link i,
+    .sidebar .nav-link p {
+        color: white;
+       
+    }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
-}
+    /* Hover or active state */
+    .sidebar .nav-link:hover,
+    .sidebar .nav-link.active {
+        color: #007BFF; /* Blue */
+    }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
-}
+        .sidebar .nav-link:hover i,
+        .sidebar .nav-link:hover p,
+        .sidebar .nav-link.active i,
+        .sidebar .nav-link.active p {
+            color: #007BFF; /* Blue */
+        }
+        /**/

@@ -8,6 +8,8 @@
 
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <!--Link custom CSS-->
+    <link href="~/Content/MainCSS/Site.css" rel="stylesheet" />
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-footer-fixed  layout-navbar-fixed">
     <!-- Site wrapper -->
@@ -28,7 +30,7 @@
         </nav>
         <!-- /.navbar -->
         <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <aside class="main-sidebar  elevation-4" style="background: linear-gradient(to bottom, #1D76B5, #09325E);">
             <a href="../../index3.html" class="brand-link d-flex align-items-center ">
                 <img src="~/Images/LogoIcon.png" alt="Logo Icon" style="width: 70px; height: 70px !important; object-fit: contain;">
 
@@ -38,19 +40,19 @@
             </a>
 
             <!-- Sidebar -->
-            <div class="sidebar">
+            <div class="sidebar" >
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
-                        with font-awesome or any other icon font library -->
-                        <li class="nav-item">
+    with font-awesome or any other icon font library -->
+                        <li class="nav-item ">
                             <a href="~/Home/Index" class="nav-link">
-                                <i class="nav-icon fas fa-sign-out-alt"></i>
+                                <i class=""></i>
 
                                 <p>
-                                    Logout
+
 
                                 </p>
                             </a>
@@ -99,6 +101,15 @@
                                 </li>
 
                             </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="~/Home/Index" class="nav-link">
+                                <i class="nav-icon fa-solid fa-user"></i>
+                                <p>
+                                    User Profiles
+
+                                </p>
+                            </a>
                         </li>
 
                     </ul>
