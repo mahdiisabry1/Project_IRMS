@@ -2,12 +2,15 @@
 /*default side bar text and colour and when hover sidebar colour*/
 .sidebar .nav-link {
     color: white;
-    font-size:x-large;
+   
 }
 
     .sidebar .nav-link i,
     .sidebar .nav-link p {
         color: white;
+        font-weight:bold;
+        font-size:large;
+        margin-top: 10px;
        
     }
 
@@ -25,11 +28,25 @@
         }
         /**/
 
-     /*sidebar */
+/*sidebar */
 #accordionSidebar {
     background: linear-gradient(to bottom, #1D76B5, #09325E);
     border-top-right-radius: 40px; /* Round the top-right corner */
 }
 
 
+/*navbar top right coner */
+.text-container {
+    display: flex;
+    flex-direction: column;
+    text-align:center;
+    line-height: 1.2; /* Adjust spacing between lines */
+}
+
+.img-profile {
+    width: 40px; /* Set a fixed width for the image */
+    height: 40px; /* Set a fixed height for the image */
+    object-fit: cover; /* Ensure consistent sizing for all images */
+}
+/*navbar top right coner */
 
