@@ -1,4 +1,17 @@
-﻿/* Title Styling */
+﻿
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+.container-fluid {
+    min-height: 100vh; /* Make the container at least the full height of the viewport */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align the content to the top */
+}
+
+/* Title Styling */
 h1 {
     color: #474747 !important;
     font-size: 30px
@@ -7,6 +20,8 @@ h1 {
 /* Row Styling */
 .row.g-3 {
     row-gap: 0.75rem; /* Slightly reduced row gap */
+    flex-wrap: wrap;
+    flex-grow: 1;
 }
 
 /* Divider Line */
