@@ -1,1 +1,199 @@
-﻿<p>hi dishani kulasekara</p>
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Task Management</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Main Form -->
+            <div class="col-md-12">
+                <div class="card card-primary">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h3 class="card-title">Add New Task</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- Form start -->
+                    <form class="form-horizontal">
+                        <div class="card-body">
+                            <!-- Main Task Section -->
+                            <div class="row">
+                                <!-- Left Column -->
+                                <div class="col-md-6">
+                                    <!-- Project Name -->
+                                    <div class="form-group row">
+                                        <label for="inputProjectName" class="col-sm-4 col-form-label">Project Name</label>
+                                        <div class="col-sm-8">
+                                            <input type="text"
+                                                   class="form-control"
+                                                   id="inputProjectName"
+                                                   placeholder="Enter Project Name" />
+                                        </div>
+                                    </div>
+
+                                    <!-- Assignees (Dropdown) -->
+                                    <div class="form-group row">
+                                        <label for="selectAssignees" class="col-sm-4 col-form-label">Assignees</label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control" id="selectAssignees">
+                                                <option>Vimukthi Manchanayake</option>
+                                                <option>Shenuka Fernando</option>
+                                                <option>Dishani Kulasekara</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <!-- Start Date -->
+                                    <div class="form-group row">
+                                        <label for="inputStartDate" class="col-sm-4 col-form-label">Start Date</label>
+                                        <div class="col-sm-8">
+                                            <input type="date"
+                                                   class="form-control"
+                                                   id="inputStartDate" />
+                                        </div>
+                                    </div>
+
+                                    <!-- End Date -->
+                                    <div class="form-group row">
+                                        <label for="inputEndDate" class="col-sm-4 col-form-label">End Date</label>
+                                        <div class="col-sm-8">
+                                            <input type="date"
+                                                   class="form-control"
+                                                   id="inputEndDate" />
+                                        </div>
+                                    </div>
+
+                                    <!-- Supervisor (Dropdown) -->
+                                    <div class="form-group row">
+                                        <label for="selectSupervisor" class="col-sm-4 col-form-label">Supervisor</label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control" id="selectSupervisor">
+                                                <option>Kusal Lankathilaka</option>
+                                                <option>Pawan Sadaruan</option>
+                                                <option>Nisitha Dilshan</option>
+                                                <option>Keerthi Ekanayake</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.Left Column -->
+                                <!-- Right Column -->
+                                <div class="col-md-6">
+                                    <!-- Description Box -->
+                                    <div class="form-group">
+                                        <label for="textareaDescription">Description</label>
+                                        <textarea class="form-control"
+                                                  id="textareaDescription"
+                                                  rows="8"
+                                                  placeholder="Enter task description here..."></textarea>
+                                    </div>
+                                </div>
+                                <!-- /.Right Column -->
+                            </div>
+                            <!-- /.row -->
+                            <!-- Done Button -->
+                            <div class="row mt-4">
+                                <div class="col-md-12 text-center">
+                                    <button type="button" class="btn btn-success">Done</button>
+                                </div>
+                            </div>
+                            <!-- /.Done Button -->
+                            <!-- Sub Task Section -->
+                            <div class="mt-4">
+                                <h4>Sub Tasks</h4>
+                                <div class="row">
+                                    <!-- Left Column -->
+                                    <div class="col-md-6">
+                                        <!-- Sub Task Name -->
+                                        <div class="form-group row">
+                                            <label for="inputSubTaskName" class="col-sm-4 col-form-label">Sub Task Name</label>
+                                            <div class="col-sm-8">
+                                                <input type="text"
+                                                       class="form-control"
+                                                       id="inputSubTaskName"
+                                                       placeholder="Enter Sub Task Name" />
+                                            </div>
+                                        </div>
+
+                                        <!-- Assignees (Dropdown) -->
+                                        <div class="form-group row">
+                                            <label for="selectSubTaskAssignees" class="col-sm-4 col-form-label">Assignees</label>
+                                            <div class="col-sm-8">
+                                                <select class="form-control" id="selectSubTaskAssignees">
+                                                    <option>Vimukthi Manchanayake</option>
+                                                    <option>Shenuka Fernando</option>
+                                                    <option>Dishani Kulasekara</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <!-- Start Date -->
+                                        <div class="form-group row">
+                                            <label for="inputSubTaskStartDate" class="col-sm-4 col-form-label">Start Date</label>
+                                            <div class="col-sm-8">
+                                                <input type="date"
+                                                       class="form-control"
+                                                       id="inputSubTaskStartDate" />
+                                            </div>
+                                        </div>
+
+                                        <!-- End Date -->
+                                        <div class="form-group row">
+                                            <label for="inputSubTaskEndDate" class="col-sm-4 col-form-label">End Date</label>
+                                            <div class="col-sm-8">
+                                                <input type="date"
+                                                       class="form-control"
+                                                       id="inputSubTaskEndDate" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.Left Column -->
+                                    <!-- Right Column -->
+                                    <div class="col-md-6">
+                                        <!-- Sub Task Description -->
+                                        <div class="form-group">
+                                            <label for="textareaSubTaskDescription">Description</label>
+                                            <textarea class="form-control"
+                                                      id="textareaSubTaskDescription"
+                                                      rows="8"
+                                                      placeholder="Enter sub-task description here..."></textarea>
+                                        </div>
+                                    </div>
+                                    <!-- /.Right Column -->
+                                </div>
+                                <!-- /.row -->
+                                <!-- Done Button for Sub Tasks -->
+                                <div class="row mt-4">
+                                    <div class="col-md-12 text-center">
+                                        <button type="button" class="btn btn-success">Done</button>
+                                    </div>
+                                </div>
+                                <!-- /.Done Button for Sub Tasks -->
+                            </div>
+                            <!-- /.Sub Task Section -->
+                        </div>
+                        <!-- /.card-body -->
+                        <!-- Submit Button -->
+                        <div class="card-footer text-right">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-danger" style="margin-right: 10px;">Cancel</button>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.col-md-12 -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</body>
+
+
+
+
+
+</html>
