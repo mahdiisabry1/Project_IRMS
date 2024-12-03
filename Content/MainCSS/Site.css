@@ -24,3 +24,12 @@
             color: #007BFF; /* Blue */
         }
         /**/
+
+     /*sidebar */
+#accordionSidebar {
+    background: linear-gradient(to bottom, #1D76B5, #09325E);
+    border-top-right-radius: 40px; /* Round the top-right corner */
+}
+
+
+
