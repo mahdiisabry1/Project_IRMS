@@ -133,6 +133,7 @@
     <Content Include="Content\fontawesome\all.min.css" />
     <Content Include="Content\MainCSS\Site.css" />
     <Content Include="Content\overlayScrollbars\OverlayScrollbars.min.css" />
+    <Content Include="Content\tempusdominus-bootstrap-4\tempusdominus-bootstrap-4.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

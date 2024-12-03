@@ -30,7 +30,9 @@ namespace Project_IRMS
 
 
                       "~/Content/overlayScrollbars/OverlayScrollbars.min.css",
-                      "~/Content/adminlte/adminlte.min.css"
+                      "~/Content/adminlte/adminlte.min.css",
+                      "~/Content/tempusdominus-bootstrap-4/tempusdominus-bootstrap-4.min.css"
+
                       ));
         }
     }
