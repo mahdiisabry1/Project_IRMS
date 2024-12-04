@@ -120,34 +120,45 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CreateRequestController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TaskManagementController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\adminlte\adminlte.min.css" />
+    <Content Include="Content\CreateRequest\CreateRequest.css" />
+    <Content Include="Content\fontawesome\all.min.css" />
+    <Content Include="Content\MainCSS\Site.css" />
+    <Content Include="Content\overlayScrollbars\OverlayScrollbars.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
-    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
-    <Content Include="Scripts\jquery-3.4.1.js" />
-    <Content Include="Scripts\jquery-3.4.1.min.js" />
-    <Content Include="Scripts\jquery-3.4.1.slim.js" />
-    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Images\Group 1000002769.png" />
+    <Content Include="Images\Logo.png" />
+    <Content Include="Images\Logo2.png" />
+    <Content Include="Images\LogoIcon.png" />
+    <Content Include="Images\Srilankan-white 1.png" />
+    <Content Include="Images\Srilankan-white-logo-part.png" />
+    <Content Include="Images\Srilankan-white-logo-part2.png" />
+    <Content Include="Scripts\AdminLTE\adminlte.min.js" />
+    <None Include="Scripts\JqueryMaster\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\Bootstrap\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\JqueryMaster\jquery-3.4.1.js" />
+    <Content Include="Scripts\JqueryMaster\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\JqueryMaster\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\JqueryMaster\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\JqueryMaster\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\JqueryMaster\jquery.validate.js" />
+    <Content Include="Scripts\JqueryMaster\jquery.validate.min.js" />
+    <Content Include="Scripts\JqueryMaster\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\JqueryMaster\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\JqueryMaster\modernizr-2.8.3.js" />
+    <Content Include="Scripts\Jquery\jquery.min.js" />
+    <Content Include="Scripts\Jquery\jquery.overlayScrollbars.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -162,9 +173,12 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\CreateRequest\Index.cshtml" />
+    <Content Include="Views\TaskManagement\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Bootstrap\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -172,13 +186,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="packages.config" />
-    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <Content Include="Scripts\JqueryMaster\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\JqueryMaster\jquery-3.4.1.min.map" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
