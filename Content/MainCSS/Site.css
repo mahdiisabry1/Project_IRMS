@@ -1,9 +1,9 @@
 ﻿/* Default state */
 /*default side bar text and colour and when hover sidebar colour*/
-.sidebar .nav-link {
+/*.sidebar .nav-link {
     color: white;
    
-}
+}/*
 
     .sidebar .nav-link i,
     .sidebar .nav-link p {
@@ -15,24 +15,33 @@
     }
 
     /* Hover or active state */
-    .sidebar .nav-link:hover,
+    /*.sidebar .nav-link:hover,
     .sidebar .nav-link.active {
-        color: #007BFF; /* Blue */
-    }
+        color: #007BFF;*/ /* Blue */
+    /*}
 
         .sidebar .nav-link:hover i,
         .sidebar .nav-link:hover p,
         .sidebar .nav-link.active i,
         .sidebar .nav-link.active p {
-            color: #007BFF; /* Blue */
-        }
+            color: #007BFF;*/ /* Blue */
+        /*}*/
         /**/
-
 /*sidebar */
 #accordionSidebar {
     background: linear-gradient(to bottom, #1D76B5, #09325E);
     border-top-right-radius: 40px; /* Round the top-right corner */
 }
+
+.sidebar .nav-link i,
+.sidebar .nav-link p {
+  
+    font-weight:bold;
+    font-size: large;
+    margin-top: 10px;
+}
+
+
 
 
 /*navbar top right coner */
@@ -50,3 +59,22 @@
 }
 /*navbar top right coner */
 
+/*sidebar footer company logo*/
+.sidebar-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    border-top-right-radius: 30px; /* Round the top-right corner */
+    box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.2); /* Top shadow effect */
+    border-top: 2px solid rgba(0, 0, 0, 0.2); /* Top border for footer */
+    
+}
+    .sidebar-footer img {
+        width: 200px;
+        height: 45px;
+        object-fit: contain;
+        padding-bottom: 15px;
+        
+    }
+/**/

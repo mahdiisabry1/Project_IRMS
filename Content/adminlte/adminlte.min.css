@@ -11907,7 +11907,8 @@ body.sidebar-collapse:not(.sidebar-mini-md):not(.sidebar-mini) .content-wrapper,
 .nav-sidebar .nav-link > .right, .nav-sidebar .nav-link > p > .right {
     position: absolute;
     right: 1rem;
-    top: .7rem
+    top: .7rem;
+    
 }
 
     .nav-sidebar .nav-link > .right i, .nav-sidebar .nav-link > .right span, .nav-sidebar .nav-link > p > .right i, .nav-sidebar .nav-link > p > .right span {
@@ -13473,15 +13474,15 @@ body.text-sm .control-sidebar {
 }
 
 .nav-pills .nav-link {
-    color: #6c757d
+    color: white
 }
 
     .nav-pills .nav-link:not(.active):hover {
-        color: #007bff
+        color: #1C528A
     }
 
 .nav-pills .nav-item.dropdown.show .nav-link:hover {
-    color: #fff
+    color: blue
 }
 
 .nav-tabs.flex-column {
