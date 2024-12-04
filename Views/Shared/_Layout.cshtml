@@ -8,6 +8,7 @@
     z
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("CustomPageStyles",required:false)
     <!--Link custom CSS-->
     <link href="~/Content/MainCSS/Site.css" rel="stylesheet" />
 </head>
@@ -99,7 +100,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item ">
-                                    <a href="~/CreateRequest/Index" class="nav-link">
+                                    <a href="@Url.Action("Index","CreateRequest")" class="nav-link">
                                         <i class="fa-solid fa-chevron-right nav-icon"></i>
                                         <p> Create Requests</p>
                                     </a>
