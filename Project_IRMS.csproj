@@ -140,6 +140,7 @@
     <Content Include="Images\Logo.png" />
     <Content Include="Images\Logo2.png" />
     <Content Include="Images\LogoIcon.png" />
+    <Content Include="Images\profilepic.png" />
     <Content Include="Images\Srilankan-white 1.png" />
     <Content Include="Images\Srilankan-white-logo-part.png" />
     <Content Include="Images\Srilankan-white-logo-part2.png" />
@@ -158,6 +159,7 @@
     <Content Include="Scripts\JqueryMaster\modernizr-2.8.3.js" />
     <Content Include="Scripts\Jquery\jquery.min.js" />
     <Content Include="Scripts\Jquery\jquery.overlayScrollbars.min.js" />
+    <Content Include="Scripts\MainJS\Site.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

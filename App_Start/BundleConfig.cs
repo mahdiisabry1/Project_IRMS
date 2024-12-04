@@ -24,7 +24,9 @@ namespace Project_IRMS
                       "~/Scripts/Bootstrap/bootstrap.bundle.min.js",
                       "~/Scripts/jquery/jquery.min.js",
                       "~/Scripts/jquery/jquery.overlayScrollbars.min.js",
-                      "~/Scripts/AdminLTE/adminlte.min.js"));
+                      "~/Scripts/AdminLTE/adminlte.min.js"
+                      
+                      ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
 
