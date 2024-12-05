@@ -42,3 +42,19 @@
         }
     });
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Get all cards and their edit buttons
+    const cards = document.querySelectorAll('.card');
+
+    // Add a click event listener to each "Edit" button
+    cards.forEach(card => {
+        const editButton = card.querySelector('.button.edit');
+        editButton.addEventListener('click', () => {
+            const internId = editButton.getAttribute('data-id'); // Get the intern's unique ID
+            // Redirect directly to the .cshtml page
+            window.location.href = `/Views/CreateRequest/Index.cshtml?id=${internId}`;
+        });
+    });
+});
+
