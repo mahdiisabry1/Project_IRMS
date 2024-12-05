@@ -9,6 +9,8 @@ html, body {
     display: flex;
     flex-direction: column;
     justify-content: flex-start; /* Align the content to the top */
+    
+
 }
 
 /* Title Styling */
