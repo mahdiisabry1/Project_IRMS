@@ -163,6 +163,7 @@
     <Content Include="Scripts\Jquery\jquery.min.js" />
     <Content Include="Scripts\Jquery\jquery.overlayScrollbars.min.js" />
     <Content Include="Scripts\MainJS\Site.js" />
+    <Content Include="Scripts\PageScript\CreateRequest.js" />
     <Content Include="Scripts\PageScript\ViewRequest.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

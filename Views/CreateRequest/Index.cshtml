@@ -14,7 +14,7 @@
     <div class="container-fluid">
         <!-- SELECT2 EXAMPLE -->
         <div class="card card-default">
-            <div class="card-header border-bottom-0 pb-0  " >
+            <div class="card-header border-bottom-0 pb-0  ">
                 <h3 class="card-title">Create Requests</h3>
 
 
@@ -135,10 +135,12 @@
                             </div>
                             <div class="card-body text-center d-flex flex-column justify-content-center">
                                 <h5 class="text-secondary">Upload CV Here</h5>
-                                <div class="upload-box bg-light d-flex flex-column align-items-center justify-content-center">
+                                <div class="upload-box bg-light d-flex flex-column align-items-center justify-content-center" id="uploadBox">
                                     <i class="fas fa-upload"></i>
                                     <p class="text-secondary">Choose a file or drag & drop it here</p>
+                                    <input type="file" id="cvFile" style="display:none;" accept=".pdf,.doc,.docx,.txt" />
                                 </div>
+
 
                             </div>
                         </div>
@@ -149,8 +151,8 @@
 
 
 
-                   
-                </div>
+
+            </div>
             <!-- /.card-body -->
             <div class="card-footer d-flex justify-content-end">
                 <button class="btn btn-custom">Create Request</button>
@@ -159,4 +161,8 @@
         </div>
         <!-- /.card -->
     </div>
-    </section>
+</section>
+@section scripts {
+    <link href="~/Scripts/PageScript/CreateRequest.js" rel="js" />
+
+}
