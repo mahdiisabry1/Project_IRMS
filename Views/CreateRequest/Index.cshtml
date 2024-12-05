@@ -3,99 +3,160 @@
 }
 
 @section CustomPageStyles {
-<link href="~/Content/CreateRequest/CreateRequest.css" rel="stylesheet" />
+    <link href="~/Content/CreateRequest/CreateRequest.css" rel="stylesheet" />
 
 }
 
 
-<div class="container-fluid">
-    <div class="shadow rounded p-3 bg-white">
-        <!-- Title -->
-        <h1 class="custom-title">Create Requests</h1>
+
+<!-- Main content -->
+<section class="content pt-3" style="height: 100% !important;">
+    <div class="container-fluid">
+        <!-- SELECT2 EXAMPLE -->
+        <div class="card card-default">
+            <div class="card-header border-bottom-0 pb-0  " >
+                <h3 class="card-title">Create Requests</h3>
 
 
-        <div class="row g-3">
-            <!-- Form Section -->
-            <div class="col-md-9">
-                <hr class="mt-0 mb-4 line" />
-
-                <div class="row g-3">
-                    <div class="col-md-6">
-                        <label for="firstName">First Name</label>
-                        <input type="text" class="form-control" id="firstName" placeholder="Enter First Name" required />
-                    </div>
-                    <div class="col-md-6">
-                        <label for="lastName">Last Name</label>
-                        <input type="text" class="form-control" id="lastName" placeholder="Enter Last Name" required />
-                    </div>
-                    <div class="col-md-9">
-                        <label for="university">University</label>
-                        <select class="form-control" id="university">
-                            <option selected>Select University</option>
-                            <option>University A</option>
-                            <option>University B</option>
-                        </select>
-                    </div>
-                    <div class="col-md-3">
-                        <label>Gender</label>
-                        <div class="btn-group btn-group-toggle w-100" data-toggle="buttons">
-                            <label class="btn btn-outline-secondary">
-                                <input type="radio" name="gender" id="male" autocomplete="off" /> Male
-                            </label>
-                            <label class="btn btn-outline-secondary">
-                                <input type="radio" name="gender" id="female" autocomplete="off" /> Female
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="email">Personal Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="Enter Email" required />
-                    </div>
-                    <div class="col-md-6">
-                        <label for="contactNo">Contact No</label>
-                        <input type="text" class="form-control" id="contactNo" placeholder="Enter Contact Number" required />
-                    </div>
-                    <div class="col-md-6">
-                        <label for="degree">Degree</label>
-                        <select class="form-control" id="degree">
-                            <option selected>Select Degree</option>
-                            <option>Degree A</option>
-                            <option>Degree B</option>
-                        </select>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="division">Division</label>
-                        <select class="form-control" id="division">
-                            <option selected>Select Division</option>
-                            <option>Division A</option>
-                            <option>Division B</option>
-                        </select>
-                    </div>
-                </div>
             </div>
+            <!-- /.card-header -->
+            <div class="card-body pt-0 mt-0">
+                <div class="row">
+                    <div class="col-12 col-sm-9">
+                        <hr />
+                        <div class="row">
+                            <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                    <label>Firt Name</label>
+                                    <input type="text" class="form-control" id="firstName" placeholder="Enter First Name" style="width:100%;  " required />
+                                </div>
+                                <!-- /.form-group -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                    <label>Last Name</label>
+                                    <input type="text" class="form-control" id="lastName" placeholder="Enter Last Name" style="width: 100%;  " required />
 
-            <!-- Upload Section -->
-            <div class="col-md-3 d-flex flex-column">
-                <div class="card shadow border-0 h-100">
-                    <div class="card-header bg-dark position-relative d-flex justify-content-center align-items-center">
-                        <img alt="Profile icon" class="rounded-circle position-absolute" src="~/Images/Group 1000002769.png" />
-                    </div>
-                    <div class="card-body text-center d-flex flex-column justify-content-center">
-                        <h5 class="text-secondary">Upload CV Here</h5>
-                        <div class="upload-box bg-light d-flex flex-column align-items-center justify-content-center">
-                            <i class="fas fa-upload"></i>
-                            <p class="text-secondary">Choose a file or drag & drop it here</p>
+                                </div>
+                                <!-- /.form-group -->
+                            </div>
+                            <!-- /.col -->
+
+                        </div>
+                        <!-- /.row -->
+                        <div class="row">
+                            <div class="col-12 col-sm-10">
+                                <div class="form-group">
+                                    <label>University</label>
+                                    <select class="form-control" id="university">
+                                        <option selected>Select University</option>
+                                        <option>University A</option>
+                                        <option>University B</option>
+                                    </select>
+                                </div>
+                                <!-- /.form-group -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-12 col-sm-2">
+                                <div class="form-group">
+                                    <label>Gender</label>
+                                    <div class="btn-group btn-group-toggle w-100" data-toggle="buttons">
+                                        <label class="btn btn-outline-secondary">
+                                            <input type="radio" name="gender" id="male" autocomplete="off" /> Male
+                                        </label>
+                                        <label class="btn btn-outline-secondary">
+                                            <input type="radio" name="gender" id="female" autocomplete="off" /> Female
+                                        </label>
+                                    </div>
+                                </div>
+                                <!-- /.form-group -->
+                            </div>
+                            <!-- /.col -->
+
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                    <label for="email">Personal Email</label>
+                                    <input type="email" class="form-control" id="email" placeholder="Enter Email" required />
+                                </div>
+                                <!-- /.form-group -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                    <label for="contactNo">Contact No</label>
+                                    <input type="text" class="form-control" id="contactNo" placeholder="Enter Contact Number" required />
+
+                                </div>
+                                <!-- /.form-group -->
+                            </div>
+                            <!-- /.col -->
+
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                    <label for="degree">Degree</label>
+                                    <select class="form-control" id="degree">
+                                        <option selected>Select Degree</option>
+                                        <option>Degree A</option>
+                                        <option>Degree B</option>
+                                    </select>
+                                </div>
+                                <!-- /.form-group -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                    <label for="division">Division</label>
+                                    <select class="form-control" id="division">
+                                        <option selected>Select Division</option>
+                                        <option>Division A</option>
+                                        <option>Division B</option>
+                                    </select>
+
+                                </div>
+                                <!-- /.form-group -->
+                            </div>
+                            <!-- /.col -->
+
                         </div>
 
+
                     </div>
+                    <!--to add the profile card-->
+                    <div class="col-12 col-sm-3  pt-5">
+
+                        <div class="card shadow border-0 h-100">
+                            <div class="box-card bg-dark position-relative d-flex justify-content-center align-items-center">
+                                <img alt="Profile icon" class="rounded-circle position-absolute" src="~/Images/Group 1000002769.png" />
+                            </div>
+                            <div class="card-body text-center d-flex flex-column justify-content-center">
+                                <h5 class="text-secondary">Upload CV Here</h5>
+                                <div class="upload-box bg-light d-flex flex-column align-items-center justify-content-center">
+                                    <i class="fas fa-upload"></i>
+                                    <p class="text-secondary">Choose a file or drag & drop it here</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
+
+
+
+                   
+                </div>
+            <!-- /.card-body -->
+            <div class="card-footer d-flex justify-content-end">
+                <button class="btn btn-custom">Create Request</button>
             </div>
 
         </div>
-
-        <!-- Button Section -->
-        <div class="d-flex justify-content-end mt-3">
-            <button class="btn btn-custom">Create Request</button>
-        </div>
+        <!-- /.card -->
     </div>
-</div>
+    </section>
