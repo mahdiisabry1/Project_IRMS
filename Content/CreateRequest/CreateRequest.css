@@ -1,34 +1,16 @@
 ﻿
 
-html, body {
-    height: 100%;
-    margin: 0;
-}
-.container-fluid {
-    min-height: 100vh; /* Make the container at least the full height of the viewport */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start; /* Align the content to the top */
-    
-
+hr {
+    border: none; /* Remove default border */
+    height: 5px; /* Set the height of the <hr> */
+    background-color: #474747; /* Set the color to red */
 }
 
 /* Title Styling */
-h1 {
+h3 {
     color: #474747 !important;
-    font-size: 30px
-}
-
-/* Row Styling */
-.row.g-3 {
-    row-gap: 0.75rem; /* Slightly reduced row gap */
-    flex-wrap: wrap;
-    flex-grow: 1;
-}
-
-/* Divider Line */
-.line {
-    border-top: 3px solid #474747;
+    font-size: 25px !important;
+    font-weight:500 !important;
 }
 
 
@@ -36,7 +18,7 @@ h1 {
     border-radius: 10px;
 }
 /* Profile picture positioning */
-.card-header {
+.box-card {
     height: 80px;
     position: relative;
     overflow: visible;
@@ -45,7 +27,7 @@ h1 {
     border-top-right-radius: 10px;
 }
 
-    .card-header img {
+    .box-card img {
         position: absolute;
         top: 30px;
         left: 50%;
@@ -57,7 +39,7 @@ h1 {
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
-/* Styling the text */
+/* Styling the text*/ 
 .text-secondary {
     margin-top: 50px;
 }
@@ -73,34 +55,34 @@ h1 {
     justify-content: center;
     background-color: #f8f9fa;
     cursor: pointer;
-    margin: 10px auto; /* Center the box horizontally */
+    margin: 10px auto;  /*Center the box horizontally */
 }
 
     .upload-box i {
         font-size: 1.5rem; 
-        color: #6c757d; /* Match the icon color to the text color */
+        color: #6c757d; /* Match the icon color to the text color*/ 
         margin-bottom: 0 !important; /* Reduce the gap between the icon and the text */
     }
 
     .upload-box p {
         font-size: 1rem; /* Adjust font size */
-        color: #6c757d; /* Ensure text color matches */
+        color: #6c757d;  /*Ensure text color matches */
         margin-top: 35px;
     }
 
 
 
-
-/* Input, Select, and Gender Buttons */
+/*
+ Input, Select, and Gender Buttons */
 .form-control,
 .btn-group-toggle .btn,
 select {
-    border: 1px solid #767575; /* Stroke color */
-    border-radius: 8px; /* Rounded edges */
+    border: 1px solid #767575;  /*Stroke color */
+    border-radius: 8px;  /*Rounded edges */
     background-color: #F2F5FA; /* Background color */
     padding: 0.5rem; /* Padding for consistency */
     color: #333; /* Text color */
-    height: 50px; /* Uniform height */
+    height: 50px;  /*Uniform height*/ 
 }
 
     /* Focus State */
@@ -110,27 +92,27 @@ select {
         border-color: #1570CF; /* Change stroke color on focus */
         outline: none; /* Remove outline */
     }
-
-/* Gender button styles */
+/*
+ Gender button styles */
 .btn-group-toggle .btn {
     border: 1px solid #767575; /* Stroke color */
-    border-radius: 8px; /* Round edge */
-    background-color: #F2F5FA; /* Inside color */
+    border-radius: 8px;  /*Round edge*/ 
+    background-color: #F2F5FA;  /*Inside color */
     color: #767575; /* Text color */
 }
 
-    /* Active state for selected gender buttons */
+ /*    Active state for selected gender buttons */
     .btn-group-toggle .btn.active,
     .btn-group-toggle .btn:active {
-        background: linear-gradient(to right, #324AAB, #5188D6); /* Gradient background */
+        background: linear-gradient(to right, #324AAB, #5188D6);  /*Gradient background */
         color: white; /* Text color when active */
-        border-color: #5188D6; /* Border color on active state */
+        border-color: #5188D6;  /*Border color on active state */
     }
 
-    /* Focus state: Change border color */
+     /*Focus state: Change border color*/ 
     .btn-group-toggle .btn:focus {
         border-color: #1570CF; /* Border color on focus */
-        outline: none; /* Remove default outline */
+        outline: none;  /*Remove default outline */
     }
 /* Label Styling */
 label {
@@ -139,18 +121,23 @@ label {
    
 }
 
-
-/* Custom button style */
+/*
+ Custom button style*/
 .btn-custom {
     background: linear-gradient(to right, #324AAB, #5188D6);
-    color: white; /* Button text color */
-    width: 292px; /* Button width */
-    height: 40px; /* Button height */
-    border: none; /* Remove border */
+    color: white; /*Button text color*/
+    width: 320px; /* Button width */
+    height: 40px; /*Button height*/
+    border: none; /* Remove border*/
     border-radius: 8px; /* Rounded corners for the button */
-   
+    justify-content: right !important;
+    margin-right: 60px;
 }
     .btn-custom:hover {
        
-        color: white; /* Ensure text color remains white on hover */
-    }
+        color: white;  /*Ensure text color remains white on hover 
+*/    }
+.card-footer{
+    background-color:white;
+}
+   
