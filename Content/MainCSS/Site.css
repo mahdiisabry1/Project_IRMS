@@ -31,8 +31,6 @@
 #accordionSidebar {
     background: linear-gradient(to bottom, #1D76B5, #09325E);
     border-top-right-radius: 40px; /* Round the top-right corner */
-  
-   
 }
 
 .sidebar .nav-link i,
@@ -74,9 +72,10 @@
 }
     .sidebar-footer img {
         width: 200px;
-        height: 45px;
+        height: 27px;
         object-fit: contain;
-        padding-bottom: 15px;
+       
         
     }
 /**/
+
