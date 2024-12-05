@@ -10404,7 +10404,8 @@ body:not(.layout-fixed).layout-navbar-fixed.text-sm .wrapper .main-sidebar {
     position: fixed;
     right: 0;
     top: 0;
-    z-index: 1033
+    z-index: 1033;
+   
 }
 
 .layout-navbar-fixed.text-sm .wrapper .content-wrapper {
