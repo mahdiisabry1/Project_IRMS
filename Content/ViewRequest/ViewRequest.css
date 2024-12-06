@@ -1,25 +1,51 @@
 ﻿
-.box {
+/*.box {
     border-radius: 10px;
     padding: 10px;
     height: 50vh;
     background-color: red;
+}*/
+
+.search-input-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+}
+
+.search-input {
+    flex: 1;
+    padding: 8px 36px 8px 10px; /* Adjust padding to leave space for the search icon */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.search-icon {
+    position: absolute;
+    left: 140px; /* Align with the padding-right of the input */
+    color: #888;
+    cursor: pointer;
+}
+
+.filter-icon {
+    margin-left: 8px;
+    color: #888;
+    cursor: pointer;
 }
 
 
-
-
 /* Header styles */
-.header {
+/*.header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 0;
 
-}
-.title-IRMS {
+}*/
+.card-title {
     color: #474747 !important;
-    font-size: 30px
+    font-size: 25px;
+    font-weight: 500;
 }
 
  
@@ -87,9 +113,9 @@
 }
 
 /* Card container styles */
-.custom-row {
-    width: 100%; /* Set a specific width for the parent */
-    max-width: 1200px;
+/*.custom-row {
+    width: 100%;*/ /* Set a specific width for the parent */
+    /*max-width: 1200px;
     max-width: 100%;
     height: 100%;
     padding: 10px;
@@ -98,10 +124,10 @@
 }
     .custom-row::-webkit-scrollbar {
         display: none;
-    }
+    }*/
 
 /* Card styles */
-.card {
+.card-details {
     width: 100%;
     height: 220px;
     background-color: white;
@@ -116,7 +142,7 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.06);
 }
 
-    .card:hover {
+    .card-details:hover {
         transform: scale(1.05);
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15), 0 8px 16px rgba(5, 112, 207, 0.4);
     }
@@ -135,8 +161,9 @@
     justify-content: center;
     align-items: center;
 }
+
 /*helloooo joshuwaaaaaaaaaaaaaaaaaaaaa*/
-.card .top-rectangle .button {
+.card-details .top-rectangle .button {
     width: 50%;
     height: 100%;
     display: flex;
@@ -151,16 +178,16 @@
     transition: opacity 0.3s;
 }
 
-.card:hover .top-rectangle .button {
+.card-details:hover .top-rectangle .button {
     opacity: 1;
 }
 
-.card .top-rectangle .button.view {
-    background-color: rgba(0, 0, 0, 0.3);
+.card-details .top-rectangle .button.view {
+    background: linear-gradient(to right, #7CD6E4, #50BCDB);
 }
 
-.card .top-rectangle .button.edit {
-    background-color: rgba(0, 0, 0, 0.5);
+.card-details .top-rectangle .button.edit {
+    background: linear-gradient(to right, #96C7C0, #77B5BB);
 }
 
 /* Profile picture */
@@ -191,14 +218,14 @@
     }
 
 /* Card text */
-.card h2 {
+.card-details h2 {
     font-size: 15px;
     margin: 5px 0;
     position: relative;
     top: 40px;
 }
 
-.card p {
+.card-details p {
     font-size: 13px;
     color: #666;
     margin: 3px 0;
@@ -206,7 +233,7 @@
     top: 40px;
 }
 
-.card .hr {
+.card-details .hr {
     width: 220px;
     margin: 5px auto;
     border: 0.5px solid #ccc;
@@ -214,7 +241,7 @@
     top: 40px;
 }
 
-.card .division {
+.card-details .division {
     font-size: 14px;
     color: #333;
     margin-top: 0px;
@@ -256,7 +283,7 @@
     overflow: hidden;
     position: relative;
     font-family: Arial, sans-serif;
-    z-index: 1001; /* Ensure it’s above the overlay */
+    z-index: 1001;/* Ensure it’s above the overlay */
 }
 
 .card_view-header {
