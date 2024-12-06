@@ -1,30 +1,42 @@
-﻿document.getElementById('uploadBox').addEventListener('dragover', function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-    this.style.background = '#f0f0f0';  // Change background when file is dragged over
-});
+﻿
 
-document.getElementById('uploadBox').addEventListener('dragleave', function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-    this.style.background = '';  // Reset background when file is dragged out
-});
+/*down here dropzonejs*/
 
-document.getElementById('uploadBox').addEventListener('drop', function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-    this.style.background = '';  // Reset background after file is dropped
+Dropzone.options.uploadBox = {
+    url: "#", // No server, so use a dummy URL
+    autoProcessQueue: false, // Do not send files to a server
+    addRemoveLinks: false, // Disable default remove link
+    init: function () {
+        const previewContainer = document.getElementById("filePreviewContainer");
 
-    const file = e.dataTransfer.files[0]; // Get the first file from dropped files
-    if (file) {
-        document.getElementById('cvFile').files = e.dataTransfer.files;  // Trigger the file input with the dropped file
-        uploadFile(file); // Call the function to handle the file upload
-    }
-});
+        // On file added to Dropzone
+        this.on("addedfile", function (file) {
+            // Create a custom preview element
+            const filePreview = document.createElement("div");
+            filePreview.className = "uploaded-file";
 
-document.getElementById('cvFile').addEventListener('change', function (e) {
-    const file = e.target.files[0];
-    if (file) {
-        uploadFile(file); // Handle file upload when file is selected
-    }
-});
+            filePreview.innerHTML = `
+                        <div class="file-info">
+                            <span>File:</span> ${file.name} (${(file.size / 1024).toFixed(2)} KB)
+                        </div>
+                        <i class="fas fa-times-circle remove-icon" title="Remove File"></i>
+                    `;
+
+            // Add the preview element to the container
+            previewContainer.appendChild(filePreview);
+
+            // Handle remove action
+            filePreview.querySelector(".remove-icon").addEventListener("click", () => {
+                this.removeFile(file); // Remove file from Dropzone
+                filePreview.remove(); // Remove preview element
+            });
+        });
+
+        // On file removed from Dropzone
+        this.on("removedfile", function (file) {
+            console.log(`File removed: ${file.name}`);
+        });
+    },
+};
+
+/*end*/

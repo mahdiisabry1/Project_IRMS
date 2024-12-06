@@ -132,6 +132,7 @@
   <ItemGroup>
     <Content Include="Content\adminlte\adminlte.min.css" />
     <Content Include="Content\CreateRequest\CreateRequest.css" />
+    <Content Include="Content\Dropzone\dropzone.min.css" />
     <Content Include="Content\fontawesome\all.min.css" />
     <Content Include="Content\MainCSS\Site.css" />
     <Content Include="Content\overlayScrollbars\OverlayScrollbars.min.css" />
@@ -150,6 +151,7 @@
     <Content Include="Scripts\AdminLTE\adminlte.min.js" />
     <None Include="Scripts\JqueryMaster\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\Bootstrap\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\Dropzone\dropzone.min.js" />
     <Content Include="Scripts\JqueryMaster\jquery-3.4.1.js" />
     <Content Include="Scripts\JqueryMaster\jquery-3.4.1.min.js" />
     <Content Include="Scripts\JqueryMaster\jquery-3.4.1.slim.js" />
