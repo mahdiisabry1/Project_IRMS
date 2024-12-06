@@ -1,4 +1,25 @@
-﻿document.addEventListener('DOMContentLoaded', function () {
+﻿
+// Function to toggle the dropdown VR
+function toggleDropdown() {
+    const dropdown = document.getElementById('dropdownVR');
+    dropdown.classList.toggle('show-dropdown-VR');
+}
+
+// Close the dropdown if the user clicks anywhere outside of it
+document.addEventListener('click', function (event) {
+    const dropdown = document.getElementById('dropdownVR');
+    const filterButton = document.querySelector('.fas.fa-filter');
+    // If the click is outside the dropdown and the filter icon, hide the dropdown
+    if (!dropdown.contains(event.target) && event.target !== filterButton) {
+        dropdown.classList.remove('show-dropdown-VR');
+    }
+});
+
+
+
+//----------------------------------------------------------------------------------------------------
+
+document.addEventListener('DOMContentLoaded', function () {
     // Get all cards and popup elements
     const cards = document.querySelectorAll('.card'); // All cards
     const popupOverlay = document.getElementById('popupOverlay'); // Popup overlay
@@ -43,18 +64,11 @@
     });
 });
 
-document.addEventListener('DOMContentLoaded', function () {
-    // Get all cards and their edit buttons
-    const cards = document.querySelectorAll('.card');
-
-    // Add a click event listener to each "Edit" button
-    cards.forEach(card => {
-        const editButton = card.querySelector('.button.edit');
-        editButton.addEventListener('click', () => {
-            const internId = editButton.getAttribute('data-id'); // Get the intern's unique ID
-            // Redirect directly to the .cshtml page
-            window.location.href = `/Views/CreateRequest/Index.cshtml?id=${internId}`;
-        });
-    });
+// Add click event to "Edit" button
+editButton.addEventListener('click', () => {
+    const internId = editButton.getAttribute('data-id'); // Get the ID attached to the button
+    if (internId) {
+        // Redirect to CreateRequest form with the ID in the query parameter
+        window.location.href = `/CreateRequest/Index?id=${internId}`;
+    }
 });
-
