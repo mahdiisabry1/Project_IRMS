@@ -2,12 +2,11 @@
     ViewBag.Title = "View Request";
 }
 ﻿
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  
+@section CustomPageStyles {
+
     <link href="~/Content/ViewRequest/ViewRequest.css" rel="stylesheet" />
-</head>
+}
+
 
 <div class="container-fluid">
     <div class="p-3 box">
@@ -244,71 +243,71 @@
     </div>
 </div>
 
-    <!-- Popup Overlay -->
-    <div class="popup-overlay" id="popupOverlay">
-        <div class="card_view">
-            <div class="card_view-header">
-                <h2>
-                    Request Details
-                </h2>
-                <span class="close">
-                    ×
-                </span>
-            </div>
-            <div class="gradient-line">
-            </div>
-            <div class="card_view-body">
-                <div class="profile">
-                    <img alt="Profile picture" height="117" src="https://placehold.co/115x117" width="115" />
-                    <div class="profile-info">
-                        <h3>
-                            Wimukthi Manchanayaka
-                        </h3>
-                        <p>
-                            Division Name
-                        </p>
-                        <a href="#">
-                            Edit Profile
-                        </a>
-                    </div>
-                </div>
-                <div class="details">
-                    <div class="info">
-                        <p>
-                            Ref No - IM1012
-                        </p>
-                        <p>
-                            <i class="fas fa-graduation-cap">
-                            </i>
-                            National Institute of Business Management
-                        </p>
-                        <p>
-                            <i class="fas fa-phone">
-                            </i>
-                            0765630062
-                        </p>
-                        <p>
-                            <i class="fas fa-envelope">
-                            </i>
-                            wimukthimanchanayaka@gmail.com
-                        </p>
-                    </div>
-                    <a class="view-cv" href="#">
-                        View CV
+<!-- Popup Overlay -->
+<div class="popup-overlay" id="popupOverlay">
+    <div class="card_view">
+        <div class="card_view-header">
+            <h2>
+                Request Details
+            </h2>
+            <span class="close">
+                ×
+            </span>
+        </div>
+        <div class="gradient-line">
+        </div>
+        <div class="card_view-body">
+            <div class="profile">
+                <img alt="Profile picture" height="117" src="https://placehold.co/115x117" width="115" />
+                <div class="profile-info">
+                    <h3>
+                        Wimukthi Manchanayaka
+                    </h3>
+                    <p>
+                        Division Name
+                    </p>
+                    <a href="#">
+                        Edit Profile
                     </a>
                 </div>
-                <div class="horizontal-line">
+            </div>
+            <div class="details">
+                <div class="info">
+                    <p>
+                        Ref No - IM1012
+                    </p>
+                    <p>
+                        <i class="fas fa-graduation-cap">
+                        </i>
+                        National Institute of Business Management
+                    </p>
+                    <p>
+                        <i class="fas fa-phone">
+                        </i>
+                        0765630062
+                    </p>
+                    <p>
+                        <i class="fas fa-envelope">
+                        </i>
+                        wimukthimanchanayaka@gmail.com
+                    </p>
                 </div>
-                <div class="card_view-footer">
-                    <button>
-                        Send
-                    </button>
-                </div>
+                <a class="view-cv" href="#">
+                    View CV
+                </a>
+            </div>
+            <div class="horizontal-line">
+            </div>
+            <div class="card_view-footer">
+                <button>
+                    Send
+                </button>
             </div>
         </div>
     </div>
+</div>
 
 
-    @section Scripts{
-        <script src="~/Scripts/PageScript/ViewRequest.js" type="text/javascript"></script>
-    }
+@section Scripts{
+    <script src="~/Scripts/PageScript/ViewRequest.js" type="text/javascript"></script>
+}
