@@ -1,42 +1,62 @@
-﻿
-
-/*down here dropzonejs*/
-
+﻿// Initialize Dropzone for file upload
 Dropzone.options.uploadBox = {
-    url: "#", // No server, so use a dummy URL
-    autoProcessQueue: false, // Do not send files to a server
-    addRemoveLinks: false, // Disable default remove link
+    url: "/CreateRequest/UploadCv",  // Endpoint to send the file
+    autoProcessQueue: true,  // Automatically process the file once added
+    maxFiles: 1,  // Limit the number of files to 1
+    acceptedFiles: ".pdf,.doc,.docx",  // Accept PDF and Word files
+    addRemoveLinks: false,  // Disable remove link by default
     init: function () {
         const previewContainer = document.getElementById("filePreviewContainer");
 
-        // On file added to Dropzone
+        // Event listener for when a file is added to the Dropzone
         this.on("addedfile", function (file) {
-            // Create a custom preview element
+            // Create a custom file preview element
             const filePreview = document.createElement("div");
             filePreview.className = "uploaded-file";
 
             filePreview.innerHTML = `
-                        <div class="file-info">
-                            <span>File:</span> ${file.name} (${(file.size / 1024).toFixed(2)} KB)
-                        </div>
-                        <i class="fas fa-times-circle remove-icon" title="Remove File"></i>
-                    `;
+                <div class="file-info">
+                    <span>File:</span> ${file.name} (${(file.size / 1024).toFixed(2)} KB)
+                </div>
+                <i class="fas fa-times-circle remove-icon" title="Remove File"></i>
+            `;
 
-            // Add the preview element to the container
+            // Append the preview element to the preview container
             previewContainer.appendChild(filePreview);
 
-            // Handle remove action
-            filePreview.querySelector(".remove-icon").addEventListener("click", () => {
-                this.removeFile(file); // Remove file from Dropzone
-                filePreview.remove(); // Remove preview element
+            // Handle file removal
+            filePreview.querySelector(".remove-icon").addEventListener("click", (e) => {
+                e.preventDefault();
+                this.removeFile(file);  // Remove file from Dropzone
+                filePreview.remove();  // Remove the preview element
             });
         });
 
-        // On file removed from Dropzone
+        // Event listener for when a file is removed from Dropzone
         this.on("removedfile", function (file) {
             console.log(`File removed: ${file.name}`);
         });
-    },
-};
 
-/*end*/
+        // Event listener for when the file is uploaded successfully
+        this.on("success", function (file, response) {
+            console.log(response);  // Log the response for debugging purposes
+
+            if (response.success) {
+                // Auto-fill form fields based on extracted data from the file
+                document.getElementById("firstName").value = response.data.firstName || "";
+                document.getElementById("lastName").value = response.data.lastName || "";
+                document.getElementById("email").value = response.data.email || "";
+                document.getElementById("contactNo").value = response.data.contactNo || "";
+            } else {
+                // Show alert if there is an error in processing the file
+                alert(response.message || "Failed to process the file.");
+            }
+        });
+
+        // Event listener for file upload errors
+        this.on("error", function (file, errorMessage) {
+            console.log("File upload error:", errorMessage);  // Log error message
+            alert("File upload failed: " + errorMessage);  // Show error alert
+        });
+    }
+};
