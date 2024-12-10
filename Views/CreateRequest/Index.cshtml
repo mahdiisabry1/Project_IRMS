@@ -51,8 +51,8 @@
                                     <label>University</label>
                                     <select class="form-control" id="university">
                                         <option selected>Select University</option>
-                                        <option>University A</option>
-                                        <option>University B</option>
+                                        <option>National Institute of Buisness Management(NIBM)</option>
+                                        <option>SLIT</option>
                                     </select>
                                 </div>
                                 <!-- /.form-group -->
@@ -63,10 +63,10 @@
                                     <label>Gender</label>
                                     <div class="btn-group btn-group-toggle w-100" data-toggle="buttons">
                                         <label class="btn btn-outline-secondary">
-                                            <input type="radio" name="gender" id="male" autocomplete="off" /> Male
+                                            <input type="radio" name="gender" id="male" autocomplete="off" onchange="updateProfileImage()" /> Male
                                         </label>
                                         <label class="btn btn-outline-secondary">
-                                            <input type="radio" name="gender" id="female" autocomplete="off" /> Female
+                                            <input type="radio" name="gender" id="female" autocomplete="off" onchange="updateProfileImage()" /> Female
                                         </label>
                                     </div>
                                 </div>
@@ -101,8 +101,8 @@
                                     <label for="degree">Degree</label>
                                     <select class="form-control" id="degree">
                                         <option selected>Select Degree</option>
-                                        <option>Degree A</option>
-                                        <option>Degree B</option>
+                                        <option>Bsc(Hons) Computer Science</option>
+                                        <option>B.Sc. in Applied Mathematics and Computing</option>
                                     </select>
                                 </div>
                                 <!-- /.form-group -->
@@ -113,7 +113,7 @@
                                     <label for="division">Division</label>
                                     <select class="form-control" id="division">
                                         <option selected>Select Division</option>
-                                        <option>Division A</option>
+                                        <option>IT</option>
                                         <option>Division B</option>
                                     </select>
 
@@ -130,9 +130,25 @@
                     <div class="col-12 col-sm-3  pt-2">
 
                         <div class="card shadow border-0 h-100">
+                            <!--imgupload-->
                             <div class="box-card bg-dark position-relative d-flex justify-content-center align-items-center">
-                                <img alt="Profile icon" class="rounded-circle position-absolute" src="~/Images/Group 1000002769.png" />
+                                <!-- Profile image -->
+                                <img id="profileImage"
+                                     alt="Profile icon"
+                                     class="rounded-circle position-absolute"
+                                     src="~/Images/Group 1000002769.png"
+                                     onclick="document.getElementById('imageUpload').click()"
+                                     style="cursor: pointer;" />
+
+                                <!-- Hidden file input -->
+                                <input type="file"
+                                       id="imageUpload"
+                                       name="profileImage"
+                                       class="d-none"
+                                       accept="image/*"
+                                       onchange="previewImage(event)" />
                             </div>
+                            <!--end-->
                             <div class="card-body text-center d-flex flex-column justify-content-center">
                                 <h5 class="text-secondary">Upload CV Here</h5>
                                 <form class="upload-box bg-light d-flex flex-column align-items-center justify-content-center dropzone"

@@ -60,3 +60,40 @@ Dropzone.options.uploadBox = {
         });
     }
 };
+
+//image upload when click
+function previewImage(event) {
+    const input = event.target;
+    if (input.files && input.files[0]) {
+        console.log('File selected:', input.files[0]); // Debug log
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+            console.log('File loaded:', e.target.result); // Debug log
+            const profileImage = document.getElementById('profileImage');
+            profileImage.src = e.target.result; // Update the image preview
+        };
+
+        reader.readAsDataURL(input.files[0]); // Read the uploaded file
+    } else {
+        console.log('No file selected'); // Debug log
+    }
+}
+
+//end
+
+//image changes when change radiobutton
+function updateProfileImage() {
+    const maleRadio = document.getElementById('male');
+    const profileImage = document.getElementById('profileImage');
+
+    // Check which radio button is selected and update the image
+    if (maleRadio.checked) {
+        profileImage.src = "/Images/Group 1000002769.png?" + new Date().getTime(); // Male image
+    } else {
+        profileImage.src = "/Images/femaleimg.png?" + new Date().getTime(); // Female image
+    }
+}
+
+
+//end
