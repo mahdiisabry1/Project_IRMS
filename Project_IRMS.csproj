@@ -231,6 +231,12 @@
     <Content Include="Scripts\JqueryMaster\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\JqueryMaster\jquery-3.4.1.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Project_IRMS.Buisness\Project_IRMS.Buisness.csproj">
+      <Project>{de4fee3d-d119-45fa-81ad-20702a1d591b}</Project>
+      <Name>Project_IRMS.Buisness</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

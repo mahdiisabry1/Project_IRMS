@@ -30,7 +30,7 @@
 
                                     <div class="form-group">
                                         <label>Firt Name</label>
-                                        <input type="text" class="form-control" id="firstName" placeholder="Enter First Name" style="width:100%;  " required />
+                                        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Enter First Name" style="width:100%;  " required />
                                     </div>
                                     <!-- /.form-group -->
                                 </div>
@@ -38,7 +38,7 @@
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
                                         <label>Last Name</label>
-                                        <input type="text" class="form-control" id="lastName" placeholder="Enter Last Name" style="width: 100%;  " required />
+                                        <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Enter Last Name" style="width: 100%;  " required />
 
                                     </div>
                                     <!-- /.form-group -->
@@ -51,7 +51,7 @@
                                 <div class="col-12 col-sm-10">
                                     <div class="form-group">
                                         <label>University</label>
-                                        <select class="form-control" id="university">
+                                        <select class="form-control" id="university" name="university">
                                             <option selected>Select University</option>
                                             <option>National Institute of Buisness Management(NIBM)</option>
                                             <option>SLIT</option>
@@ -81,7 +81,7 @@
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
                                         <label for="email">Personal Email</label>
-                                        <input type="email" class="form-control" id="email" placeholder="Enter Email" required />
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email" required />
                                     </div>
                                     <!-- /.form-group -->
                                 </div>
@@ -89,7 +89,7 @@
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
                                         <label for="contactNo">Contact No</label>
-                                        <input type="text" class="form-control" id="contactNo" placeholder="Enter Contact Number" required />
+                                        <input type="text" class="form-control" id="contactNo" name="contactNo" placeholder="Enter Contact Number" required />
 
                                     </div>
                                     <!-- /.form-group -->
@@ -101,7 +101,7 @@
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
                                         <label for="degree">Degree</label>
-                                        <select class="form-control" id="degree">
+                                        <select class="form-control" id="degree" name="degree">
                                             <option selected>Select Degree</option>
                                             <option>Bsc(Hons) Computer Science</option>
                                             <option>B.Sc. in Applied Mathematics and Computing</option>
@@ -113,7 +113,7 @@
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
                                         <label for="division">Division</label>
-                                        <select class="form-control" id="division">
+                                        <select class="form-control" id="division" name="division">
                                             <option selected>Select Division</option>
                                             <option>IT</option>
                                             <option>Division B</option>
@@ -153,16 +153,17 @@
                                 <!--end-->
                                 <div class="card-body text-center d-flex flex-column justify-content-center">
                                     <h5 class="text-secondary">Upload CV Here</h5>
-                                    <form class="upload-box bg-light d-flex flex-column align-items-center justify-content-center dropzone"
-                                          id="uploadBox"
-                                          action="/upload"
-                                          method="post"
-                                          enctype="multipart/form-data">
+                                    <div class="upload-box bg-light d-flex flex-column align-items-center justify-content-center dropzone"
+                                         id="uploadBox"
+                                         name="cv"
+                                         action="/upload"
+                                         method="post"
+                                         enctype="multipart/form-data">
                                         <div class="dz-message">
                                             <i class="fas fa-upload"></i>
                                             <p class="text-secondary">Choose a file or drag & drop it here</p>
                                         </div>
-                                    </form>
+                                    </div>
                                     <div id="filePreviewContainer" style="max-width: 400px; margin: 20px auto;"></div>
 
 
@@ -178,11 +179,11 @@
 
                 </div>
                 <!-- /.card-body -->
-                </form>
-                <div class="card-footer d-flex justify-content-end">
-                    <button class="btn btn-custom">Create Request</button>
-                </div>
 
+                <div class="card-footer d-flex justify-content-end">
+                    <button type="submit" class="btn btn-custom">Create Request</button>
+                </div>
+            </form>
         </div>
         
         <!-- /.card -->

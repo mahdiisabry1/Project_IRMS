@@ -42,27 +42,53 @@ namespace Project_IRMS.Controllers
             string contactNo = form["contactNo"];
             string degree = form["degree"];
             string division = form["division"];
-            string profileImagePath = null;
-            string cvPath = null;
+            string profileImagePath = null; // Initialize to null
+            string cvPath = null;          // Initialize to null
 
-            // Handle file uploads (if provided)
+            // Handle profile image upload
             if (profileImage != null)
             {
-                profileImagePath = Server.MapPath("~/UploadedFiles/Profiles/" + profileImage.FileName);
+                string directoryPath = Server.MapPath("~/UploadedFiles/Profiles/");
+
+                // Ensure the directory exists
+                if (!Directory.Exists(directoryPath))
+                {
+                    Directory.CreateDirectory(directoryPath);
+                }
+
+                // Define the full file path and assign to profileImagePath
+                profileImagePath = System.IO.Path.Combine(directoryPath, profileImage.FileName);
+
+                // Save the file
                 profileImage.SaveAs(profileImagePath);
             }
 
+            // Handle CV upload
             if (cv != null)
             {
-                cvPath = Server.MapPath("~/UploadedFiles/CVs/" + cv.FileName);
+                string directoryPath = Server.MapPath("~/UploadedFiles/CVs/");
+
+                // Ensure the directory exists
+                if (!Directory.Exists(directoryPath))
+                {
+                    Directory.CreateDirectory(directoryPath);
+                }
+
+                // Define the full file path and assign to cvPath
+                cvPath = System.IO.Path.Combine(directoryPath, cv.FileName);
+
+                // Save the file
                 cv.SaveAs(cvPath);
+                System.Diagnostics.Debug.WriteLine("CV Path: " + cvPath);
             }
 
-            // Save data
+            // Save data to the database
             _internService.AddInternDetails(firstName, lastName, university, gender, email, contactNo, degree, division, profileImagePath, cvPath);
 
+            // Redirect to index page
             return RedirectToAction("Index");
         }
+
         //end
         [HttpPost]
         public JsonResult UploadCv(HttpPostedFileBase file)
