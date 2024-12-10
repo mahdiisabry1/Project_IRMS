@@ -54,6 +54,8 @@ namespace Project_IRMS.Controllers
                 {
                     extractedText = ExtractTextFromWord(tempFilePath);
                 }
+                // Log the extracted text for debugging
+                System.Diagnostics.Debug.WriteLine("Extracted Text: " + extractedText);
 
                 // Parse the extracted text for details
                 var parsedData = ParseCvText(extractedText);
