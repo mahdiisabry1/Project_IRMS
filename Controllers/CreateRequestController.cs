@@ -9,6 +9,8 @@ using Tesseract;
 using iTextSharp.text.pdf.parser;
 using System.Collections.Generic;
 using System.Drawing;
+using Project_IRMS.Buisness;
+
 
 using IOPath = System.IO.Path;
 
@@ -21,7 +23,47 @@ namespace Project_IRMS.Controllers
         {
             return View();
         }
+        //databse
+        private readonly InternDetailsService _internService;
 
+        public CreateRequestController()
+        {
+            _internService = new InternDetailsService();
+        }
+
+        [HttpPost]
+        public ActionResult SubmitRequest(FormCollection form, HttpPostedFileBase profileImage, HttpPostedFileBase cv)
+        {
+            string firstName = form["firstName"];
+            string lastName = form["lastName"];
+            string university = form["university"];
+            string gender = form["gender"];
+            string email = form["email"];
+            string contactNo = form["contactNo"];
+            string degree = form["degree"];
+            string division = form["division"];
+            string profileImagePath = null;
+            string cvPath = null;
+
+            // Handle file uploads (if provided)
+            if (profileImage != null)
+            {
+                profileImagePath = Server.MapPath("~/UploadedFiles/Profiles/" + profileImage.FileName);
+                profileImage.SaveAs(profileImagePath);
+            }
+
+            if (cv != null)
+            {
+                cvPath = Server.MapPath("~/UploadedFiles/CVs/" + cv.FileName);
+                cv.SaveAs(cvPath);
+            }
+
+            // Save data
+            _internService.AddInternDetails(firstName, lastName, university, gender, email, contactNo, degree, division, profileImagePath, cvPath);
+
+            return RedirectToAction("Index");
+        }
+        //end
         [HttpPost]
         public JsonResult UploadCv(HttpPostedFileBase file)
         {
