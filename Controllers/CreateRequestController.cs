@@ -4,26 +4,18 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
+using System.Collections.Generic;
+using System.Drawing;
 using Microsoft.Office.Interop.Word;
 using Tesseract;
 using iTextSharp.text.pdf.parser;
-using System.Collections.Generic;
-using System.Drawing;
 using Project_IRMS.Buisness;
-
-
 using IOPath = System.IO.Path;
 
 namespace Project_IRMS.Controllers
 {
     public class CreateRequestController : Controller
     {
-        // GET: CreateRequest
-        public ActionResult Index()
-        {
-            return View();
-        }
-        //databse
         private readonly InternDetailsService _internService;
 
         public CreateRequestController()
@@ -31,113 +23,107 @@ namespace Project_IRMS.Controllers
             _internService = new InternDetailsService();
         }
 
+        // GET: CreateRequest
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        // Submit the form data
         [HttpPost]
         public ActionResult SubmitRequest(FormCollection form, HttpPostedFileBase profileImage, HttpPostedFileBase cv)
         {
-            string firstName = form["firstName"];
-            string lastName = form["lastName"];
-            string university = form["university"];
-            string gender = form["gender"];
-            string email = form["email"];
-            string contactNo = form["contactNo"];
-            string degree = form["degree"];
-            string division = form["division"];
-            string profileImagePath = null; // Initialize to null
-            string cvPath = null;          // Initialize to null
-
-            // Handle profile image upload
-            if (profileImage != null)
+            try
             {
-                string directoryPath = Server.MapPath("~/UploadedFiles/Profiles/");
+                // Retrieve form data
+                string firstName = form["firstName"];
+                string lastName = form["lastName"];
+                string university = form["university"];
+                string gender = form["gender"];
+                string email = form["email"];
+                string contactNo = form["contactNo"];
+                string degree = form["degree"];
+                string division = form["division"];
 
-                // Ensure the directory exists
-                if (!Directory.Exists(directoryPath))
+                byte[] profileImageBytes = null;
+                byte[] cvBytes = null;
+
+                // Convert profile image to byte array
+                if (profileImage != null && profileImage.ContentLength > 0)
                 {
-                    Directory.CreateDirectory(directoryPath);
+                    using (var ms = new MemoryStream())
+                    {
+                        profileImage.InputStream.CopyTo(ms);
+                        profileImageBytes = ms.ToArray();
+                    }
                 }
 
-                // Define the full file path and assign to profileImagePath
-                profileImagePath = System.IO.Path.Combine(directoryPath, profileImage.FileName);
-
-                // Save the file
-                profileImage.SaveAs(profileImagePath);
-            }
-
-            // Handle CV upload
-            if (cv != null)
-            {
-                string directoryPath = Server.MapPath("~/UploadedFiles/CVs/");
-
-                // Ensure the directory exists
-                if (!Directory.Exists(directoryPath))
+                // Convert CV to byte array
+                if (cv != null && cv.ContentLength > 0)
                 {
-                    Directory.CreateDirectory(directoryPath);
+                    using (var ms = new MemoryStream())
+                    {
+                        cv.InputStream.CopyTo(ms);
+                        cvBytes = ms.ToArray();
+                    }
                 }
 
-                // Define the full file path and assign to cvPath
-                cvPath = System.IO.Path.Combine(directoryPath, cv.FileName);
+                // Save details to the database
+                _internService.AddInternDetails(firstName, lastName, university, gender, email, contactNo, degree, division, profileImageBytes, cvBytes);
 
-                // Save the file
-                cv.SaveAs(cvPath);
-                System.Diagnostics.Debug.WriteLine("CV Path: " + cvPath);
+                return Json(new { success = true, message = "Request submitted successfully." });
             }
-
-            // Save data to the database
-            _internService.AddInternDetails(firstName, lastName, university, gender, email, contactNo, degree, division, profileImagePath, cvPath);
-
-            // Redirect to index page
-            return RedirectToAction("Index");
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = $"Error: {ex.Message}" });
+            }
         }
 
-        //end
+        // Upload and process CV
         [HttpPost]
         public JsonResult UploadCv(HttpPostedFileBase file)
         {
-            if (file == null || file.ContentLength == 0)
+            if (file == null || file.ContentLength <= 0)
             {
                 return Json(new { success = false, message = "No file uploaded." });
             }
 
             try
             {
-                // Ensure the temp folder exists
                 string tempFolderPath = Server.MapPath("~/Temp");
-                if (!Directory.Exists(tempFolderPath))
-                {
-                    Directory.CreateDirectory(tempFolderPath);
-                }
-
-                string extractedText = "";
-
-                // Save the file to the temporary location
-                string tempFilePath = IOPath.Combine(tempFolderPath, IOPath.GetFileName(file.FileName));
+                Directory.CreateDirectory(tempFolderPath); // Ensure temp directory exists
+                string tempFilePath = IOPath.Combine(tempFolderPath, file.FileName);
                 file.SaveAs(tempFilePath);
 
-                // Extract text based on file type
-                if (file.FileName.EndsWith(".pdf"))
-                {
-                    extractedText = ExtractTextFromPdf(tempFilePath);
-                }
-                else if (file.FileName.EndsWith(".doc") || file.FileName.EndsWith(".docx"))
-                {
-                    extractedText = ExtractTextFromWord(tempFilePath);
-                }
-                // Log the extracted text for debugging
-                System.Diagnostics.Debug.WriteLine("Extracted Text: " + extractedText);
-
-                // Parse the extracted text for details
+                string extractedText = ExtractTextBasedOnFileType(tempFilePath, file.FileName);
                 var parsedData = ParseCvText(extractedText);
 
-                // Return the parsed data to the client
                 return Json(new { success = true, data = parsedData });
             }
             catch (Exception ex)
             {
-                return Json(new { success = false, message = ex.Message });
+                return Json(new { success = false, message = $"Error: {ex.Message}" });
             }
         }
 
-        // Extract text from PDF using iTextSharp and OCR if necessary
+        // Extract text based on file type
+        private string ExtractTextBasedOnFileType(string filePath, string fileName)
+        {
+            if (fileName.EndsWith(".pdf"))
+            {
+                return ExtractTextFromPdf(filePath);
+            }
+            else if (fileName.EndsWith(".doc") || fileName.EndsWith(".docx"))
+            {
+                return ExtractTextFromWord(filePath);
+            }
+            else
+            {
+                throw new NotSupportedException("Unsupported file type.");
+            }
+        }
+
+        // Extract text from PDF using iTextSharp and OCR
         private string ExtractTextFromPdf(string filePath)
         {
             StringBuilder text = new StringBuilder();
@@ -149,82 +135,73 @@ namespace Project_IRMS.Controllers
                     for (int i = 1; i <= reader.NumberOfPages; i++)
                     {
                         string pageText = PdfTextExtractor.GetTextFromPage(reader, i);
-                        if (!string.IsNullOrWhiteSpace(pageText))
-                        {
-                            text.Append(pageText);
-                        }
-                        else
-                        {
-                            // If the page is image-based, use OCR
-                            text.Append(ExtractTextFromPdfWithTesseract(filePath, i));
-                        }
+                        text.Append(!string.IsNullOrWhiteSpace(pageText) ? pageText : ExtractTextFromPdfWithTesseract(filePath, i));
                     }
                 }
             }
             catch (Exception ex)
             {
-                text.Append("Error extracting text from PDF: " + ex.Message);
+                text.Append($"Error extracting text from PDF: {ex.Message}");
             }
 
             return text.ToString();
         }
 
-        // Perform OCR using Tesseract for images in PDF
+        // Perform OCR on PDF page using Tesseract
         private string ExtractTextFromPdfWithTesseract(string filePath, int pageNumber)
         {
-            string ocrText = string.Empty;
-
             try
             {
-                var pdfImage = ConvertPdfPageToImage(filePath, pageNumber);
+                Bitmap pdfImage = ConvertPdfPageToImage(filePath, pageNumber);
                 using (var engine = new TesseractEngine(@"./tessdata", "eng", EngineMode.Default))
+                using (var page = engine.Process(pdfImage))
                 {
-                    using (var page = engine.Process(pdfImage))
-                    {
-                        ocrText = page.GetText();
-                    }
+                    return page.GetText();
                 }
             }
             catch (Exception ex)
             {
-                ocrText = "Error performing OCR: " + ex.Message;
+                return $"Error performing OCR: {ex.Message}";
             }
-
-            return ocrText;
         }
 
-        // Convert a PDF page to an image (placeholder for actual image conversion)
+        // Placeholder: Convert PDF page to image
         private Bitmap ConvertPdfPageToImage(string filePath, int pageNumber)
         {
-            return new Bitmap(1, 1);  // Placeholder for actual image conversion
+            return new Bitmap(1, 1); // Replace with actual implementation
         }
 
-        // Extract text from Word document (DOCX or DOC)
+        // Extract text from Word document
         private string ExtractTextFromWord(string filePath)
         {
             Application wordApp = new Application();
-            Document doc = wordApp.Documents.Open(filePath);
-            string text = doc.Content.Text;
-            doc.Close(false);
-            wordApp.Quit();
-            return text;
+            Document doc = null;
+
+            try
+            {
+                doc = wordApp.Documents.Open(filePath);
+                return doc.Content.Text;
+            }
+            finally
+            {
+                doc?.Close(false);
+                wordApp.Quit();
+            }
         }
 
-        // Parse the extracted text for first name, last name, email, and contact number
+        // Parse CV text for details
         private Dictionary<string, string> ParseCvText(string text)
         {
-            var data = new Dictionary<string, string>
+            return new Dictionary<string, string>
             {
                 ["firstName"] = ExtractName(text, "First Name"),
                 ["lastName"] = ExtractName(text, "Last Name"),
                 ["email"] = Regex.Match(text, @"\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b").Value,
                 ["contactNo"] = Regex.Match(text, @"\b\d{10}\b").Value
             };
-
-            return data;
         }
 
-        // Helper method to extract names based on label (First Name, Last Name)
+        // Helper: Extract name based on label
         private string ExtractName(string text, string label)
         {
             var match = Regex.Match(text, $@"(?<={label}[:\s])([A-Za-z]+)");

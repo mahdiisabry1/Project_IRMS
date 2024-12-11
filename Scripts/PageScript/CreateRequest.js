@@ -1,4 +1,7 @@
-﻿// Initialize Dropzone for file upload
+﻿// Store the uploaded CV bytes globally for later use in form submission
+let cvBytes = null;
+
+// Initialize Dropzone for file upload
 Dropzone.options.uploadBox = {
     url: "/CreateRequest/UploadCv",  // Endpoint to send the file
     autoProcessQueue: true,  // Automatically process the file once added
@@ -32,16 +35,14 @@ Dropzone.options.uploadBox = {
             });
         });
 
-        // Event listener for when a file is removed from Dropzone
-        this.on("removedfile", function (file) {
-            console.log(`File removed: ${file.name}`);
-        });
-
-        // Event listener for when the file is uploaded successfully
+        // Event listener for when a file is uploaded successfully
         this.on("success", function (file, response) {
             console.log(response);  // Log the response for debugging purposes
 
             if (response.success) {
+                // Store cvBytes globally
+                cvBytes = response.cvBytes;
+
                 // Auto-fill form fields based on extracted data from the file
                 document.getElementById("firstName").value = response.data.firstName || "";
                 document.getElementById("lastName").value = response.data.lastName || "";
@@ -61,7 +62,7 @@ Dropzone.options.uploadBox = {
     }
 };
 
-//image upload when click
+// Image upload preview
 function previewImage(event) {
     const input = event.target;
     if (input.files && input.files[0]) {
@@ -80,9 +81,7 @@ function previewImage(event) {
     }
 }
 
-//end
-
-//image changes when change radiobutton
+// Change profile image based on radio button selection
 function updateProfileImage() {
     const maleRadio = document.getElementById('male');
     const profileImage = document.getElementById('profileImage');
@@ -95,5 +94,35 @@ function updateProfileImage() {
     }
 }
 
+// Submit the form with CV bytes
+function submitForm() {
+    const formData = {
+        firstName: document.getElementById("firstName").value,
+        lastName: document.getElementById("lastName").value,
+        university: document.getElementById("university").value,
+        gender: document.querySelector('input[name="gender"]:checked').value,
+        email: document.getElementById("email").value,
+        contactNo: document.getElementById("contactNo").value,
+        degree: document.getElementById("degree").value,
+        division: document.getElementById("division").value,
+        cv: cvBytes // Pass the uploaded CV bytes
+    };
 
-//end
+    // Send form data via AJAX
+    $.ajax({
+        url: "/CreateRequest/SubmitRequest",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(formData),
+        success: function (response) {
+            if (response.success) {
+                alert("Request submitted successfully!");
+            } else {
+                alert(response.message || "Failed to submit the request.");
+            }
+        },
+        error: function (xhr, status, error) {
+            alert("Error submitting the form: " + error);
+        }
+    });
+}
