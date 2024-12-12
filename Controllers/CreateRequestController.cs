@@ -29,9 +29,8 @@ namespace Project_IRMS.Controllers
             return View();
         }
 
-        // Submit the form data
         [HttpPost]
-        public ActionResult SubmitRequest(FormCollection form, HttpPostedFileBase profileImage, HttpPostedFileBase cv)
+        public ActionResult SubmitRequest(FormCollection form, HttpPostedFileBase profileImage, HttpPostedFileBase cvFile)
         {
             try
             {
@@ -48,7 +47,7 @@ namespace Project_IRMS.Controllers
                 byte[] profileImageBytes = null;
                 byte[] cvBytes = null;
 
-                // Convert profile image to byte array
+                // Handle Profile Image
                 if (profileImage != null && profileImage.ContentLength > 0)
                 {
                     using (var ms = new MemoryStream())
@@ -58,18 +57,29 @@ namespace Project_IRMS.Controllers
                     }
                 }
 
-                // Convert CV to byte array
-                if (cv != null && cv.ContentLength > 0)
+                // Handle CV File
+                if (cvFile != null && cvFile.ContentLength > 0)
                 {
                     using (var ms = new MemoryStream())
                     {
-                        cv.InputStream.CopyTo(ms);
-                        cvBytes = ms.ToArray();
+                        cvFile.InputStream.CopyTo(ms);
+                        cvBytes = ms.ToArray();  // Convert CV file to byte array
                     }
                 }
 
                 // Save details to the database
-                _internService.AddInternDetails(firstName, lastName, university, gender, email, contactNo, degree, division, profileImageBytes, cvBytes);
+                _internService.AddInternDetails(
+                    firstName,
+                    lastName,
+                    university,
+                    gender,
+                    email,
+                    contactNo,
+                    degree,
+                    division,
+                    profileImageBytes,
+                    cvBytes
+                );
 
                 return Json(new { success = true, message = "Request submitted successfully." });
             }
@@ -78,6 +88,7 @@ namespace Project_IRMS.Controllers
                 return Json(new { success = false, message = $"Error: {ex.Message}" });
             }
         }
+
 
         // Upload and process CV
         [HttpPost]

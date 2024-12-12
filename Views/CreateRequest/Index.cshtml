@@ -153,20 +153,31 @@
                                 <!--end-->
                                 <div class="card-body text-center d-flex flex-column justify-content-center">
                                     <h5 class="text-secondary">Upload CV Here</h5>
+
+                                    <!-- Upload Box for the CV file -->
                                     <div class="upload-box bg-light d-flex flex-column align-items-center justify-content-center dropzone"
                                          id="uploadBox"
-                                         name="file"
-                                         action="/upload"
-                                       >
+                                         onclick="document.getElementById('cvUpload').click();">
                                         <div class="dz-message">
                                             <i class="fas fa-upload"></i>
                                             <p class="text-secondary">Choose a file or drag & drop it here</p>
                                         </div>
                                     </div>
-                                    <div id="filePreviewContainer" style="max-width: 400px; margin: 20px auto;"></div>
 
+                                    <!-- Hidden File Input for CV -->
+                                    <input type="file"
+                                           id="cvUpload"
+                                           name="cvFile"
+                                           class="d-none"
+                                           accept=".pdf, .docx, .doc, .txt"
+                                           onchange="previewCV(event)" />
 
+                                    <!-- Preview Container for CV -->
+                                    <div id="filePreviewContainer" style="max-width: 400px; margin: 20px auto;">
+                                        <!-- Preview will be shown here -->
+                                    </div>
                                 </div>
+
                             </div>
                         </div>
 

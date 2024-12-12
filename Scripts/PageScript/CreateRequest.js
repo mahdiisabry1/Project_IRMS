@@ -40,8 +40,8 @@ Dropzone.options.uploadBox = {
             console.log(response);  // Log the response for debugging purposes
 
             if (response.success) {
-                // Store cvBytes globally
-                cvBytes = response.cvBytes;
+                // Store cvBytes globally (as Base64)
+                cvBytes = response.cvBytes;  // Assuming response.cvBytes is already Base64 encoded.
 
                 // Auto-fill form fields based on extracted data from the file
                 document.getElementById("firstName").value = response.data.firstName || "";
@@ -53,6 +53,7 @@ Dropzone.options.uploadBox = {
                 alert(response.message || "Failed to process the file.");
             }
         });
+
 
         // Event listener for file upload errors
         this.on("error", function (file, errorMessage) {
@@ -105,7 +106,7 @@ function submitForm() {
         contactNo: document.getElementById("contactNo").value,
         degree: document.getElementById("degree").value,
         division: document.getElementById("division").value,
-        cv: cvBytes // Pass the uploaded CV bytes
+        cvBytes: cvBytes // Include the cvBytes
     };
 
     // Send form data via AJAX
@@ -126,3 +127,4 @@ function submitForm() {
         }
     });
 }
+
