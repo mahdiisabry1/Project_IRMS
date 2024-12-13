@@ -24,13 +24,17 @@ namespace Project_IRMS
                       "~/Scripts/Bootstrap/bootstrap.bundle.min.js",
                       "~/Scripts/jquery/jquery.min.js",
                       "~/Scripts/jquery/jquery.overlayScrollbars.min.js",
-                      "~/Scripts/AdminLTE/adminlte.min.js"));
+                      "~/Scripts/AdminLTE/adminlte.min.js",
+                      "~/Scripts/Dropzone/dropzone.min.js"
+
+                      ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
 
 
                       "~/Content/overlayScrollbars/OverlayScrollbars.min.css",
-                      "~/Content/adminlte/adminlte.min.css"
+                      "~/Content/adminlte/adminlte.min.css",
+                      "~/Content/Dropzone/dropzone.min.css"
                       ));
         }
     }

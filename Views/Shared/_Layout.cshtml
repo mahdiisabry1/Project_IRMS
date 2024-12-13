@@ -3,11 +3,14 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>IRMS</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-
+    
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("CustomPageStyles",required:false)
+    <!--Link custom CSS-->
+    <link href="~/Content/MainCSS/Site.css" rel="stylesheet" />
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-footer-fixed  layout-navbar-fixed">
     <!-- Site wrapper -->
@@ -19,17 +22,49 @@
                     <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="../../index3.html" class="nav-link">Home</a>
+                    <a href="#" class="nav-link">@ViewBag.Title</a>
                 </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">Contact</a>
+
+            </ul>
+            <!-- Right navbar links -->
+            <ul class="navbar-nav ml-auto">
+                <!-- Notifications Dropdown Menu -->
+                <!-- Nav Item - User Information -->
+                <li class="nav-item dropdown no-arrow">
+                    <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="text-container mr-2 d-none d-lg-inline text-gray-600 small">
+                            Isuru Perera
+                            <span class="text-gray-500 small d-block">(Human Resource)</span> <!-- Block styling for (HR) -->
+                        </span>
+                        <img class="img-profile rounded-circle" src="~/Images/profilepic.png" alt="User Profile Picture">
+                    </a>
+
+                    <!-- Dropdown - User Information -->
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                         aria-labelledby="userDropdown">
+                        <a class="dropdown-item" href="#">
+                            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                            Profile
+                        </a>
+                        <a class="dropdown-item" href="#">
+                            <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                            Settings
+                        </a>
+
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                            Logout
+                        </a>
+                    </div>
                 </li>
             </ul>
         </nav>
         <!-- /.navbar -->
         <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
-            <a href="../../index3.html" class="brand-link d-flex align-items-center ">
+        <aside class="main-sidebar  elevation-4 " id="accordionSidebar">
+            <a href="../../index3.html" class="brand-link d-flex align-items-center mt-1">
                 <img src="~/Images/LogoIcon.png" alt="Logo Icon" style="width: 70px; height: 70px !important; object-fit: contain;">
 
                 <span class="brand-text font-weight-light ">
@@ -38,23 +73,14 @@
             </a>
 
             <!-- Sidebar -->
-            <div class="sidebar">
+            <div class="sidebar  ">
 
                 <!-- Sidebar Menu -->
-                <nav class="mt-2">
+                <nav class="sidebar-menu mt-lg-5">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
-                        with font-awesome or any other icon font library -->
-                        <li class="nav-item">
-                            <a href="~/Home/Index" class="nav-link">
-                                <i class="nav-icon fas fa-sign-out-alt"></i>
+    with font-awesome or any other icon font library -->
 
-                                <p>
-                                    Logout
-
-                                </p>
-                            </a>
-                        </li>
                         <li class="nav-item">
                             <a href="~/Home/Index" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -74,13 +100,13 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item ">
-                                    <a href="~/CreateRequest/Index" class="nav-link">
+                                    <a href="@Url.Action("Index","CreateRequest")" class="nav-link">
                                         <i class="fa-solid fa-chevron-right nav-icon"></i>
                                         <p> Create Requests</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="../../index2.html" class="nav-link">
+                                    <a href="~/ViewRequest/Index" class="nav-link">
                                         <i class="fa-solid fa-chevron-right nav-icon"></i>
                                         <p>View Requests</p>
                                     </a>
@@ -100,15 +126,47 @@
 
                             </ul>
                         </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fa-solid fa-user"></i>
+                                <p>
+                                    User Profiles
+
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="~/TaskManagement/Index" class="nav-link">
+                                <i class="nav-icon fa-solid fa-list-check"></i>
+
+                                <p>
+                                    TaskManagement
+
+                                </p>
+                            </a>
+                        </li>
+
+
 
                     </ul>
 
 
+
                 </nav>
+
+
 
                 <!-- /.sidebar-menu -->
             </div>
             <!-- /.sidebar -->
+            <div class="sidebar-footer mt-auto p-3">
+                <a href="#" class=" d-flex align-items-center">
+                    <img src="~/Images/Srilankan-white 1.png" alt="Logo Icon">
+                   
+                </a>
+            </div>
+            <!--adding a footer logo-->
+
         </aside>
         <!-- /.control-sidebar -->
         <!-- Content Wrapper. Contains page content -->
@@ -120,13 +178,12 @@
 
         <footer class="main-footer">
             <div class="float-right d-none d-sm-block">
-                <b>Version</b> 3.0.2
+                <b>Ⓒ 2024 SriLankan IT Systems. All rights reserved</b> 
             </div>
-            <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
-            reserved.
+            
         </footer>
         <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
+        <aside class="control-sidebar control-sidebar-dark" >
             <!-- Control sidebar content goes here -->
         </aside>
     </div>
@@ -142,6 +199,7 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <link href="~/Scripts/MainJS/Site.js" rel="js" />
 
 </body>
 </html>
