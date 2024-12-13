@@ -28,6 +28,8 @@
         /*}*/
         /**/
 /*sidebar */
+
+
 #accordionSidebar {
     background: linear-gradient(to bottom, #1D76B5, #09325E);
     border-top-right-radius: 40px; /* Round the top-right corner */
@@ -77,5 +79,47 @@
        
         
     }
-/**/
+
+/* Sidebar Menu Styling */
+.nav-link {
+   
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+    .nav-link:hover {
+        background-color: #e9ecef; /* Hover effect */
+        color: #1C528A; /* Text color on hover */
+    }
+
+    .nav-link.active,
+    .nav-link.clicked {
+        background-color: #ffffff !important; /* White rectangle for active/clicked link */
+        color: #1C528A !important; /* Active text color */
+        font-weight: bold !important; /* Emphasize active link */
+    }
+
+        .nav-link.clicked:hover {
+            background-color: #ffffff; /* Ensure hover effect is white even when clicked */
+            color: #1C528A; /* Text color on hover when clicked */
+        }
+
+
+/* Show submenus when parent item has the 'menu-open' class */
+.nav-item.has-treeview.menu-open > .nav-treeview {
+    display: ;
+}block
+
+/* Initially hide submenus */
+.nav-treeview {
+    display: none;
+}
+
+
+
+
+
+
+
 
