@@ -20,149 +20,185 @@
 
             </div>
             <!-- /.card-header -->
-            <div class="card-body pt-0 mt-0">
-                <div class="row">
-                    <div class="col-12 col-sm-9">
-                        <hr />
-                        <div class="row">
-                            <div class="col-12 col-sm-6">
-                                <div class="form-group">
-                                    <label>Firt Name</label>
-                                    <input type="text" class="form-control" id="firstName" placeholder="Enter First Name" style="width:100%;  " required />
-                                </div>
-                                <!-- /.form-group -->
-                            </div>
-                            <!-- /.col -->
-                            <div class="col-12 col-sm-6">
-                                <div class="form-group">
-                                    <label>Last Name</label>
-                                    <input type="text" class="form-control" id="lastName" placeholder="Enter Last Name" style="width: 100%;  " required />
+            <form action="/CreateRequest/SubmitRequest" method="post" enctype="multipart/form-data">
+                <div class="card-body pt-0 mt-0">
+                    <div class="row">
+                        <div class="col-12 col-sm-9">
+                            <hr />
+                            <div class="row">
+                                <div class="col-12 col-sm-6">
 
+                                    <div class="form-group">
+                                        <label>Firt Name</label>
+                                        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Enter First Name" style="width:100%;  " required />
+                                    </div>
+                                    <!-- /.form-group -->
                                 </div>
-                                <!-- /.form-group -->
+                                <!-- /.col -->
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Last Name</label>
+                                        <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Enter Last Name" style="width: 100%;  " required />
+
+                                    </div>
+                                    <!-- /.form-group -->
+                                </div>
+                                <!-- /.col -->
+
                             </div>
-                            <!-- /.col -->
+                            <!-- /.row -->
+                            <div class="row">
+                                <div class="col-12 col-sm-10">
+                                    <div class="form-group">
+                                        <label>University</label>
+                                        <select class="form-control" id="university" name="university">
+                                            <option selected>Select University</option>
+                                            <option>National Institute of Buisness Management(NIBM)</option>
+                                            <option>SLIT</option>
+                                        </select>
+                                    </div>
+                                    <!-- /.form-group -->
+                                </div>
+                                <!-- /.col -->
+                                <div class="col-12 col-sm-2">
+                                    <div class="form-group">
+                                        <label>Gender</label>
+                                        <div class="btn-group btn-group-toggle w-100" data-toggle="buttons">
+                                            <label class="btn btn-outline-secondary">
+                                                <input type="radio" name="gender" id="male" autocomplete="off" onchange="updateProfileImage()" /> Male
+                                            </label>
+                                            <label class="btn btn-outline-secondary">
+                                                <input type="radio" name="gender" id="female" autocomplete="off" onchange="updateProfileImage()" /> Female
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <!-- /.form-group -->
+                                </div>
+                                <!-- /.col -->
+
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="email">Personal Email</label>
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email" required />
+                                    </div>
+                                    <!-- /.form-group -->
+                                </div>
+                                <!-- /.col -->
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="contactNo">Contact No</label>
+                                        <input type="text" class="form-control" id="contactNo" name="contactNo" placeholder="Enter Contact Number" required />
+
+                                    </div>
+                                    <!-- /.form-group -->
+                                </div>
+                                <!-- /.col -->
+
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="degree">Degree</label>
+                                        <select class="form-control" id="degree" name="degree">
+                                            <option selected>Select Degree</option>
+                                            <option>Bsc(Hons) Computer Science</option>
+                                            <option>B.Sc. in Applied Mathematics and Computing</option>
+                                        </select>
+                                    </div>
+                                    <!-- /.form-group -->
+                                </div>
+                                <!-- /.col -->
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="division">Division</label>
+                                        <select class="form-control" id="division" name="division">
+                                            <option selected>Select Division</option>
+                                            <option>IT</option>
+                                            <option>Division B</option>
+                                        </select>
+
+                                    </div>
+                                    <!-- /.form-group -->
+                                </div>
+                                <!-- /.col -->
+
+                            </div>
+
 
                         </div>
-                        <!-- /.row -->
-                        <div class="row">
-                            <div class="col-12 col-sm-10">
-                                <div class="form-group">
-                                    <label>University</label>
-                                    <select class="form-control" id="university">
-                                        <option selected>Select University</option>
-                                        <option>University A</option>
-                                        <option>University B</option>
-                                    </select>
+                        <!--to add the profile card-->
+                        <div class="col-12 col-sm-3  pt-2">
+
+                            <div class="card shadow border-0 h-100">
+                                <!--imgupload-->
+                                <div class="box-card bg-dark position-relative d-flex justify-content-center align-items-center">
+                                    <!-- Profile image -->
+                                    <img id="profileImage"
+                                         alt="Profile icon"
+                                         class="rounded-circle position-absolute"
+                                         src="~/Images/Group 1000002769.png"
+                                         onclick="document.getElementById('imageUpload').click()"
+                                         style="cursor: pointer;" />
+
+                                    <!-- Hidden file input -->
+                                    <input type="file"
+                                           id="imageUpload"
+                                           name="profileImage"
+                                           class="d-none"
+                                           accept="image/*"
+                                           onchange="previewImage(event)" />
                                 </div>
-                                <!-- /.form-group -->
-                            </div>
-                            <!-- /.col -->
-                            <div class="col-12 col-sm-2">
-                                <div class="form-group">
-                                    <label>Gender</label>
-                                    <div class="btn-group btn-group-toggle w-100" data-toggle="buttons">
-                                        <label class="btn btn-outline-secondary">
-                                            <input type="radio" name="gender" id="male" autocomplete="off" /> Male
-                                        </label>
-                                        <label class="btn btn-outline-secondary">
-                                            <input type="radio" name="gender" id="female" autocomplete="off" /> Female
-                                        </label>
+                                <!--end-->
+                                <div class="card-body text-center d-flex flex-column justify-content-center">
+                                    <h5 class="text-secondary">Upload CV Here</h5>
+
+                                    <!-- Upload Box for the CV file -->
+                                    <div class="upload-box bg-light d-flex flex-column align-items-center justify-content-center dropzone"
+                                         id="uploadBox"
+                                         onclick="document.getElementById('cvUpload').click();">
+                                        <div class="dz-message">
+                                            <i class="fas fa-upload"></i>
+                                            <p class="text-secondary">Choose a file or drag & drop it here</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Hidden File Input for CV -->
+                                    <input type="file"
+                                           id="cvUpload"
+                                           name="cvFile"
+                                           class="d-none"
+                                           accept=".pdf, .docx, .doc, .txt"
+                                           onchange="previewCV(event)" />
+
+                                    <!-- Preview Container for CV -->
+                                    <div id="filePreviewContainer" style="max-width: 400px; margin: 20px auto;">
+                                        <!-- Preview will be shown here -->
                                     </div>
                                 </div>
-                                <!-- /.form-group -->
-                            </div>
-                            <!-- /.col -->
 
-                        </div>
-                        <div class="row">
-                            <div class="col-12 col-sm-6">
-                                <div class="form-group">
-                                    <label for="email">Personal Email</label>
-                                    <input type="email" class="form-control" id="email" placeholder="Enter Email" required />
-                                </div>
-                                <!-- /.form-group -->
                             </div>
-                            <!-- /.col -->
-                            <div class="col-12 col-sm-6">
-                                <div class="form-group">
-                                    <label for="contactNo">Contact No</label>
-                                    <input type="text" class="form-control" id="contactNo" placeholder="Enter Contact Number" required />
-
-                                </div>
-                                <!-- /.form-group -->
-                            </div>
-                            <!-- /.col -->
-
-                        </div>
-                        <div class="row">
-                            <div class="col-12 col-sm-6">
-                                <div class="form-group">
-                                    <label for="degree">Degree</label>
-                                    <select class="form-control" id="degree">
-                                        <option selected>Select Degree</option>
-                                        <option>Degree A</option>
-                                        <option>Degree B</option>
-                                    </select>
-                                </div>
-                                <!-- /.form-group -->
-                            </div>
-                            <!-- /.col -->
-                            <div class="col-12 col-sm-6">
-                                <div class="form-group">
-                                    <label for="division">Division</label>
-                                    <select class="form-control" id="division">
-                                        <option selected>Select Division</option>
-                                        <option>Division A</option>
-                                        <option>Division B</option>
-                                    </select>
-
-                                </div>
-                                <!-- /.form-group -->
-                            </div>
-                            <!-- /.col -->
-
                         </div>
 
 
                     </div>
-                    <!--to add the profile card-->
-                    <div class="col-12 col-sm-3  pt-2">
-
-                        <div class="card shadow border-0 h-100">
-                            <div class="box-card bg-dark position-relative d-flex justify-content-center align-items-center">
-                                <img alt="Profile icon" class="rounded-circle position-absolute" src="~/Images/Group 1000002769.png" />
-                            </div>
-                            <div class="card-body text-center d-flex flex-column justify-content-center">
-                                <h5 class="text-secondary">Upload CV Here</h5>
-                                <div class="upload-box bg-light d-flex flex-column align-items-center justify-content-center" id="uploadBox">
-                                    <i class="fas fa-upload"></i>
-                                    <p class="text-secondary">Choose a file or drag & drop it here</p>
-                                    <input type="file" id="cvFile" style="display:none;" accept=".pdf,.doc,.docx,.txt" />
-                                </div>
 
 
-                            </div>
-                        </div>
-                    </div>
 
 
                 </div>
+                <!-- /.card-body -->
 
-
-
-
-            </div>
-            <!-- /.card-body -->
-            <div class="card-footer d-flex justify-content-end">
-                <button class="btn btn-custom">Create Request</button>
-            </div>
-
+                <div class="card-footer d-flex justify-content-end">
+                    <button type="submit" class="btn btn-custom">Create Request</button>
+                </div>
+            </form>
         </div>
+        
         <!-- /.card -->
     </div>
 </section>
-@section scripts {
-    <link href="~/Scripts/PageScript/CreateRequest.js" rel="js" />
-
+@section Scripts{
+    <script src="~/Scripts/PageScript/CreateRequest.js" type="text/javascript"></script>
 }
