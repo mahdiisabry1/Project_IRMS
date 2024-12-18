@@ -49,6 +49,7 @@
     <Compile Include="Common\SqlServerHelper.cs" />
     <Compile Include="InternDetailsData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewInternDetails.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

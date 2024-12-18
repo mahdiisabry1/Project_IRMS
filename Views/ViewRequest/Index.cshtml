@@ -1,5 +1,6 @@
 ﻿@{
     ViewBag.Title = "View Request";
+    var interns = ViewBag.Interns as List<Project_IRMS.Models.Intern>;
 }
 ﻿
 @section CustomPageStyles {
@@ -274,303 +275,41 @@
             <!-- /.card-header -->
             <div class="card-body">
                 <div class="row custom-row">
-                    <div class=" col-12 col-sm-3">
-                        <!--card-->
-
-                        <div class=" card card-details">
-                            <div class="top-rectangle">
-                                <button class="button view">View</button>
-                                <button class="button edit">Edit</button>
-                            </div>
-                            <div class="profile-pic">
-                                <img alt="Profile picture of the intern" height="98" src="~/Images/Group 1000002769.png" width="98" />
-                                <div class="status-icon">
-                                    <i class="fas fa-times-circle"></i>
-                                </div>
-                            </div>
-                            <h2>Intern Display Name</h2>
-                            <p>Degree name - Institute</p>
-                            <hr class="hr" />
-                            <div class="division">Division Name</div>
-                        </div>
-
-                    </div>
-                    <div class=" col-12 col-sm-3">
-                        <!--card-->
-
-                        <div class="card card-details">
-                            <div class="top-rectangle">
-                                <button class="button view">View</button>
-                                <button class="button edit">Edit</button>
-                            </div>
-                            <div class="profile-pic">
-                                <img alt="Profile picture of the intern" height="98" src="~/Images/Group 1000002769.png" width="98" />
-                                <div class="status-icon">
-                                    <i class="fas fa-times-circle"></i>
-                                </div>
-                            </div>
-                            <h2>Intern Display Name</h2>
-                            <p>Degree name - Institute</p>
-                            <hr class="hr" />
-                            <div class="division">Division Name</div>
-                        </div>
-
-                    </div>
-                    <div class=" col-12 col-sm-3">
-                        <!--card-->
-
-                        <div class="card card-details">
-                            <div class="top-rectangle">
-                                <button class="button view">View</button>
-                                <button class="button edit">Edit</button>
-                            </div>
-                            <div class="profile-pic">
-                                <img alt="Profile picture of the intern" height="98" src="~/Images/Group 1000002769.png" width="98" />
-                                <div class="status-icon">
-                                    <i class="fas fa-times-circle"></i>
-                                </div>
-                            </div>
-                            <h2>Intern Display Name</h2>
-                            <p>Degree name - Institute</p>
-                            <hr class="hr" />
-                            <div class="division">Division Name</div>
-                        </div>
-
-                    </div>
-                    <div class=" col-12 col-sm-3">
-                        <!--card-->
-
-                        <div class="card card-details">
-                            <div class="top-rectangle">
-                                <button class="button view">View</button>
-                                <button class="button edit">Edit</button>
-                            </div>
-                            <div class="profile-pic">
-                                <img alt="Profile picture of the intern" height="98" src="~/Images/Group 1000002769.png" width="98" />
-                                <div class="status-icon">
-                                    <i class="fas fa-times-circle"></i>
-                                </div>
-                            </div>
-                            <h2>Intern Display Name</h2>
-                            <p>Degree name - Institute</p>
-                            <hr class="hr" />
-                            <div class="division">Division Name</div>
-                        </div>
-
-                    </div>
-                    <div class=" col-12 col-sm-3">
-                        <!--card-->
-
-                        <div class="card card-details">
-                            <div class="top-rectangle">
-                                <button class="button view">View</button>
-                                <button class="button edit">Edit</button>
-                            </div>
-                            <div class="profile-pic">
-                                <img alt="Profile picture of the intern" height="98" src="~/Images/Group 1000002769.png" width="98" />
-                                <div class="status-icon">
-                                    <i class="fas fa-times-circle"></i>
-                                </div>
-                            </div>
-                            <h2>Intern Display Name</h2>
-                            <p>Degree name - Institute</p>
-                            <hr class="hr" />
-                            <div class="division">Division Name</div>
-                        </div>
-
-                    </div>
                     <!--card start-->
-                    <div class=" col-12 col-sm-3">
-                        <!--card-->
-
-                        <div class="card card-details">
-                            <div class="top-rectangle">
-                                <button class="button view">View</button>
-                                <button class="button edit">Edit</button>
-                            </div>
-                            <div class="profile-pic">
-                                <img alt="Profile picture of the intern" height="98" src="~/Images/Group 1000002769.png" width="98" />
-                                <div class="status-icon">
-                                    <i class="fas fa-times-circle"></i>
-                                </div>
-                            </div>
-                            <h2>Intern Display Name</h2>
-                            <p>Degree name - Institute</p>
-                            <hr class="hr" />
-                            <div class="division">Division Name</div>
+                    @if (interns != null)
+                    {
+                        foreach (var intern in interns)
+                        {
+                <div class="col-12 col-sm-3">
+                    <div class="card card-details">
+                        <div class="top-rectangle">
+                            <button class="button view">View</button>
+                            <button class="button edit">Edit</button>
                         </div>
-
-
-                    </div>
-                    <!--card ends-->
-                    <!--card start-->
-                    <div class=" col-12 col-sm-3">
-                        <!--card-->
-
-                        <div class="card card-details">
-                            <div class="top-rectangle">
-                                <button class="button view">View</button>
-                                <button class="button edit">Edit</button>
+                        <div class="profile-pic">
+                            @if (intern.ProfileImage != null)
+                            {
+                                string base64Image = "data:image/png;base64," + Convert.ToBase64String(intern.ProfileImage);
+                <img src="@base64Image" alt="Profile picture of the intern" height="98" width="98" /> }
+                                    else
+                                    {
+                <img src="~/Images/Group 1000002769.png" alt="Default profile picture" height="98" width="98" />}
+                            <div class="status-icon">
+                                <i class="fas fa-times-circle"></i>
                             </div>
-                            <div class="profile-pic">
-                                <img alt="Profile picture of the intern" height="98" src="~/Images/Group 1000002769.png" width="98" />
-                                <div class="status-icon">
-                                    <i class="fas fa-times-circle"></i>
-                                </div>
-                            </div>
-                            <h2>Intern Display Name</h2>
-                            <p>Degree name - Institute</p>
-                            <hr class="hr" />
-                            <div class="division">Division Name</div>
                         </div>
-
-
+                        <h2>@intern.FirstName @intern.LastName</h2>
+                        <p>@intern.Degree - @intern.University</p>
+                        <hr class="hr" />
+                        <div class="division">@intern.Division</div>
                     </div>
-                    <!--card ends-->
-                    <!--card start-->
-                    <div class=" col-12 col-sm-3">
-                        <!--card-->
+                </div> }
+                            }
+                            else
+                            {
+                <p>No interns found.</p>}
+                    <!--card end-->
 
-                        <div class="card card-details">
-                            <div class="top-rectangle">
-                                <button class="button view">View</button>
-                                <button class="button edit">Edit</button>
-                            </div>
-                            <div class="profile-pic">
-                                <img alt="Profile picture of the intern" height="98" src="~/Images/Group 1000002769.png" width="98" />
-                                <div class="status-icon">
-                                    <i class="fas fa-times-circle"></i>
-                                </div>
-                            </div>
-                            <h2>Intern Display Name</h2>
-                            <p>Degree name - Institute</p>
-                            <hr class="hr" />
-                            <div class="division">Division Name</div>
-                        </div>
-
-
-                    </div>
-                    <!--card ends-->
-                    <!--card start-->
-                    <div class=" col-12 col-sm-3">
-                        <!--card-->
-
-                        <div class="card card-details">
-                            <div class="top-rectangle">
-                                <button class="button view">View</button>
-                                <button class="button edit">Edit</button>
-                            </div>
-                            <div class="profile-pic">
-                                <img alt="Profile picture of the intern" height="98" src="~/Images/Group 1000002769.png" width="98" />
-                                <div class="status-icon">
-                                    <i class="fas fa-times-circle"></i>
-                                </div>
-                            </div>
-                            <h2>Intern Display Name</h2>
-                            <p>Degree name - Institute</p>
-                            <hr class="hr" />
-                            <div class="division">Division Name</div>
-                        </div>
-
-
-                    </div>
-                    <!--card ends-->
-                    <!--card start-->
-                    <div class=" col-12 col-sm-3">
-                        <!--card-->
-
-                        <div class="card card-details">
-                            <div class="top-rectangle">
-                                <button class="button view">View</button>
-                                <button class="button edit">Edit</button>
-                            </div>
-                            <div class="profile-pic">
-                                <img alt="Profile picture of the intern" height="98" src="~/Images/Group 1000002769.png" width="98" />
-                                <div class="status-icon">
-                                    <i class="fas fa-times-circle"></i>
-                                </div>
-                            </div>
-                            <h2>Intern Display Name</h2>
-                            <p>Degree name - Institute</p>
-                            <hr class="hr" />
-                            <div class="division">Division Name</div>
-                        </div>
-
-
-                    </div>
-                    <!--card ends-->
-                    <!--card start-->
-                    <div class=" col-12 col-sm-3">
-                        <!--card-->
-
-                        <div class="card card-details">
-                            <div class="top-rectangle">
-                                <button class="button view">View</button>
-                                <button class="button edit">Edit</button>
-                            </div>
-                            <div class="profile-pic">
-                                <img alt="Profile picture of the intern" height="98" src="~/Images/Group 1000002769.png" width="98" />
-                                <div class="status-icon">
-                                    <i class="fas fa-times-circle"></i>
-                                </div>
-                            </div>
-                            <h2>Intern Display Name</h2>
-                            <p>Degree name - Institute</p>
-                            <hr class="hr" />
-                            <div class="division">Division Name</div>
-                        </div>
-
-
-                    </div>
-                    <!--card ends-->
-                    <!--card start-->
-                    <div class=" col-12 col-sm-3">
-                        <!--card-->
-
-                        <div class="card card-details">
-                            <div class="top-rectangle">
-                                <button class="button view">View</button>
-                                <button class="button edit">Edit</button>
-                            </div>
-                            <div class="profile-pic">
-                                <img alt="Profile picture of the intern" height="98" src="~/Images/Group 1000002769.png" width="98" />
-                                <div class="status-icon">
-                                    <i class="fas fa-times-circle"></i>
-                                </div>
-                            </div>
-                            <h2>Intern Display Name</h2>
-                            <p>Degree name - Institute</p>
-                            <hr class="hr" />
-                            <div class="division">Division Name</div>
-                        </div>
-
-
-                    </div>
-                    <!--card ends-->
-                    <!--card start-->
-                    <div class=" col-12 col-sm-3">
-                        <!--card-->
-
-                        <div class="card card-details">
-                            <div class="top-rectangle">
-                                <button class="button view">View</button>
-                                <button class="button edit">Edit</button>
-                            </div>
-                            <div class="profile-pic">
-                                <img alt="Profile picture of the intern" height="98" src="~/Images/Group 1000002769.png" width="98" />
-                                <div class="status-icon">
-                                    <i class="fas fa-times-circle"></i>
-                                </div>
-                            </div>
-                            <h2>Intern Display Name</h2>
-                            <p>Degree name - Institute</p>
-                            <hr class="hr" />
-                            <div class="division">Division Name</div>
-                        </div>
-
-
-                    </div>
-                    <!--card ends-->
 
 
 

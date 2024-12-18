@@ -46,11 +46,16 @@
     <Compile Include="Class1.cs" />
     <Compile Include="InternDetailsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewInternDetailsService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Project_IRMS.Data\Project_IRMS.Data.csproj">
       <Project>{086396c8-dc07-4176-a905-6d3778daad23}</Project>
       <Name>Project_IRMS.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Project_IRMS.Models\Project_IRMS.Models.csproj">
+      <Project>{ae826ec1-89cd-4fff-b612-c7d7affe70ea}</Project>
+      <Name>Project_IRMS.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
