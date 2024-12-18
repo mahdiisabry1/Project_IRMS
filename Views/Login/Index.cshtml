@@ -1,28 +1,30 @@
-﻿<!DOCTYPE html>
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <!-- Custom CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Istok+Web:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/Content/Login/Login.css" />
+    <link rel="stylesheet" href="~/Content/fontawesome/all.min.css" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
 </head>
 <body>
-    <div class="container-fluid vh-100 d-flex justify-content-center align-items-center">
-        <div class="login-container p-4">
+    <div class="container-fluid vh-100 d-flex justify-content-center align-items-center position-absolute">
+        <div class="login-container ">
             <div class="login-box p-4 card text-center">
-
-                <img src="~/Images/Logo1.png" alt="IRMS Logo" class="logo img-fluid mb-4">
-                <hr />
-                <!-- Title -->
-                <h5 class="title"><strong>Simplified Internship Journey.</strong></h5>
+                <img src="~/Images/Logo1.png" alt="IRMS Logo" class="logo">
+                <hr class="hr" />
+                <h6 class="title">Simplified Internship Journey.</h6>
                 <p class="subtitle">All Resources in One Hub.</p>
-
-                <!-- Login Form -->
                 <form method="post" action="">
-                    <!-- Staff ID Field -->
                     <div class="form-group">
                         <div class="input-group custom-input">
                             <div class="input-group-prepend">
@@ -34,7 +36,6 @@
                         </div>
                     </div>
 
-                    <!-- Password Field -->
                     <div class="form-group">
                         <div class="input-group custom-input">
                             <div class="input-group-prepend">
@@ -46,23 +47,17 @@
                         </div>
                     </div>
 
-                    <!-- Submit Button -->
                     <button type="submit" class="btn btn-primary btn-block">LOGIN</button>
                 </form>
-
-
-                <!-- Footer -->
-                <div class="footer mt-4">
+                <div class="footer">
                     <p>&copy; 2024 SriLankan IT Systems. <br>All rights reserved.</p>
                 </div>
             </div>
         </div>
+
+        <!-- IT System Logo (Bottom Right) -->
+        <img src="~/Images/IT_System_Logo.png" alt="IT System Logo" class="it-system-logo position-absolute bottom-0 right-0">
     </div>
-    <!-- Font Awesome for Icons -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
-    <!-- Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
+
 </html>

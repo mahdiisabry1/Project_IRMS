@@ -162,7 +162,8 @@
     <Content Include="Global.asax" />
     <Content Include="Images\femaleimg.png" />
     <Content Include="Images\Group 1000002769.png" />
-    <Content Include="Images\LOGIN.png" />
+    <Content Include="Images\IT_System_Logo.png" />
+    <Content Include="Images\LOGIN_Bg.png" />
     <Content Include="Images\Logo.png" />
     <Content Include="Images\Logo1.png" />
     <Content Include="Images\Logo2.png" />
