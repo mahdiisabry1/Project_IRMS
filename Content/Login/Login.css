@@ -1,0 +1,123 @@
+﻿/* Body Styling */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: url('../../Images/LOGIN_Bg.png') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Istok Web', sans-serif;
+}
+
+
+.login-container {
+    background: rgba(0, 51, 102, 0.4);
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.5);
+}
+
+
+.login-box {
+    border-radius: 10px !important ;
+    background-color: #ffff;
+    margin: 30px;
+   
+}
+.logo {
+    width: 100%; 
+    max-width: 249px; 
+    height: auto; 
+    margin: 0 auto; /* Centers the logo */
+    padding:0;
+}
+.hr {
+    border: 1px solid #C1BFBF;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 22px;
+    color: #4A4A4A;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    font-size: 18px;
+    color: #4A4A4A;
+    margin-bottom: 20px;
+}
+
+/* Custom Input Fields */
+
+.custom-input {
+    border: 1px solid #4273A7;
+    border-radius: 10px; 
+    overflow: hidden; /* Ensures icons and input stay within border */
+    background-color: #fff;
+    margin-bottom: 15px;
+    max-width: 276px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex; /* Flexbox for alignment */
+    align-items: center; /* Center items vertically */
+    height: 40px; 
+}
+
+.custom-input .input-group-prepend .input-group-text {
+    border: none;
+    background-color: transparent;
+    color: #474747; /* Icon color */
+    font-size: 14px;
+    padding-right: 0; /* Align closer to the input */
+}
+
+    .custom-input .form-control {
+        border: none;
+        box-shadow: none;
+        outline: none;
+        font-size: 14px;
+        color: #474747;
+        flex: 1; /* Take up remaining space */
+        height: 100%; 
+        padding-left: 10px; /* Add space inside the input */
+    }
+.custom-input .form-control::placeholder {
+    color: #888;
+}
+
+    .custom-input:focus-within {
+        border: 1px solid #1E5483; /* Highlight border color */
+        box-shadow: 0 0 5px rgba(21, 112, 207, 0.5);
+    }
+
+/* Button Styling */
+.btn-primary {
+    background: linear-gradient(to bottom, #3376AD, #1E5483);
+    border: none;
+    border-radius: 10px !important;
+    font-weight: normal;
+    height: 40px;
+    max-width: 276px;
+    width: 100%;
+    margin: 0 auto;
+    color: #fff;
+}
+
+
+
+/* Footer Text */
+.footer {
+    font-size: 12px;
+    color: #4A4A4A;
+    margin-top: 20px;
+}
+
+.it-system-logo {
+    position: absolute;
+    bottom: 20px; /* Adjust distance from the bottom */
+    right: 20px; /* Adjust distance from the right */
+    width: 100px; /* Adjust size of the logo */
+    height: auto; /* Maintain aspect ratio */
+    
+    z-index: 10; /* Ensure it stays above the background */
+    pointer-events: none; /* Prevent interference with clicks */
+}

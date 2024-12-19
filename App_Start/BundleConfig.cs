@@ -35,6 +35,7 @@ namespace Project_IRMS
                       "~/Content/overlayScrollbars/OverlayScrollbars.min.css",
                       "~/Content/adminlte/adminlte.min.css",
                       "~/Content/Dropzone/dropzone.min.css"
+                   
                       ));
         }
     }

@@ -141,6 +141,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CreateRequestController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\TaskManagementController.cs" />
     <Compile Include="Controllers\ViewRequestController.cs" />
     <Compile Include="Global.asax.cs">
@@ -153,15 +154,18 @@
     <Content Include="Content\CreateRequest\CreateRequest.css" />
     <Content Include="Content\Dropzone\dropzone.min.css" />
     <Content Include="Content\fontawesome\all.min.css" />
+    <Content Include="Content\Login\Login.css" />
     <Content Include="Content\MainCSS\Site.css" />
     <Content Include="Content\overlayScrollbars\OverlayScrollbars.min.css" />
-
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Images\femaleimg.png" />
     <Content Include="Images\Group 1000002769.png" />
+    <Content Include="Images\IT_System_Logo.png" />
+    <Content Include="Images\LOGIN_Bg.png" />
     <Content Include="Images\Logo.png" />
+    <Content Include="Images\Logo1.png" />
     <Content Include="Images\Logo2.png" />
     <Content Include="Images\LogoIcon.png" />
     <Content Include="Images\profilepic.png" />
@@ -216,6 +220,7 @@
     <Content Include="Views\CreateRequest\Index.cshtml" />
     <Content Include="Views\TaskManagement\Index.cshtml" />
     <Content Include="Views\ViewRequest\Index.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
