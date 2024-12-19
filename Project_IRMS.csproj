@@ -236,6 +236,10 @@
       <Project>{de4fee3d-d119-45fa-81ad-20702a1d591b}</Project>
       <Name>Project_IRMS.Buisness</Name>
     </ProjectReference>
+    <ProjectReference Include="Project_IRMS.Models\Project_IRMS.Models.csproj">
+      <Project>{ae826ec1-89cd-4fff-b612-c7d7affe70ea}</Project>
+      <Name>Project_IRMS.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
