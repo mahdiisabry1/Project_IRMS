@@ -157,6 +157,8 @@
     <Content Include="Content\Login\Login.css" />
     <Content Include="Content\MainCSS\Site.css" />
     <Content Include="Content\overlayScrollbars\OverlayScrollbars.min.css" />
+    <Content Include="Content\TaskManagement\StyleSheet1.css" />
+    <Content Include="Content\ViewRequest\ViewRequest.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
