@@ -23,7 +23,7 @@ namespace Project_IRMS.Data
             // SQL query to validate the user's credentials.
             string query = @"
                 SELECT *
-                FROM UserLogin
+                FROM Login
                 WHERE Username = @Username AND Password = @Password";
 
             // Create parameters for the query to prevent SQL injection.

@@ -34,6 +34,7 @@ namespace Project_IRMS.Controllers
                 // Store user details in session for later use.
                 Session["Username"] = userDetails.Rows[0]["Username"].ToString();
                 Session["Role"] = userDetails.Rows[0]["Role"].ToString();
+                Session["Tablename"] = userDetails.Rows[0]["Table_name"].ToString();
 
                 // Redirect to the main layout or dashboard.
                 return RedirectToAction("Index", "Home");

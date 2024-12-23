@@ -1,4 +1,9 @@
-﻿@{ var username = Session["Username"]; }
+﻿@{ var username = Session["Username"];
+    var role = Session["Role"];
+   
+   
+
+    }
 
 <!DOCTYPE html>
 <html>
@@ -37,7 +42,7 @@
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="text-container mr-2 d-none d-lg-inline text-gray-600 small">
                            @username
-                            <span class="text-gray-500 small d-block">(Human Resource)</span> <!-- Block styling for (HR) -->
+                            <span class="text-gray-500 small d-block">(@role)</span> <!-- Block styling for (HR) -->
                         </span>
                         <img class="img-profile rounded-circle" src="~/Images/profilepic.png" alt="User Profile Picture">
                     </a>
@@ -81,7 +86,7 @@
                 <nav class="sidebar-menu mt-lg-5">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
-                        with font-awesome or any other icon font library -->
+    with font-awesome or any other icon font library -->
 
                         <li class="nav-item">
                             <a href="~/Home/Index" class="nav-link">
@@ -137,16 +142,19 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="~/TaskManagement/Index" class="nav-link">
-                                <i class="nav-icon fa-solid fa-list-check"></i>
+                        @if (!(((@username as string) == "isuru" && (@role as string) == "HR") ||((@username as string) == "meelina" && (@role as string) == "IT")))
+                        {
+                            <li class="nav-item">
+                                <a href="~/TaskManagement/Index" class="nav-link">
+                                    <i class="nav-icon fa-solid fa-list-check"></i>
+                                    <p>
+                                        TaskManagement
+                                    </p>
+                                </a>
+                            </li>
+                        }
 
-                                <p>
-                                    TaskManagement
 
-                                </p>
-                            </a>
-                        </li>
 
 
 
