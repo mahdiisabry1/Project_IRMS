@@ -10,20 +10,23 @@
     display: flex;
     align-items: center;
     position: relative;
-    width: 100%;
+    justify-content: flex-end;
 }
 
 .search-input {
     flex: 1;
-    padding: 8px 36px 8px 10px; /* Adjust padding to leave space for the search icon */
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    padding: 5px;
+    font-size: 15px;
+    border: none;
+    border-bottom: 2px solid #4a4a4a;
+    outline: none;
+    background: none;
 }
 
 .search-icon {
-    position: absolute;
-    left: 140px; /* Align with the padding-right of the input */
-    color: #888;
+    font-size: 18px;
+    color: #4a4a4a;
+    margin: 0 10px;
     cursor: pointer;
 }
 
@@ -112,20 +115,6 @@
     transform: translateY(0); /* Move into position */
 }
 
-/* Card container styles */
-/*.custom-row {
-    width: 100%;*/ /* Set a specific width for the parent */
-    /*max-width: 1200px;
-    max-width: 100%;
-    height: 100%;
-    padding: 10px;
-    overflow-y: auto;
-    
-}
-    .custom-row::-webkit-scrollbar {
-        display: none;
-    }*/
-
 /* Card styles */
 .card-details {
     width: 100%;
@@ -162,7 +151,6 @@
     align-items: center;
 }
 
-/*helloooo joshuwaaaaaaaaaaaaaaaaaaaaa*/
 .card-details .top-rectangle .button {
     width: 50%;
     height: 100%;
@@ -183,11 +171,11 @@
 }
 
 .card-details .top-rectangle .button.view {
-    background: linear-gradient(to right, #7CD6E4, #50BCDB);
+    background: linear-gradient(to right, #87C2E7, #5AA6DE);
 }
 
 .card-details .top-rectangle .button.edit {
-    background: linear-gradient(to right, #96C7C0, #77B5BB);
+    background: linear-gradient(to right, #96C8C1, #78B6BB);
 }
 
 /* Profile picture */
@@ -200,37 +188,52 @@
     left: 50%;
     transform: translateX(-50%);
     z-index: 1;
+   
 }
+    .profile-pic img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+    }
 
 /* Status icon style */
 .status-icon {
     position: absolute;
-    right: 5px;
-    bottom: 10px;
+    right: -2px; /* Adjust for overlap */
+    top: 70%; /* Adjust to align with the profile */
     background-color: #fff;
     border-radius: 50%;
     padding: 1px;
+    z-index: 2;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 20px; /* Ensure the icon's container is visible */
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
     .status-icon i {
         color: red;
-        font-size: 20px;
+        font-size: 16px; /* Adjust size to fit inside the container */
     }
+
 
 /* Card text */
 .card-details h2 {
     font-size: 15px;
     margin: 5px 0;
     position: relative;
-    top: 40px;
+    top: 50px;
 }
 
 .card-details p {
     font-size: 13px;
     color: #666;
-    margin: 3px 0;
+    margin:  -1px;
     position: relative;
-    top: 40px;
+    top: 50px;
 }
 
 .card-details .hr {
@@ -238,7 +241,7 @@
     margin: 5px auto;
     border: 0.5px solid #ccc;
     position: relative;
-    top: 40px;
+    top: 50px;
 }
 
 .card-details .division {
@@ -246,7 +249,7 @@
     color: #333;
     margin-top: 0px;
     position: relative;
-    top: 40px;
+    top: 50px;
 }
 
 /*---------------------------------------------------------------------------------------------------------------------------------*/

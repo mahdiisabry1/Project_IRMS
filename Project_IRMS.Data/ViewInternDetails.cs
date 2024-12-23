@@ -19,7 +19,7 @@ namespace Project_IRMS.Data
 
         public DataTable GetInternDetails()
         {
-            string query = "SELECT * from InternDetails_three ";
+            string query = "SELECT * from InternDetails ";
             return _sqlHelper.ExecuteQuery(query);
         }
     }
