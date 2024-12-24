@@ -285,8 +285,7 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     position: relative;
-    font-family: Arial, sans-serif;
-    z-index: 1001;/* Ensure it’s above the overlay */
+    z-index: 1001; /* Ensure it’s above the overlay */
 }
 
 .card_view-header {
@@ -298,19 +297,19 @@
 }
 
     .card_view-header h2 {
-        font-size: 20px;
+        font-size: 24px;
         margin: 0;
         color: #1E1E1E;
     }
 
     .card_view-header .close {
-        font-size: 20px;
+        font-size: 25px;
         cursor: pointer;
         color: #1E1E1E;
     }
 
 .gradient-line {
-    width: 635px;
+    width: 100%;
     height: 35px;
     background: linear-gradient(to right, #ECDCE0, #1570CF);
     position: relative;
@@ -325,15 +324,14 @@
     display: flex;
     align-items: center;
     position: relative;
-    top: -30px;
+    margin-left: 30px;
 }
 
     .profile img {
-        width: 115.1px;
-        height: 116.91px;
         border-radius: 50%;
-        margin-right: 30px;
+        margin-right: 15px;
         border: 5px solid #fff;
+        margin-top: -40px; /* Move the image upwards */
     }
 
 .profile-info {
@@ -341,12 +339,14 @@
 }
 
     .profile-info h3 {
-        font-size: 25px;
+        font-size: 24px;
+        margin: 0;
     }
 
     .profile-info p {
         font-size: 16px;
-        color: #888;
+        color: #707070;
+        margin: 0;
     }
 
     .profile-info a {
@@ -360,6 +360,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-size: 16px;
+    color: #545454;
 }
 
     .details .info {
@@ -370,35 +372,32 @@
         margin: 5px 0;
         display: flex;
         align-items: center;
-        font-size: 16px;
+       
     }
 
         .details p i {
             margin-right: 10px;
-            color: #888;
+            color: #000000;
         }
 
     .details .view-cv {
         display: inline-block;
-        padding: 5px 10px;
-        border: 1px solid #888;
+        padding: 5px 15px;
+        border: 1px solid #292929;
         border-radius: 5px;
         text-decoration: none;
-        color: #888;
-        font-size: 14px;
-        margin-left: 10px;
-        width: 114px;
-        height: 37px;
+        color: #292929;
+        font-size: 16px;
         text-align: center;
-        line-height: 27px; /* Adjusted to vertically center the text */
+        margin-right: 30px; /* Add margin to the left to separate it from the details */
     }
 
 .horizontal-line {
-    width: 584px;
+    width: 100%;
     height: 1px;
-    background-color: #e0e0e0;
-    margin: 5px auto;
-    border-top: 1px solid rgba(0, 0, 0, 0.5);
+    background-color: #292929;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 .card_view-footer {
@@ -412,11 +411,12 @@
         border: none;
         color: #fff;
         padding: 5px 10px;
-        border-radius: 5px;
+        border-radius: 8px;
         cursor: pointer;
         font-size: 14px;
         width: 205px;
         height: 37px;
         text-align: center;
-        line-height: 27px; /* Adjusted to vertically center the text */
+        
     }
+
