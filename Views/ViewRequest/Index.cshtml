@@ -183,31 +183,37 @@
             <span class="close">×</span>
         </div>
         <div class="gradient-line"></div>
-        <div class="card_view-body">
-            <div class="profile">
-                <img alt="Profile picture" id="popupProfileImage" height="120" src="https://placehold.co/115x117" width="120" />
-                <div class="profile-info">
-                    <h3 id="popupName">Wimukthi Manchanayaka</h3>
-                    <p id="popupDegreeDivision">
-                        <span id="popupDegree">Degree Name</span> / <span id="popupDivision">Division Name</span>
-                    </p>
-                    <a href="#" id="editProfileLink">Edit Profile</a>
+        <form action="/ViewRequest/SubmitRequest" method="post" enctype="multipart/form-data">
+            <div class="card_view-body">
+                <div class="profile">
+                    <img alt="Profile picture" id="popupProfileImage" name="profileImage" height="120" src="https://placehold.co/115x117" width="120" />
+                    <div class="profile-info">
+                        <h3>
+                            <span id="popupFirstName" name="firstName">Wimukthi</span>
+                            <span id="popupLastName" name="lastName">Manchanayaka</span>
+                        </h3>
+
+                        <p id="popupDegreeDivision">
+                            <span id="popupDegree" name="degree">Degree Name</span> / <span id="popupDivision" name="division">Division Name</span>
+                        </p>
+                        <a href="#" id="editProfileLink">Edit Profile</a>
+                    </div>
+                </div>
+                <div class="details">
+                    <div class="info">
+                        <p id="popupRefNo">Ref No - IM1012</p>
+                        <p><i class="fas fa-graduation-cap"></i><span id="popupUniversity" name="university"> National Institute of Business Management</span></p>
+                        <p><i class="fas fa-phone"></i><span id="popupContactNo" name="contactNo"> 0765630062</span></p>
+                        <p><i class="fas fa-envelope"></i><span id="popupEmail" name="email"> wimukthimanchanayaka@gmail.com</span></p>
+                    </div>
+                    <a class="view-cv" href="#" id="viewCVLink" name="cv" target="_blank">View CV</a>
+                </div>
+                <div class="horizontal-line"></div>
+                <div class="card_view-footer">
+                    <button type="submit">Send</button>
                 </div>
             </div>
-            <div class="details">
-                <div class="info">
-                    <p id="popupRefNo">Ref No - IM1012</p>
-                    <p><i class="fas fa-graduation-cap"></i><span id="popupUniversity"> National Institute of Business Management</span></p>
-                    <p><i class="fas fa-phone"></i><span id="popupContactNo"> 0765630062</span></p>
-                    <p><i class="fas fa-envelope"></i><span id="popupEmail"> wimukthimanchanayaka@gmail.com</span></p>
-                </div>
-                <a class="view-cv" href="#" id="viewCVLink" target="_blank">View CV</a>
-            </div>
-            <div class="horizontal-line"></div>
-            <div class="card_view-footer">
-                <button>Send</button>
-            </div>
-        </div>
+        </form>
     </div>
 </div>
 

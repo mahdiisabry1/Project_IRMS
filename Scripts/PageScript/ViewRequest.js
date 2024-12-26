@@ -26,7 +26,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // Function to show popup
     function showPopup(card) {
         // Get data attributes from the clicked card
-        const profileName = card.querySelector('.button.view').getAttribute('data-firstname') + ' ' + card.querySelector('.button.view').getAttribute('data-lastname');
+        const profileFirstName = card.querySelector('.button.view').getAttribute('data-firstname');
+        const profileLastName = card.querySelector('.button.view').getAttribute('data-lastname');
         const degreeInfo = card.querySelector('.button.view').getAttribute('data-degree');
         const divisionInfo = card.querySelector('.button.view').getAttribute('data-division');
         const universityInfo = card.querySelector('.button.view').getAttribute('data-university');
@@ -36,7 +37,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const base64CV = card.querySelector('.button.view').getAttribute('data-cv');
 
         // Update the popup details dynamically
-        document.getElementById('popupName').textContent = profileName;
+        document.getElementById('popupFirstName').textContent = profileFirstName;
+        document.getElementById('popupLastName').textContent = profileLastName;
         document.getElementById('popupDivision').textContent = divisionInfo;
         document.getElementById('popupContactNo').textContent = contactInfo;
         document.getElementById('popupDegree').textContent = degreeInfo;
