@@ -254,8 +254,8 @@
 
 /*---------------------------------------------------------------------------------------------------------------------------------*/
 
+/*This is the main popup container*/
 
-/* Main Content Blur Effect */
 .main-content.blurred {
     filter: blur(5px);
     pointer-events: none;
