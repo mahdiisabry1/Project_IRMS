@@ -17,9 +17,15 @@ namespace Project_IRMS.Data
             _sqlHelper = new SqlServerHelper();
         }
 
-        public DataTable GetInternDetails()
+        public DataTable GetInternDetails(string tablename)
         {
-            string query = "SELECT * from InternDetails_three ";
+            // Validate table name against a list of allowed names
+            string[] allowedTables = { "InternDetails", "hrInterns", "itInterns" }; // Add your valid table names here
+            if (!allowedTables.Contains(tablename))
+                throw new ArgumentException("Invalid table name.");
+
+            //
+            string query = $@"SELECT * from {tablename} ";
             return _sqlHelper.ExecuteQuery(query);
         }
     }
