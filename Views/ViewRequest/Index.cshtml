@@ -103,6 +103,7 @@
                                                 
                                                data-profileimage="@(intern.ProfileImage != null ? Convert.ToBase64String(intern.ProfileImage) : string.Empty)"
                                                 data-cv="@Convert.ToBase64String(intern.CV)">
+
                                             View
                                         </button>
                                         <button class="button edit" data-id="@intern.InternID">Edit</button>
@@ -200,7 +201,7 @@
                     <p><i class="fas fa-phone"></i><span id="popupContactNo"> 0765630062</span></p>
                     <p><i class="fas fa-envelope"></i><span id="popupEmail"> wimukthimanchanayaka@gmail.com</span></p>
                 </div>
-                <a class="view-cv" href="#" id="viewCVLink">View CV</a>
+                <a class="view-cv" href="#" id="viewCVLink" target="_blank">View CV</a>
             </div>
             <div class="horizontal-line"></div>
             <div class="card_view-footer">

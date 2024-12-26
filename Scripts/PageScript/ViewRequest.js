@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const emailInfo = card.querySelector('.button.view').getAttribute('data-email');
         const contactInfo = card.querySelector('.button.view').getAttribute('data-contact');
         const internProfileImage = 'data:image/png;base64,' + card.querySelector('.button.view').getAttribute('data-profileimage');
-        const internCV = 'data:application/pdf;base64,' + card.querySelector('.button.view').getAttribute('data-cv');
+        const base64CV = card.querySelector('.button.view').getAttribute('data-cv');
 
         // Update the popup details dynamically
         document.getElementById('popupName').textContent = profileName;
@@ -44,7 +44,24 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('popupEmail').textContent = emailInfo;
         document.getElementById('popupRefNo').textContent = `Ref No - ${card.querySelector('.button.view').getAttribute('data-id')}`; // Use the intern ID for Ref No
         document.getElementById('popupProfileImage').src = internProfileImage;
-        document.getElementById('viewCVLink').setAttribute('href', internCV); // Set CV URL
+
+        // Convert Base64 to Blob and handle errors
+        try {
+            const byteCharacters = atob(base64CV); // Decode Base64
+            const byteNumbers = Array.from(byteCharacters).map(char => char.charCodeAt(0));
+            const byteArray = new Uint8Array(byteNumbers);
+            const blob = new Blob([byteArray], { type: 'application/pdf' });
+            const blobURL = URL.createObjectURL(blob);
+
+            // Set the Blob URL as the href and open in a new tab
+            const viewCVLink = document.getElementById('viewCVLink');
+            viewCVLink.setAttribute('href', blobURL); // Use Blob URL
+            viewCVLink.setAttribute('target', '_blank'); // Open in a new tab
+        } catch (error) {
+            console.error("Failed to process the Base64 CV data:", error);
+            alert("Invalid CV data. Please try again.");
+        }
+
 
         popupOverlay.style.display = 'flex'; // Show popup
         mainContent.classList.add('blurred'); // Add blur to main content
