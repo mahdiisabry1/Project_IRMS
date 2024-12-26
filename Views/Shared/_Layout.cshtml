@@ -1,14 +1,21 @@
-﻿<!DOCTYPE html>
+﻿@{ var username = Session["Username"];
+    var role = Session["Role"];
+   
+   
+
+    }
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IRMS</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    
+
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    @RenderSection("CustomPageStyles",required:false)
+    @RenderSection("CustomPageStyles", required: false)
     <!--Link custom CSS-->
     <link href="~/Content/MainCSS/Site.css" rel="stylesheet" />
 </head>
@@ -34,8 +41,8 @@
                     <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="text-container mr-2 d-none d-lg-inline text-gray-600 small">
-                            Isuru Perera
-                            <span class="text-gray-500 small d-block">(Human Resource)</span> <!-- Block styling for (HR) -->
+                           @username
+                            <span class="text-gray-500 small d-block">(@role)</span> <!-- Block styling for (HR) -->
                         </span>
                         <img class="img-profile rounded-circle" src="~/Images/profilepic.png" alt="User Profile Picture">
                     </a>
@@ -53,7 +60,7 @@
                         </a>
 
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                        <a class="dropdown-item" href="~/Home/Logout" data-toggle="modal" data-target="#logoutModal">
                             <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                             Logout
                         </a>
@@ -135,16 +142,19 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="~/TaskManagement/Index" class="nav-link">
-                                <i class="nav-icon fa-solid fa-list-check"></i>
+                        @if (!(((@username as string) == "isuru" && (@role as string) == "HR") ||((@username as string) == "meelina" && (@role as string) == "IT")))
+                        {
+                            <li class="nav-item">
+                                <a href="~/TaskManagement/Index" class="nav-link">
+                                    <i class="nav-icon fa-solid fa-list-check"></i>
+                                    <p>
+                                        TaskManagement
+                                    </p>
+                                </a>
+                            </li>
+                        }
 
-                                <p>
-                                    TaskManagement
 
-                                </p>
-                            </a>
-                        </li>
 
 
 
@@ -162,7 +172,7 @@
             <div class="sidebar-footer mt-auto p-3">
                 <a href="#" class=" d-flex align-items-center">
                     <img src="~/Images/Srilankan-white 1.png" alt="Logo Icon">
-                   
+
                 </a>
             </div>
             <!--adding a footer logo-->
@@ -178,12 +188,12 @@
 
         <footer class="main-footer">
             <div class="float-right d-none d-sm-block">
-                <b>Ⓒ 2024 SriLankan IT Systems. All rights reserved</b> 
+                <b>Ⓒ 2024 SriLankan IT Systems. All rights reserved</b>
             </div>
-            
+
         </footer>
         <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark" >
+        <aside class="control-sidebar control-sidebar-dark">
             <!-- Control sidebar content goes here -->
         </aside>
     </div>

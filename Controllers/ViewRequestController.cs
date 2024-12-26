@@ -17,8 +17,13 @@ namespace Project_IRMS.Controllers
         // GET: ViewRequest
         public ActionResult Index()
         {
+            var tableName = Session["Tablename"]?.ToString();
+            if (string.IsNullOrEmpty(tableName))
+            {
+                return Json(new { success = false, message = "Table name is missing." });
+            }
             // Fetch interns from the business layer
-            List<Intern> interns = _service.GetAllInterns();
+            List<Intern> interns = _service.GetAllInterns(tableName);
 
             // Pass the interns to the view using ViewBag
             ViewBag.Interns = interns;

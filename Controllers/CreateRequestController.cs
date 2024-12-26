@@ -34,6 +34,12 @@ namespace Project_IRMS.Controllers
         {
             try
             {
+                var tableName = Session["Tablename"]?.ToString();
+                if (string.IsNullOrEmpty(tableName))
+                {
+                    return Json(new { success = false, message = "Table name is missing." });
+                }
+
                 // Retrieve form data
                 string firstName = form["firstName"];
                 string lastName = form["lastName"];
@@ -69,6 +75,7 @@ namespace Project_IRMS.Controllers
 
                 // Save details to the database
                 _internService.AddInternDetails(
+                    tableName,
                     firstName,
                     lastName,
                     university,

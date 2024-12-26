@@ -46,6 +46,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="InternDetailsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserLoginBusiness.cs" />
     <Compile Include="ViewInternDetailsService.cs" />
   </ItemGroup>
   <ItemGroup>

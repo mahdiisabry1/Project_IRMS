@@ -17,10 +17,10 @@ namespace Project_IRMS.Buisness
         {
             _dataAccess = new ViewInternDetails(); //connecting businesslayer with datalayer 
         }
-        public List<Intern> GetAllInterns()
+        public List<Intern> GetAllInterns(string tablename)
         {
             var internList = new List<Intern>();
-            DataTable dataTable = _dataAccess.GetInternDetails();
+            DataTable dataTable = _dataAccess.GetInternDetails(tablename);
 
             foreach (DataRow row in dataTable.Rows)
             {
