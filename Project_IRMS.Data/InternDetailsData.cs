@@ -20,6 +20,11 @@ namespace Project_IRMS.Data
         }
         public void InsertInternDetails(string tableName, string firstName, string lastName, string university, string gender, string email, string contactNo, string degree, string division, byte[] profileImage, byte[] cv)
         {
+            string query = @"
+                INSERT INTO InternDetails_three
+                (FirstName, LastName, University, Gender, Email, ContactNo, Degree, Division, ProfileImage, CV)
+                VALUES 
+                (@FirstName, @LastName, @University, @Gender, @PersonalEmail, @ContactNo, @Degree, @Division, @ProfileImage, @CV)";
 
             SqlParameter[] parameters = {
         new SqlParameter("@FirstName", firstName),
