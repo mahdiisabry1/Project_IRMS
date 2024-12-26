@@ -20,17 +20,6 @@ namespace Project_IRMS.Data
         }
         public void InsertInternDetails(string tableName, string firstName, string lastName, string university, string gender, string email, string contactNo, string degree, string division, byte[] profileImage, byte[] cv)
         {
-            // Validate table name against a list of allowed names
-            string[] allowedTables = { "InternDetails", "hrInterns","itInterns" }; // Add your valid table names here
-            if (!allowedTables.Contains(tableName))
-                throw new ArgumentException("Invalid table name.");
-
-            // Construct the query with the validated table name
-            string query = $@"
-        INSERT INTO {tableName}
-        (FirstName, LastName, University, Gender, Email, ContactNo, Degree, Division, ProfileImage, CV)
-        VALUES 
-        (@FirstName, @LastName, @University, @Gender, @PersonalEmail, @ContactNo, @Degree, @Division, @ProfileImage, @CV)";
 
             SqlParameter[] parameters = {
         new SqlParameter("@FirstName", firstName),
