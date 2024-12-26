@@ -16,9 +16,9 @@ namespace Project_IRMS.Buisness
             _internData = new InternDetailsData();
         }
 
-        public void AddInternDetails(string firstName, string lastName, string university, string gender, string email, string contactNo, string degree, string division, byte[] profileImage, byte[] cv)
+        public void AddInternDetails(string tableName, string firstName, string lastName, string university, string gender, string email, string contactNo, string degree, string division, byte[] profileImage, byte[] cv)
         {
-            _internData.InsertInternDetails(firstName, lastName, university, gender, email, contactNo, degree, division, profileImage, cv);
+            _internData.InsertInternDetails(tableName,  firstName, lastName, university, gender, email, contactNo, degree, division, profileImage, cv);
         }
     }
 }

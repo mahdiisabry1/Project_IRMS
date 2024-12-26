@@ -100,7 +100,8 @@
                                                 data-division="@intern.Division"
                                                 data-email="@intern.Email"
                                                 data-contact="@intern.ContactNo"
-                                                data-profileimage="@Convert.ToBase64String(intern.ProfileImage)"
+                                                
+                                               data-profileimage="@(intern.ProfileImage != null ? Convert.ToBase64String(intern.ProfileImage) : string.Empty)"
                                                 data-cv="@Convert.ToBase64String(intern.CV)">
                                             View
                                         </button>

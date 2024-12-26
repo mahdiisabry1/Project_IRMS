@@ -17,9 +17,9 @@ namespace Project_IRMS.Data
             _sqlHelper = new SqlServerHelper();
         }
 
-        public DataTable GetInternDetails()
+        public DataTable GetInternDetails(string tablename)
         {
-            string query = "SELECT * from InternDetails ";
+
             return _sqlHelper.ExecuteQuery(query);
         }
     }
