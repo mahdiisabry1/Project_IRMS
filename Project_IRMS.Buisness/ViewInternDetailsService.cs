@@ -43,13 +43,13 @@ namespace Project_IRMS.Buisness
             return internList;
         }
         //
-        public void ProcessInternDetails(string targetTable, string sourceTable, string firstName, string lastName, string university, string email, string contactNo, string degree, string division, byte[] profileImage, byte[] cv)
+        public void ProcessInternDetails(string targetTable, string sourceTable,int id, string firstName, string lastName, string university,string gender, string email, string contactNo, string degree, string division, byte[] profileImage, byte[] cv)
         {
             // Insert into the target table
-            _dataAccess.InsertInternDetails(targetTable, firstName, lastName, university, email, contactNo, degree, division, profileImage, cv);
+            _dataAccess.InsertInternDetails(targetTable, firstName, lastName, university,gender, email, contactNo, degree, division, profileImage, cv);
 
             // Delete from the source table
-            _dataAccess.DeleteInternDetails(sourceTable, email);
+            _dataAccess.DeleteInternDetails(sourceTable, id);
         }
         //
 

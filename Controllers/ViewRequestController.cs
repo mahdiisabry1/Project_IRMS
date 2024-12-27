@@ -33,14 +33,20 @@ namespace Project_IRMS.Controllers
         }
 
         [HttpPost]
-        public ActionResult SubmitRequest(string firstName, string lastName, string university, string email, string contactNo, string degree, string division, HttpPostedFileBase profileImage, HttpPostedFileBase cv)
+        public ActionResult SubmitRequest(FormCollection form, HttpPostedFileBase profileImage, HttpPostedFileBase cv)
         {
             try
             {
-                if (string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(lastName))
-                {
-                    return Json(new { success = false, message = "First name and Last name are required." });
-                }
+                // Retrieve form data
+                int id =Convert.ToInt32( form["id"]);
+                string firstName = form["firstName"];
+                string lastName = form["lastName"];
+                string university = form["university"];
+                string gender = form["gender"];
+                string email = form["email"];
+                string contactNo = form["contactNo"];
+                string degree = form["degree"];
+                string division = form["division"];
 
                 byte[] profileImageBytes = null;
                 byte[] cvBytes = null;
@@ -66,10 +72,10 @@ namespace Project_IRMS.Controllers
                 }
 
                 // Determine target table
-                string targetTable = division == "IT" ? "itInterns" : "otherInterns";
+                string targetTable = division == "IT" ? "itInterns" : "hrInterns";
 
                 // Process intern details
-                _service.ProcessInternDetails(targetTable, "hrInterns", firstName, lastName, university, email, contactNo, degree, division, profileImageBytes, cvBytes);
+                _service.ProcessInternDetails(targetTable, "hrInterns",id, firstName, lastName, university,gender, email, contactNo, degree, division, profileImageBytes, cvBytes);
 
                 return Json(new { success = true, message = "Request processed successfully." });
             }

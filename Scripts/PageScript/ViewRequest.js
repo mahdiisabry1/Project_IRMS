@@ -26,11 +26,13 @@ document.addEventListener('DOMContentLoaded', function () {
     // Function to show popup
     function showPopup(card) {
         // Get data attributes from the clicked card
+        const profileID = card.querySelector('.button.view').getAttribute('data-id');
         const profileFirstName = card.querySelector('.button.view').getAttribute('data-firstname');
         const profileLastName = card.querySelector('.button.view').getAttribute('data-lastname');
         const degreeInfo = card.querySelector('.button.view').getAttribute('data-degree');
         const divisionInfo = card.querySelector('.button.view').getAttribute('data-division');
         const universityInfo = card.querySelector('.button.view').getAttribute('data-university');
+        const genderInfo = card.querySelector('.button.view').getAttribute('data-gender');
         const emailInfo = card.querySelector('.button.view').getAttribute('data-email');
         const contactInfo = card.querySelector('.button.view').getAttribute('data-contact');
         const internProfileImage = 'data:image/png;base64,' + card.querySelector('.button.view').getAttribute('data-profileimage');
@@ -43,10 +45,27 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('popupContactNo').textContent = contactInfo;
         document.getElementById('popupDegree').textContent = degreeInfo;
         document.getElementById('popupUniversity').textContent = universityInfo;
+        document.getElementById('popupGender').textContent = genderInfo;
         document.getElementById('popupEmail').textContent = emailInfo;
-        document.getElementById('popupRefNo').textContent = `Ref No - ${card.querySelector('.button.view').getAttribute('data-id')}`; // Use the intern ID for Ref No
+        document.getElementById('popupRefNo').textContent = profileID // Use the intern ID for Ref No
         document.getElementById('popupProfileImage').src = internProfileImage;
-
+        
+        //
+        document.getElementById("requestForm").addEventListener("submit", function (event) {
+            // Copy values to hidden inputs
+            document.getElementById("hiddenID").value = document.getElementById("popupRefNo").innerText.trim();
+            document.getElementById("hiddenFirstName").value = document.getElementById("popupFirstName").innerText.trim();
+            document.getElementById("hiddenLastName").value = document.getElementById("popupLastName").innerText.trim();
+            document.getElementById("hiddenUniversity").value = document.getElementById("popupUniversity").innerText.trim();
+            document.getElementById("hiddenGender").value = document.getElementById("popupGender").innerText.trim();
+            document.getElementById("hiddenContactNo").value = document.getElementById("popupContactNo").innerText.trim();
+            document.getElementById("hiddenEmail").value = document.getElementById("popupEmail").innerText.trim();
+            document.getElementById("hiddenDegree").value = document.getElementById("popupDegree").innerText.trim();
+            document.getElementById("hiddenProfileImage").value = document.getElementById("popupProfileImage").src;
+            document.getElementById("hiddenCV").value = document.getElementById("viewCVLink").href;
+            document.getElementById("hiddenDivision").value = document.getElementById("popupDivision").innerText.trim();
+        });
+        //
         // Convert Base64 to Blob and handle errors
         try {
             const byteCharacters = atob(base64CV); // Decode Base64

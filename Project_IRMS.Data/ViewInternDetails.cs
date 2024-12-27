@@ -32,18 +32,19 @@ namespace Project_IRMS.Data
         }
         //
 
-        public void InsertInternDetails(string tableName, string firstName, string lastName, string university, string email, string contactNo, string degree, string division, byte[] profileImage, byte[] cv)
+        public void InsertInternDetails(string tableName, string firstName, string lastName, string university,string gender, string email, string contactNo, string degree, string division, byte[] profileImage, byte[] cv)
         {
             string query = $@"
                 INSERT INTO {tableName}
-                (FirstName, LastName, University, Email, ContactNo, Degree, Division,  ProfileImage, CV)
+                (FirstName, LastName, University,Gender, Email, ContactNo, Degree, Division,  ProfileImage, CV)
                 VALUES 
-                (@FirstName, @LastName, @University, @Email, @ContactNo, @Degree, @Division, @ProfileImage, @CV)";
+                (@FirstName, @LastName, @University,@Gender, @Email, @ContactNo, @Degree, @Division, @ProfileImage, @CV)";
 
             SqlParameter[] parameters = {
                 new SqlParameter("@FirstName", firstName),
                 new SqlParameter("@LastName", lastName),
                 new SqlParameter("@University", university),
+                new SqlParameter("@Gender", gender),
                 new SqlParameter("@Email", email),
                 new SqlParameter("@ContactNo", contactNo),
                 new SqlParameter("@Degree", degree),
@@ -56,14 +57,14 @@ namespace Project_IRMS.Data
         }
         //
         //
-        public void DeleteInternDetails(string tableName, string email)
+        public void DeleteInternDetails(string tableName, int id)
         {
             string query = $@"
                 DELETE FROM {tableName}
-                WHERE Email = @Email";
+                WHERE InternID = @ID";
 
             SqlParameter[] parameters = {
-                new SqlParameter("@Email", email)
+                new SqlParameter("@ID", id)
             };
 
             _sqlHelper.ExecuteNonQuery(query, CommandType.Text, parameters);
