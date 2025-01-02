@@ -33,7 +33,7 @@ namespace Project_IRMS.Controllers
         }
 
         [HttpPost]
-        public ActionResult SubmitRequest(FormCollection form, HttpPostedFileBase profileImage, HttpPostedFileBase cv)
+        public ActionResult SubmitRequest(FormCollection form, HttpPostedFileBase cv)
         {
             try
             {
@@ -48,17 +48,22 @@ namespace Project_IRMS.Controllers
                 string degree = form["degree"];
                 string division = form["division"];
 
-                byte[] profileImageBytes = null;
+              
                 byte[] cvBytes = null;
 
-                // Convert profile image to byte array
-                if (profileImage != null && profileImage.ContentLength > 0)
+                // Retrieve the profile image source (URL or Base64 string)
+                string profileImageSrc = form["profileImage"];
+
+                // Handle the profile image
+                byte[] profileImageBytes = null;
+                if (!string.IsNullOrEmpty(profileImageSrc))
                 {
-                    using (var ms = new MemoryStream())
-                    {
-                        profileImage.InputStream.CopyTo(ms);
-                        profileImageBytes = ms.ToArray();
-                    }
+                    
+                        // Extract the Base64 string and convert it to byte array
+                        var base64Data = profileImageSrc.Split(',')[1];
+                        profileImageBytes = Convert.FromBase64String(base64Data);
+                    
+                   
                 }
 
                 // Convert CV file to byte array
