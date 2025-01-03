@@ -62,9 +62,42 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById("hiddenEmail").value = document.getElementById("popupEmail").innerText.trim();
             document.getElementById("hiddenDegree").value = document.getElementById("popupDegree").innerText.trim();
             document.getElementById("hiddenProfileImage").value = document.getElementById("popupProfileImage").src;
-            document.getElementById("hiddenCV").value = document.getElementById("viewCVLink").href;
+           
             document.getElementById("hiddenDivision").value = document.getElementById("popupDivision").innerText.trim();
         });
+        document.getElementById('requestForm').addEventListener('submit', async function (e) {
+            e.preventDefault(); // Prevent default form submission
+
+            const viewCVLink = document.getElementById('viewCVLink').getAttribute('href');
+            const hiddenCVInput = document.getElementById('hiddenCV');
+
+            try {
+                // Fetch the Blob from the Blob URL
+                const response = await fetch(viewCVLink);
+                const blob = await response.blob();
+
+                // Convert Blob to Base64
+                const base64CV = await convertBlobToBase64(blob);
+                hiddenCVInput.value = base64CV; // Set Base64 string in hidden input
+
+                // Submit the form after setting the CV data
+                e.target.submit();
+            } catch (error) {
+                console.error('Error converting CV to Base64:', error);
+                alert('Failed to process the CV. Please try again.');
+            }
+        });
+
+        // Helper function: Convert Blob to Base64
+        function convertBlobToBase64(blob) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = () => resolve(reader.result.split(',')[1]); // Extract Base64
+                reader.onerror = () => reject("Failed to convert Blob to Base64.");
+                reader.readAsDataURL(blob);
+            });
+        }
+
         //
         // Convert Base64 to Blob and handle errors
         try {
