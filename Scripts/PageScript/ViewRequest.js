@@ -116,13 +116,28 @@ document.addEventListener('DOMContentLoaded', function () {
 // Add click event to "Edit" button (You may need to update this with actual functionality)
 document.querySelectorAll('.button.edit').forEach(editButton => {
     editButton.addEventListener('click', (event) => {
-        const internId = event.target.getAttribute('data-id'); // Get the ID attached to the button
+        const internId = event.target.getAttribute('data-id'); // Get the Intern ID
         if (internId) {
-            // Redirect to CreateRequest form with the ID in the query parameter
-            window.location.href = `/CreateRequest/Index?id=${internId}`;
+            const popupOverlay = document.getElementById('popupOverlayUpdate');
+            if (popupOverlay) {
+                // Display the popup
+                popupOverlay.style.display = 'block';
+                popupOverlay.setAttribute('data-intern-id', internId); // Store the ID
+                console.log('Editing Intern ID:', internId); // Debugging purpose
+            } else {
+                console.error('Popup overlay element not found.');
+            }
         }
     });
 });
+
+// Close the popup
+function closePopup() {
+    const popupOverlay = document.getElementById('popupOverlayUpdate');
+    if (popupOverlay) {
+        popupOverlay.style.display = 'none'; // Hide the popup
+    }
+}
 
 //for cv view 
 // Function to dynamically set CV URL and ensure it opens in a new tab
