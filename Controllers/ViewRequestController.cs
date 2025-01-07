@@ -47,6 +47,7 @@ namespace Project_IRMS.Controllers
                 string contactNo = form["contactNo"];
                 string degree = form["degree"];
                 string division = form["division"];
+                string status = "new";
 
               
                 byte[] cvBytes = null;
@@ -75,10 +76,10 @@ namespace Project_IRMS.Controllers
                     cvBytes = Convert.FromBase64String(base64CV);
                 }
                 // Determine target table
-                string targetTable = division == "IT" ? "itInterns" : "hrInterns";
+                string targetTable = division == "IT" ? "it" : "hr";
 
                 // Process intern details
-                _service.ProcessInternDetails(targetTable, "hrInterns",id, firstName, lastName, university,gender, email, contactNo, degree, division, profileImageBytes, cvBytes);
+                _service.ProcessInternDetails(targetTable, "hr",id, firstName, lastName, university,gender, email, contactNo, degree, division, profileImageBytes, cvBytes,status);
 
                 return Json(new { success = true, message = "Request processed successfully." });
             }
