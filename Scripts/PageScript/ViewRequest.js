@@ -155,3 +155,90 @@ function closePopup() {
 //        alert("No CV available to view.");
 //    }
 //});
+
+const universities = [
+    "University of Colombo",
+    "University of Peradeniya",
+    "University of Kelaniya",
+    "University of Sri Jayewardenepura",
+    "University of Moratuwa",
+    "University of Jaffna",
+    "University of Ruhuna",
+    "Eastern University, Sri Lanka",
+    "South Eastern University of Sri Lanka",
+    "Rajarata University of Sri Lanka",
+    "Sabaragamuwa University of Sri Lanka",
+    "Wayamba University of Sri Lanka",
+    "Uva Wellassa University",
+    "University of the Visual and Performing Arts",
+    "Open University of Sri Lanka",
+    "Gampaha Wickramarachchi University of Indigenous Medicine",
+    "Vavuniya University",
+    "Sri Lanka Institute of Information Technology (SLIIT)",
+    "National School of Business Management (NSBM) Green University",
+    "Horizon Campus",
+    "South Asian Institute of Technology and Medicine (SAITM)",
+    "Colombo International Nautical and Engineering College (CINEC)",
+    "Aquinas College of Higher Studies",
+    "Institute of Technological Studies",
+    "KAATSU International University",
+    "National Institute of Business Management (NIBM)",
+    "National Institute of Social Development",
+    "SANASA Campus",
+    "Sri Lanka Institute of Development Administration (SLIDA)",
+    "Sri Lanka Institute of Nanotechnology (SLINTEC)",
+    "Sri Lanka International Buddhist Academy (SIBA)",
+    "Esoft Metro Campus",
+    "International College of Business and Technology (ICBT)",
+    "SLTC Research University",
+    "Business Management School (BMS)",
+    "Royal Institute Colombo",
+    "International Institute of Health Science (IIHS)",
+    "Benedict XVI Catholic Institute of Higher Education",
+    "Institute of Chemistry Ceylon",
+    "Informatics Institute of Technology (IIT)",
+    "NSBM Campus"
+];
+
+const searchInput = document.getElementById("searchInput");
+const dropdownList = document.getElementById("dropdownList");
+
+// Function to match from the start of each word
+function matchesQuery(word, query) {
+    const regex = new RegExp(`\\b${query}`, "i"); // Match query at word boundaries (case-insensitive)
+    return regex.test(word);
+}
+
+// Show filtered suggestions
+searchInput.addEventListener("input", function () {
+    const query = this.value.trim(); // Trim spaces
+    dropdownList.innerHTML = ""; // Clear previous suggestions
+
+    if (query) {
+        const filteredUniversities = universities.filter(uni => matchesQuery(uni, query));
+
+        filteredUniversities.forEach(uni => {
+            const listItem = document.createElement("li");
+            listItem.classList.add("list-group-item");
+            listItem.textContent = uni;
+
+            listItem.addEventListener("click", () => {
+                searchInput.value = uni; // Set selected value
+                dropdownList.style.display = "none"; // Hide dropdown
+            });
+
+            dropdownList.appendChild(listItem);
+        });
+
+        dropdownList.style.display = filteredUniversities.length > 0 ? "block" : "none";
+    } else {
+        dropdownList.style.display = "none";
+    }
+});
+
+// Hide dropdown when clicking outside
+document.addEventListener("click", function (e) {
+    if (!searchInput.contains(e.target) && !dropdownList.contains(e.target)) {
+        dropdownList.style.display = "none";
+    }
+});
