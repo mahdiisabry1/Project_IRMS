@@ -239,8 +239,11 @@
                     <div>
                         <h5 class="modal-title">Update Profile Details</h5>
                     </div>
-                    <div onclick="closePopup()">X</div>
+                    <div onclick="closePopup()" style="cursor:pointer;">X</div>
                 </div>
+                @if (interns != null && interns.Any())
+                {
+                    foreach (var intern in interns) {
                 <div class="modal-body">
                     <div class="gradient-line"></div>
                     <img alt="Profile picture" id="popupProfileImage" height="120" src="https://placehold.co/115x117" width="120" class="position-relative rounded-circle" style="left:50%; transform:translate(-50%); border:8px solid white; top:-18px;" />
@@ -248,11 +251,11 @@
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <label for="firstName" class="form-label">First Name</label>
-                                <input type="text" class="form-control" id="firstName" placeholder="Enter First Name">
+                                <input type="text" class="form-control" id="firstName" value="@intern.FirstName">
                             </div>
                             <div class="col-md-6">
                                 <label for="lastName" class="form-label">Last Name</label>
-                                <input type="text" class="form-control" id="lastName" placeholder="Enter Last Name">
+                                <input type="text" class="form-control" id="lastName" value="@intern.LastName">
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -264,7 +267,7 @@
                                     <input type="text"
                                            id="searchInput"
                                            class="form-control w-100"
-                                           placeholder="Type to search..."
+                                           value="@intern.University"
                                            autocomplete="off" />
                                     <ul id="dropdownList" class="list-group position-absolute w-100" style="z-index: 1000; display: none;"></ul>
                                 </div>
@@ -273,11 +276,13 @@
                                 <label class="form-label">Gender</label>
                                 <div class="d-flex">
                                     <div class="form-check me-3">
-                                        <input class="form-check-input" type="radio" name="gender" id="male" value="Male">
+                                        <input class="form-check-input" type="radio" name="gender" id="male" value="Male"
+                                               @(intern.Gender == "Male" ? "checked=\"checked\"" : "")>
                                         <label class="form-check-label" for="male">Male</label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="gender" id="female" value="Female">
+                                        <input class="form-check-input" type="radio" name="gender" id="female" value="Female"
+                                               @(intern.Gender == "Female" ? "checked=\"checked\"" : "")>
                                         <label class="form-check-label" for="female">Female</label>
                                     </div>
                                 </div>
@@ -286,11 +291,11 @@
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <label for="email" class="form-label">Personal Email</label>
-                                <input type="email" class="form-control" id="email" placeholder="Enter Email">
+                                <input type="email" class="form-control" id="email" value="@intern.Email">
                             </div>
                             <div class="col-md-6">
                                 <label for="contactNo" class="form-label">Contact No</label>
-                                <input type="tel" class="form-control" id="contactNo" placeholder="Enter Contact Number">
+                                <input type="tel" class="form-control" id="contactNo" placeholder="@intern.ContactNo">
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -299,10 +304,14 @@
                                     <label for="degree" class="form-label">Degree</label>
                                 </div>
                                 <div class="w-100 p-2">
-                                    <select class="form-select w-100" id="degree" style="background-color: #fff; background-clip: padding-box; border: 1px solid #ced4da; border-radius: .25rem; box-shadow: inset 0 0 0 transparent;">
-                                        <option selected>Select Degree</option>
-                                        <!-- options -->
-                                    </select>
+                                    <div class="w-100 position-relative">
+                                        <input type="text"
+                                               id="searchInputDegree"
+                                               class="form-control w-100"
+                                               value="@intern.Degree"
+                                               autocomplete="off" />
+                                        <ul id="dropdownListDegree" class="list-group position-absolute w-100" style="z-index: 1000; display: none;"></ul>
+                                    </div>
                                 </div>
 
                             </div>
@@ -311,10 +320,14 @@
                                     <label for="division" class="form-label">Division</label>
                                 </div>
                                 <div class="w-100 p-2">
-                                    <select class="form-select w-100" id="division" style="background-color: #fff; background-clip: padding-box; border: 1px solid #ced4da; border-radius: .25rem; box-shadow: inset 0 0 0 transparent;">
-                                        <option selected>Select Division</option>
-                                        <!-- options -->
-                                    </select>
+                                    <div class="w-100 position-relative">
+                                        <input type="text"
+                                               id="searchInputDivision"
+                                               class="form-control w-100"
+                                               value="@intern.Division"
+                                               autocomplete="off" />
+                                        <ul id="dropdownListDivision" class="list-group position-absolute w-100" style="z-index: 1000; display: none;"></ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -323,6 +336,8 @@
                         </div>
                     </form>
                 </div>
+                    }
+                }
             </div>
         </div>
     </div>

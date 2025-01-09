@@ -171,7 +171,7 @@ const universities = [
     "Wayamba University of Sri Lanka",
     "Uva Wellassa University",
     "University of the Visual and Performing Arts",
-    "Open University of Sri Lanka",
+    "Open University of Sri Lanka (OUSL)",
     "Gampaha Wickramarachchi University of Indigenous Medicine",
     "Vavuniya University",
     "Sri Lanka Institute of Information Technology (SLIIT)",
@@ -197,7 +197,8 @@ const universities = [
     "Benedict XVI Catholic Institute of Higher Education",
     "Institute of Chemistry Ceylon",
     "Informatics Institute of Technology (IIT)",
-    "NSBM Campus"
+    "NSBM Green University",
+    "Asia Pacific Institute of Information Technology (APIIT)"
 ];
 
 const searchInput = document.getElementById("searchInput");
