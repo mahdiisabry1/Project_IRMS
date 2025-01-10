@@ -321,12 +321,15 @@
                                 </div>
                                 <div class="w-100 p-2">
                                     <div class="w-100 position-relative">
-                                        <input type="text"
-                                               id="searchInputDivision"
-                                               class="form-control w-100"
-                                               value="@intern.Division"
-                                               autocomplete="off" />
-                                        <ul id="dropdownListDivision" class="list-group position-absolute w-100" style="z-index: 1000; display: none;"></ul>
+                                        <select id="searchInputDivision" class="form-control w-100">
+                                            <option value="">Select an option</option>
+                                            <option value="itDivision">IT</option>
+                                            <option value="division b">Division B</option>
+                                            <option value="division c">Division C</option>
+                                            <option value="@intern.Division" selected="@(intern.Division == @intern.Division ? "selected" : null)">
+                                                @intern.Division
+                                            </option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
