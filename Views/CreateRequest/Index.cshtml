@@ -18,8 +18,10 @@
         <div class="card card-default">
             <div class="card-header border-bottom-0 pb-0  ">
                 <h3 class="card-title">Create Requests</h3>
-
-
+                <div class="card_view-header">
+                    <h2>Request Details</h2>
+                    <span class="close">×</span>
+                </div>
             </div>
             <!-- /.card-header -->
             <form action="/CreateRequest/SubmitRequest" method="post" enctype="multipart/form-data">
@@ -191,6 +193,7 @@
 
                 </div>
                 <!-- /.card-body -->
+                <div id="formMessage"></div>
 
                 <div class="card-footer d-flex justify-content-end">
                     <button type="submit" class="btn btn-custom">Create Request</button>
