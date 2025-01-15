@@ -33,12 +33,12 @@ namespace Project_IRMS.Controllers
         }
 
         [HttpPost]
-        public ActionResult SubmitRequest(FormCollection form, HttpPostedFileBase profileImage, HttpPostedFileBase cv)
+        public ActionResult SubmitRequest(FormCollection form)
         {
             try
             {
                 // Retrieve form data
-                int id =Convert.ToInt32( form["id"]);
+                int id = Convert.ToInt32(form["id"]);
                 string firstName = form["firstName"];
                 string lastName = form["lastName"];
                 string university = form["university"];
@@ -47,35 +47,39 @@ namespace Project_IRMS.Controllers
                 string contactNo = form["contactNo"];
                 string degree = form["degree"];
                 string division = form["division"];
+                string status = "new";
 
-                byte[] profileImageBytes = null;
+
                 byte[] cvBytes = null;
 
-                // Convert profile image to byte array
-                if (profileImage != null && profileImage.ContentLength > 0)
+
+                // Retrieve the profile image source (URL or Base64 string)
+                string profileImageSrc = form["profileImage"];
+
+                // Handle the profile image
+                byte[] profileImageBytes = null;
+                if (!string.IsNullOrEmpty(profileImageSrc))
                 {
-                    using (var ms = new MemoryStream())
-                    {
-                        profileImage.InputStream.CopyTo(ms);
-                        profileImageBytes = ms.ToArray();
-                    }
+
+                    // Extract the Base64 string and convert it to byte array
+                    var base64Data = profileImageSrc.Split(',')[1];
+                    profileImageBytes = Convert.FromBase64String(base64Data);
+
+
                 }
 
-                // Convert CV file to byte array
-                if (cv != null && cv.ContentLength > 0)
+                // Retrieve the Base64-encoded CV string
+                string base64CV = form["cv"];
+                if (!string.IsNullOrEmpty(base64CV))
                 {
-                    using (var ms = new MemoryStream())
-                    {
-                        cv.InputStream.CopyTo(ms);
-                        cvBytes = ms.ToArray();
-                    }
+                    // Convert Base64 string to byte array
+                    cvBytes = Convert.FromBase64String(base64CV);
                 }
-
                 // Determine target table
-                string targetTable = division == "IT" ? "itInterns" : "hrInterns";
+                string targetTable = division == "IT" ? "it" : "hr";
 
                 // Process intern details
-                _service.ProcessInternDetails(targetTable, "hrInterns",id, firstName, lastName, university,gender, email, contactNo, degree, division, profileImageBytes, cvBytes);
+                _service.ProcessInternDetails(targetTable, "hr", id, firstName, lastName, university, gender, email, contactNo, degree, division, profileImageBytes, cvBytes, status);
 
                 return Json(new { success = true, message = "Request processed successfully." });
             }

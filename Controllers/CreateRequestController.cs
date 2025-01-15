@@ -49,6 +49,7 @@ namespace Project_IRMS.Controllers
                 string contactNo = form["contactNo"];
                 string degree = form["degree"];
                 string division = form["division"];
+                string status = "new";
 
                 byte[] profileImageBytes = null;
                 byte[] cvBytes = null;
@@ -85,7 +86,8 @@ namespace Project_IRMS.Controllers
                     degree,
                     division,
                     profileImageBytes,
-                    cvBytes
+                    cvBytes,
+                    status
                 );
 
                 return Json(new { success = true, message = "Request submitted successfully." });

@@ -9,13 +9,13 @@ using Project_IRMS.Data;
 
 namespace Project_IRMS.Buisness
 {
-    public class ViewInternDetailsService
+    public class ApprovedInternDetailsService
     {
-        private readonly ViewInternDetails _dataAccess;
+        private readonly ApprovedInternDetails _dataAccess;
 
-        public ViewInternDetailsService()
+        public ApprovedInternDetailsService()
         {
-            _dataAccess = new ViewInternDetails(); //connecting businesslayer with datalayer 
+            _dataAccess = new ApprovedInternDetails(); //connecting businesslayer with datalayer 
         }
         public List<Intern> GetAllInterns(string tablename)
         {
@@ -42,17 +42,5 @@ namespace Project_IRMS.Buisness
 
             return internList;
         }
-        //
-        public void ProcessInternDetails(string targetTable, string sourceTable, int id, string firstName, string lastName, string university, string gender, string email, string contactNo, string degree, string division, byte[] profileImage, byte[] cv, string status)
-        {
-            // Insert into the target table
-            _dataAccess.InsertInternDetails(targetTable, firstName, lastName, university, gender, email, contactNo, degree, division, profileImage, cv, status);
-
-            // Delete from the source table
-            _dataAccess.DeleteInternDetails(sourceTable, id);
-        }
-        //
-
-
     }
 }

@@ -25,7 +25,10 @@ namespace Project_IRMS
                       "~/Scripts/jquery/jquery.min.js",
                       "~/Scripts/jquery/jquery.overlayScrollbars.min.js",
                       "~/Scripts/AdminLTE/adminlte.min.js",
-                      "~/Scripts/Dropzone/dropzone.min.js"
+                      "~/Scripts/Dropzone/dropzone.min.js",
+                      "~/Scripts/Chartjs/Chart.min.js"
+
+                      
 
                       ));
 
