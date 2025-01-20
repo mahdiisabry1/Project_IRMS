@@ -52,11 +52,19 @@
                                                 data-email="@intern.Email"
                                                 data-contact="@intern.ContactNo"
                                                 data-profileimage="@(intern.ProfileImage != null ? Convert.ToBase64String(intern.ProfileImage) : string.Empty)"
-                                                data-cv="@Convert.ToBase64String(intern.CV)">
+                                                data-cv="@(intern.CV != null ? Convert.ToBase64String(intern.CV) : string.Empty)">
 
                                             View
                                         </button>
-                                        <button class="button edit" data-id="@intern.InternID">Edit</button>
+                                        <button class="button edit" data-id="@intern.InternID" data-firstname="@intern.FirstName"
+                                                                    data-lastname="@intern.LastName"
+                                                                    data-degree="@intern.Degree"
+                                                                    data-university="@intern.University"
+                                                                    data-gender="@intern.Gender"
+                                                                    data-division="@intern.Division"
+                                                                    data-email="@intern.Email"  
+                                                                    data-contact="@intern.ContactNo"    
+                                                                    data-profileimage="@(intern.ProfileImage != null ? Convert.ToBase64String(intern.ProfileImage) : string.Empty)">Edit</button>
                                     </div>
                                     <div class="profile-pic">
                                         @if (intern.ProfileImage != null)
@@ -148,6 +156,9 @@
     </div>
 </div>
 
+
+
+@*// Edit Interns Section*@
 <div class="update-popup-overlay popup-overlay" style="display:none" id="popupOverlayUpdate">
     <div class="d-flex justify-content-center align-items-center h-100 w-100">
         <div class="visible-container" style="background:white; width:75%;">
@@ -158,9 +169,7 @@
                     </div>
                     <div onclick="closePopup()" style="cursor:pointer;">X</div>
                 </div>
-                @if (interns != null && interns.Any())
-                {
-                    foreach (var intern in interns) {
+                
                 <div class="modal-body">
                     <div class="gradient-line"></div>
                     <img alt="Profile picture" id="popupProfileImage" height="120" src="https://placehold.co/115x117" width="120" class="position-relative rounded-circle" style="left:50%; transform:translate(-50%); border:8px solid white; top:-18px;" />
@@ -168,11 +177,11 @@
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <label for="firstName" class="form-label">First Name</label>
-                                <input type="text" class="form-control" id="firstName" value="@intern.FirstName">
+                                <input type="text" class="form-control" id="firstName" name="FirstName" value="">
                             </div>
                             <div class="col-md-6">
                                 <label for="lastName" class="form-label">Last Name</label>
-                                <input type="text" class="form-control" id="lastName" value="@intern.LastName">
+                                <input type="text" class="form-control" id="lastName" name="LastName" value="LastName">
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -184,7 +193,8 @@
                                     <input type="text"
                                            id="searchInput"
                                            class="form-control w-100"
-                                           value="@intern.University"
+                                           name="University"
+                                           value="University"
                                            autocomplete="off" />
                                     <ul id="dropdownList" class="list-group position-absolute w-100" style="z-index: 1000; display: none;"></ul>
                                 </div>
@@ -193,13 +203,11 @@
                                 <label class="form-label">Gender</label>
                                 <div class="d-flex">
                                     <div class="form-check me-3">
-                                        <input class="form-check-input" type="radio" name="gender" id="male" value="Male"
-                                               @(intern.Gender == "Male" ? "checked=\"checked\"" : "")>
+                                        <input class="form-check-input" type="radio" name="Gender" id="male" value="Male">
                                         <label class="form-check-label" for="male">Male</label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="gender" id="female" value="Female"
-                                               @(intern.Gender == "Female" ? "checked=\"checked\"" : "")>
+                                        <input class="form-check-input" type="radio" name="Gender" id="female" value="Female">
                                         <label class="form-check-label" for="female">Female</label>
                                     </div>
                                 </div>
@@ -208,11 +216,11 @@
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <label for="email" class="form-label">Personal Email</label>
-                                <input type="email" class="form-control" id="email" value="@intern.Email">
+                                <input type="email" class="form-control" id="email" name="Email" value="Email">
                             </div>
                             <div class="col-md-6">
                                 <label for="contactNo" class="form-label">Contact No</label>
-                                <input type="tel" class="form-control" id="contactNo" placeholder="@intern.ContactNo">
+                                <input type="tel" class="form-control" id="contactNo" name="ContactNo" placeholder="ContactNo">
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -225,12 +233,12 @@
                                         <input type="text"
                                                id="searchInputDegree"
                                                class="form-control w-100"
-                                               value="@intern.Degree"
+                                               name="Degree"
+                                               value="Degree"
                                                autocomplete="off" />
                                         <ul id="dropdownListDegree" class="list-group position-absolute w-100" style="z-index: 1000; display: none;"></ul>
                                     </div>
                                 </div>
-
                             </div>
                             <div class="col-md-6">
                                 <div>
@@ -238,14 +246,12 @@
                                 </div>
                                 <div class="w-100 p-2">
                                     <div class="w-100 position-relative">
-                                        <select id="searchInputDivision" class="form-control w-100">
+                                        <select id="searchInputDivision" class="form-control w-100" name="Division">
                                             <option value="">Select an option</option>
                                             <option value="itDivision">IT</option>
                                             <option value="division b">Division B</option>
                                             <option value="division c">Division C</option>
-                                            <option value="@intern.Division" selected="@(intern.Division == @intern.Division ? "selected" : null)">
-                                                @intern.Division
-                                            </option>
+                                            <option value="division d">Division D</option>
                                         </select>
                                     </div>
                                 </div>
@@ -256,8 +262,7 @@
                         </div>
                     </form>
                 </div>
-                    }
-                }
+                    
             </div>
         </div>
     </div>

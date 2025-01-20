@@ -147,19 +147,32 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 // Add click event to "Edit" button (You may need to update this with actual functionality)
 document.querySelectorAll('.button.edit').forEach(editButton => {
-    editButton.addEventListener('click', (event) => {
-        const internId = event.target.getAttribute('data-id'); // Get the Intern ID
-        if (internId) {
-            const popupOverlay = document.getElementById('popupOverlayUpdate');
-            if (popupOverlay) {
-                // Display the popup
-                popupOverlay.style.display = 'block';
-                popupOverlay.setAttribute('data-intern-id', internId); // Store the ID
-                console.log('Editing Intern ID:', internId); // Debugging purpose
-            } else {
-                console.error('Popup overlay element not found.');
-            }
-        }
+    editButton.addEventListener('click', function () {
+        const internID = this.getAttribute('data-id');
+        const firstName = this.getAttribute('data-firstname');
+        const lastName = this.getAttribute('data-lastname');
+        const degree = this.getAttribute('data-degree');
+        const university = this.getAttribute('data-university');
+        const gender = this.getAttribute('data-gender');
+        const division = this.getAttribute('data-division');
+        const email = this.getAttribute('data-email');
+        const contact = this.getAttribute('data-contact');
+        const profileImage = this.getAttribute('data-profileimage');
+
+        // Update modal content
+        document.getElementById('popupProfileImage').src = profileImage ? `data:image/png;base64,${profileImage}` : 'https://placehold.co/115x117';
+        document.getElementById('firstName').value = firstName;
+        document.getElementById('lastName').value = lastName;
+        document.getElementById('degree').value = degree;
+        document.getElementById('university').value = university;
+        document.getElementById('gender').value = gender;
+        document.getElementById('division').value = division;
+        document.getElementById('email').value = email;
+    
+
+
+        // Show the modal
+        document.getElementById('popupOverlayUpdate').style.display = 'block';
     });
 });
 

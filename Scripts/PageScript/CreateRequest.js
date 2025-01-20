@@ -128,3 +128,18 @@ function submitForm() {
     });
 }
 
+function validateForm() {
+    const cvUpload = document.getElementById('cvUpload');
+    const formMessage = document.getElementById('formMessage');
+
+    // chack if the cv is uploaded
+    if (!cvUpload.files.length) {
+        formMessage.textContent = 'Please upload your CV before submitting'
+        return false;
+    }
+
+    // clear the message if validation passes
+    formMessage.textContent = '';
+    return true;
+}
+
