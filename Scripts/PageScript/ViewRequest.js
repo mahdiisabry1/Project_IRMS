@@ -161,14 +161,16 @@ document.querySelectorAll('.button.edit').forEach(editButton => {
 
         // Update modal content
         document.getElementById('popupProfileImage').src = profileImage ? `data:image/png;base64,${profileImage}` : 'https://placehold.co/115x117';
-        document.getElementById('firstName').value = firstName;
-        document.getElementById('lastName').value = lastName;
-        document.getElementById('degree').value = degree;
-        document.getElementById('university').value = university;
-        document.getElementById('gender').value = gender;
-        document.getElementById('division').value = division;
-        document.getElementById('email').value = email;
+        document.getElementById('firstName').value = firstName || '';
+        document.getElementById('lastName').value = lastName || '';
+        document.getElementById('degree').value = degree || '';
+        document.getElementById('university').value = university || '';
+        //document.getElementById('gender').value = gender || '';
+        document.getElementById('division').value = division || '';
+        document.getElementById('email').value = email || '';
+        document.getElementById('contactNo').value = contact || '';
     
+
 
 
         // Show the modal
@@ -246,8 +248,10 @@ const universities = [
     "Asia Pacific Institute of Information Technology (APIIT)"
 ];
 
-const searchInput = document.getElementById("searchInput");
+const searchInput = document.querySelector(".searchInput");
 const dropdownList = document.getElementById("dropdownList");
+
+console.log(searchInput)
 
 // Function to match from the start of each word
 function matchesQuery(word, query) {
