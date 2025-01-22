@@ -95,8 +95,10 @@ function updateProfileImage() {
     }
 }
 
+
 // Submit the form with CV bytes
 function submitForm() {
+
     const formData = {
         firstName: document.getElementById("firstName").value,
         lastName: document.getElementById("lastName").value,
@@ -109,6 +111,8 @@ function submitForm() {
         cvBytes: cvBytes // Include the cvBytes
     };
 
+    
+
     // Send form data via AJAX
     $.ajax({
         url: "/CreateRequest/SubmitRequest",
@@ -116,6 +120,8 @@ function submitForm() {
         contentType: "application/json",
         data: JSON.stringify(formData),
         success: function (response) {
+   
+
             if (response.success) {
                 alert("Request submitted successfully!");
             } else {
@@ -126,6 +132,7 @@ function submitForm() {
             alert("Error submitting the form: " + error);
         }
     });
+
 }
 
 function validateForm() {
@@ -143,3 +150,178 @@ function validateForm() {
     return true;
 }
 
+const universities = [
+    "University of Colombo",
+    "University of Peradeniya",
+    "University of Kelaniya",
+    "University of Sri Jayewardenepura",
+    "University of Moratuwa",
+    "University of Jaffna",
+    "University of Ruhuna",
+    "Eastern University, Sri Lanka",
+    "South Eastern University of Sri Lanka",
+    "Rajarata University of Sri Lanka",
+    "Sabaragamuwa University of Sri Lanka",
+    "Wayamba University of Sri Lanka",
+    "Uva Wellassa University",
+    "University of the Visual and Performing Arts",
+    "Open University of Sri Lanka (OUSL)",
+    "Gampaha Wickramarachchi University of Indigenous Medicine",
+    "Vavuniya University",
+    "Sri Lanka Institute of Information Technology (SLIIT)",
+    "National School of Business Management (NSBM) Green University",
+    "Horizon Campus",
+    "South Asian Institute of Technology and Medicine (SAITM)",
+    "Colombo International Nautical and Engineering College (CINEC)",
+    "Aquinas College of Higher Studies",
+    "Institute of Technological Studies",
+    "KAATSU International University",
+    "National Institute of Business Management (NIBM)",
+    "National Institute of Social Development",
+    "SANASA Campus",
+    "Sri Lanka Institute of Development Administration (SLIDA)",
+    "Sri Lanka Institute of Nanotechnology (SLINTEC)",
+    "Sri Lanka International Buddhist Academy (SIBA)",
+    "Esoft Metro Campus",
+    "International College of Business and Technology (ICBT)",
+    "SLTC Research University",
+    "Business Management School (BMS)",
+    "Royal Institute Colombo",
+    "International Institute of Health Science (IIHS)",
+    "Benedict XVI Catholic Institute of Higher Education",
+    "Institute of Chemistry Ceylon",
+    "Informatics Institute of Technology (IIT)",
+    "NSBM Green University",
+    "Asia Pacific Institute of Information Technology (APIIT)"
+];
+
+const searchInput = document.querySelector(".searchInput");
+const dropdownList = document.getElementById("dropdownList");
+
+console.log(searchInput)
+
+// Function to match from the start of each word
+function matchesQuery(word, query) {
+    const regex = new RegExp(`\\b${query}`, "i"); // Match query at word boundaries (case-insensitive)
+    return regex.test(word);
+}
+
+// Show filtered suggestions
+searchInput.addEventListener("input", function () {
+    const query = this.value.trim(); // Trim spaces
+    dropdownList.innerHTML = ""; // Clear previous suggestions
+
+    if (query) {
+        const filteredUniversities = universities.filter(uni => matchesQuery(uni, query));
+
+        filteredUniversities.forEach(uni => {
+            const listItem = document.createElement("li");
+            listItem.classList.add("list-group-item");
+            listItem.textContent = uni;
+
+            listItem.addEventListener("click", () => {
+                searchInput.value = uni; // Set selected value
+                dropdownList.style.display = "none"; // Hide dropdown
+            });
+
+            dropdownList.appendChild(listItem);
+        });
+
+        dropdownList.style.display = filteredUniversities.length > 0 ? "block" : "none";
+    } else {
+        dropdownList.style.display = "none";
+    }
+});
+
+// Hide dropdown when clicking outside
+document.addEventListener("click", function (e) {
+    if (!searchInput.contains(e.target) && !dropdownList.contains(e.target)) {
+        dropdownList.style.display = "none";
+    }
+});
+
+
+const degreeCourses = [
+    "Computer Science",
+    "Computer Engineering ",
+    "Mechanical Engineering",
+    "Civil Engineering",
+    "Electrical Engineering",
+    "Business Administration",
+    "Information Technology",
+    "Software Engineering",
+    "Electrical & Electronics Engineering",
+    "Medicine",
+    "Law",
+    "Architecture",
+    "Nursing",
+    "Environmental Science",
+    "Psychology",
+    "Agriculture",
+    "Physics",
+    "Mathematics",
+    "Economics",
+    "Social Work",
+    "Humanities",
+    "Fine Arts",
+    "Design & Architecture",
+    "Marine Engineering",
+    "Tourism Management",
+    "Education",
+    "Accountancy & Finance",
+    "Public Administration",
+    "Pharmacy",
+    "Biomedical Science",
+    "International Relations",
+    "Aviation & Maritime Studies",
+    "Biotechnology",
+    "Journalism & Media Studies",
+    "Sports Science",
+    "Veterinary Science",
+    "Music & Performing Arts",
+    "Marketing & Management",
+    "Hospitality Management",
+    "Interior Design",
+    "Library & Information Science",
+    "Event Management",
+    "Film Production"
+];
+
+const degreeNameInput = document.getElementById("degreeName");
+const suggestionsBox = document.getElementById("suggestions");
+
+degreeNameInput.addEventListener("input", function () {
+    const query = this.value.toLowerCase();
+    suggestionsBox.innerHTML = "";
+
+    if (query) {
+        const filteredCourses = degreeCourses.filter(course =>
+            course.toLowerCase().includes(query)
+        );
+
+        if (filteredCourses.length > 0) {
+            filteredCourses.forEach(course => {
+                const listItem = document.createElement("li");
+                listItem.textContent = course;
+                listItem.className = "list-group-item list-group-item-action";
+                listItem.addEventListener("click", function () {
+                    degreeNameInput.value = course;
+                    suggestionsBox.innerHTML = "";
+                    suggestionsBox.style.display = "none";
+                });
+                suggestionsBox.appendChild(listItem);
+            });
+            suggestionsBox.style.display = "block";
+        } else {
+            suggestionsBox.style.display = "none";
+        }
+    } else {
+        suggestionsBox.style.display = "none";
+    }
+});
+
+document.addEventListener("click", function (event) {
+    if (!suggestionsBox.contains(event.target) && event.target !== degreeNameInput) {
+        suggestionsBox.style.display = "none";
+    }
+}); 

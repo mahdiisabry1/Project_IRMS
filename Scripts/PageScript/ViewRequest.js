@@ -145,10 +145,12 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
+
 // Add click event to "Edit" button (You may need to update this with actual functionality)
 document.querySelectorAll('.button.edit').forEach(editButton => {
     editButton.addEventListener('click', function () {
-        const internID = this.getAttribute('data-id');
+        //const internID = this.getAttribute('data-id');
         const firstName = this.getAttribute('data-firstname');
         const lastName = this.getAttribute('data-lastname');
         const degree = this.getAttribute('data-degree');
@@ -165,13 +167,14 @@ document.querySelectorAll('.button.edit').forEach(editButton => {
         document.getElementById('lastName').value = lastName || '';
         document.getElementById('degree').value = degree || '';
         document.getElementById('university').value = university || '';
-        //document.getElementById('gender').value = gender || '';
         document.getElementById('division').value = division || '';
         document.getElementById('email').value = email || '';
         document.getElementById('contactNo').value = contact || '';
-    
-
-
+        if (gender === 'Male') {
+            document.getElementById('male').checked = true;
+        } else if (gender === 'Female') {
+            document.getElementById('female').checked = true;
+        }
 
         // Show the modal
         document.getElementById('popupOverlayUpdate').style.display = 'block';

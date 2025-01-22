@@ -19,7 +19,6 @@
             <div class="card-header border-bottom-0 pb-0  ">
                 <h3 class="card-title">Create Requests</h3>
                 <div class="card_view-header">
-                    <h2>Request Details</h2>
                     <span class="close">×</span>
                 </div>
             </div>
@@ -33,7 +32,7 @@
                                 <div class="col-12 col-sm-6">
 
                                     <div class="form-group">
-                                        <label>Firt Name</label>
+                                        <label>First Name</label>
                                         <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Enter First Name" style="width:100%;  " required />
                                     </div>
                                     <!-- /.form-group -->
@@ -55,11 +54,18 @@
                                 <div class="col-12 col-sm-10">
                                     <div class="form-group">
                                         <label>University</label>
-                                        <select class="form-control" id="university" name="university">
-                                            <option selected>Select University</option>
-                                            <option>National Institute of Buisness Management(NIBM)</option>
-                                            <option>SLIT</option>
-                                        </select>
+                                        <!--<select class="form-control" id="university" name="university">
+                                        <option selected>Select University</option>
+                                        <option>National Institute of Buisness Management(NIBM)</option>
+                                        <option>SLIT</option>
+                                        </select>-->
+                                        <input type="text"
+                                               id="university"
+                                               class="form-control w-100 searchInput"
+                                               name="University"
+                                               placeholder="University Name"
+                                               autocomplete="off" />
+                                        <ul id="dropdownList" class="list-group position-absolute w-100" style="z-index: 1000; display: none;"></ul>
                                     </div>
                                     <!-- /.form-group -->
                                 </div>
@@ -99,17 +105,31 @@
                                     <!-- /.form-group -->
                                 </div>
                                 <!-- /.col -->
-
                             </div>
                             <div class="row">
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
+                                        <label>Degree</label>
                                         <label for="degree">Degree</label>
                                         <select class="form-control" id="degree" name="degree">
                                             <option selected>Select Degree</option>
                                             <option>Bsc(Hons) Computer Science</option>
                                             <option>B.Sc. in Applied Mathematics and Computing</option>
                                         </select>
+                                        <!-- <div class="input-group">
+                                        <select class="form-control" id="degreeType" name="degreeType" style="max-width: 75px;">
+                                        <option selected disabled>Type</option>
+                                        <option value="BSc">BSc</option>
+                                        <option value="BA">BA</option>
+                                        <option value="BEng">BEng</option>
+                                        <option value="MSc">MSc</option>
+                                        <option value="MA">MA</option>
+                                        <option value="PhD">PhD</option>
+                                        </select>
+                                            <input type="text" class="form-control" id="degreeName" name="degreeName" placeholder="Degree Name" autocomplete="off" />
+                                        </div>
+                                        <ul class="list-group" id="suggestions" style="max-height: 150px; overflow-y: auto; position: absolute; z-index: 1000; display: none;"></ul>
+                                        <small class="form-text text-muted">Example: BSc. Computer Science</small> -->
                                     </div>
                                     <!-- /.form-group -->
                                 </div>
@@ -122,12 +142,10 @@
                                             <option>IT</option>
                                             <option>Division B</option>
                                         </select>
-
                                     </div>
                                     <!-- /.form-group -->
                                 </div>
                                 <!-- /.col -->
-
                             </div>
 
 
@@ -184,17 +202,10 @@
 
                             </div>
                         </div>
-
-
                     </div>
-
-
-
-
                 </div>
                 <!-- /.card-body -->
                 <div id="formMessage"></div>
-
                 <div class="card-footer d-flex justify-content-end">
                     <button type="submit" class="btn btn-custom">Create Request</button>
                 </div>
