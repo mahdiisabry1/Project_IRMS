@@ -19,17 +19,12 @@ h3 {
 }
 /* Profile picture positioning */
 .box-card {
-    height: 80px;
-    position: relative;
-    overflow: visible;
-    background: linear-gradient(to bottom, #838383, #464646);
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
 
     .box-card img {
         position: absolute;
-        top: 30px;
         left: 50%;
         transform: translateX(-50%);
         width: 100px;

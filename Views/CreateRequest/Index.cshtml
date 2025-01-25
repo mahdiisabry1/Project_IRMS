@@ -13,17 +13,20 @@
 
 <!-- Main content -->
 <section class="content pt-3" style="height: 100% !important;">
+    <div id="successDiv" class="alert alert-success position-absolute" style="display: none; z-index: 100;">
+        <p>Form submitted successfully!</p>
+    </div>
+    <div id="errorDiv" class="alert alert-danger position-absolute" style="display: none; z-index: 100;">
+        <p>Error: </p>
+    </div>
     <div class="container-fluid">
         <!-- SELECT2 EXAMPLE -->
         <div class="card card-default">
             <div class="card-header border-bottom-0 pb-0  ">
                 <h3 class="card-title">Create Requests</h3>
-                <div class="card_view-header">
-                    <span class="close">×</span>
-                </div>
             </div>
             <!-- /.card-header -->
-            <form action="/CreateRequest/SubmitRequest" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+            <form enctype="multipart/form-data" id="myForm">
                 <div class="card-body pt-0 mt-0">
                     <div class="row">
                         <div class="col-12 col-sm-9">
@@ -32,7 +35,7 @@
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
                                         <label>First Name</label>
-                                        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Enter First Name" style="width:100%;  " required />
+                                        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Enter First Name" style="width:100%;  " />
                                     </div>
                                     <!-- /.form-group -->
                                 </div>
@@ -40,8 +43,7 @@
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
                                         <label>Last Name</label>
-                                        <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Enter Last Name" style="width: 100%;  " required />
-
+                                        <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Enter Last Name" style="width: 100%;  " />
                                     </div>
                                     <!-- /.form-group -->
                                 </div>
@@ -53,11 +55,6 @@
                                 <div class="col-12 col-sm-10">
                                     <div class="form-group">
                                         <label>University</label>
-                                        <!--<select class="form-control" id="university" name="university">
-                                        <option selected>Select University</option>
-                                        <option>National Institute of Buisness Management(NIBM)</option>
-                                        <option>SLIT</option>
-                                        </select>-->
                                         <input type="text"
                                                id="university"
                                                class="form-control w-100 searchInput"
@@ -84,13 +81,12 @@
                                     <!-- /.form-group -->
                                 </div>
                                 <!-- /.col -->
-
                             </div>
                             <div class="row">
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
                                         <label for="email">Personal Email</label>
-                                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email" required />
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email" />
                                     </div>
                                     <!-- /.form-group -->
                                 </div>
@@ -98,7 +94,7 @@
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
                                         <label for="contactNo">Contact No</label>
-                                        <input type="text" class="form-control" id="contactNo" name="contactNo" placeholder="Enter Contact Number" required />
+                                        <input type="text" class="form-control" id="contactNo" name="contactNo" placeholder="Enter Contact Number" />
                                     </div>
                                     <!-- /.form-group -->
                                 </div>
@@ -107,27 +103,21 @@
                             <div class="row">
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
-                                        <label>Degree</label>
                                         <label for="degree">Degree</label>
-                                        <select class="form-control" id="degree" name="degree">
-                                            <option selected>Select Degree</option>
-                                            <option>Bsc(Hons) Computer Science</option>
-                                            <option>B.Sc. in Applied Mathematics and Computing</option>
-                                        </select>
-                                        <!-- <div class="input-group">
-                                        <select class="form-control" id="degreeType" name="degreeType" style="max-width: 75px;">
-                                            <option selected disabled>Type</option>
-                                            <option value="BSc">BSc</option>
-                                            <option value="BA">BA</option>
-                                            <option value="BEng">BEng</option>
-                                            <option value="MSc">MSc</option>
-                                            <option value="MA">MA</option>
-                                            <option value="PhD">PhD</option>
-                                        </select>
-                                            <input type="text" class="form-control" id="degreeName" name="degreeName" placeholder="Degree Name" autocomplete="off" />
+                                        <div class="input-group">
+                                            <select class="form-control" id="degreeType" name="degreeType" style="max-width: 75px;">
+                                                <option selected disabled>Type</option>
+                                                <option value="BSc">BSc</option>
+                                                <option value="BA">BA</option>
+                                                <option value="BEng">BEng</option>
+                                                <option value="MSc">MSc</option>
+                                                <option value="MA">MA</option>
+                                                <option value="PhD">PhD</option>
+                                            </select>
+                                            <input type="text" class="form-control" id="degreeName" name="degreeName" placeholder="Degree Name" autocomplete="off"/>
                                         </div>
                                         <ul class="list-group" id="suggestions" style="max-height: 150px; overflow-y: auto; position: absolute; z-index: 1000; display: none;"></ul>
-                                        <small class="form-text text-muted">Example: BSc. Computer Science</small> -->
+                                        <input type="text" class="form-text text-decoration-none border-0 focus-none w-100" id="degree" name="degree" style="outline: none; cursor: default; font-size:15px;"  readonly/>
                                     </div>
                                     <!-- /.form-group -->
                                 </div>
@@ -205,7 +195,6 @@
                 </div>
             </form>
         </div>
-        <!-- /.card -->
     </div>
 </section>
 @section Scripts{

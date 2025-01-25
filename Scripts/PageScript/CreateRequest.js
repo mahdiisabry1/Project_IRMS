@@ -95,60 +95,82 @@ function updateProfileImage() {
     }
 }
 
+document.getElementById('myForm').addEventListener('submit', function (e) {
+    e.preventDefault(); // Prevent default form submission (page refresh)
 
-// Submit the form with CV bytes
-function submitForm() {
+    // Validate form fields
+    const firstName = document.getElementById('firstName').value.trim();
+    const lastName = document.getElementById('lastName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const contactNo = document.getElementById('contactNo').value.trim();
+    const degree = document.getElementById('degree').value.trim();
+    const gender = document.querySelector('input[name="gender"]:checked');
+    const university = document.getElementById('university').value.trim();
+    const cvFile = document.getElementById('cvUpload').files[0];
 
-    const formData = {
-        firstName: document.getElementById("firstName").value,
-        lastName: document.getElementById("lastName").value,
-        university: document.getElementById("university").value,
-        gender: document.querySelector('input[name="gender"]:checked').value,
-        email: document.getElementById("email").value,
-        contactNo: document.getElementById("contactNo").value,
-        degree: document.getElementById("degree").value,
-        division: document.getElementById("division").value,
-        cvBytes: cvBytes // Include the cvBytes
-    };
+    let isValid = true;
+    let errorMessage = '';
 
-    
-
-    // Send form data via AJAX
-    $.ajax({
-        url: "/CreateRequest/SubmitRequest",
-        type: "POST",
-        contentType: "application/json",
-        data: JSON.stringify(formData),
-        success: function (response) {
-   
-
-            if (response.success) {
-                alert("Request submitted successfully!");
-            } else {
-                alert(response.message || "Failed to submit the request.");
-            }
-        },
-        error: function (xhr, status, error) {
-            alert("Error submitting the form: " + error);
-        }
-    });
-
-}
-
-function validateForm() {
-    const cvUpload = document.getElementById('cvUpload');
-    const formMessage = document.getElementById('formMessage');
-
-    // chack if the cv is uploaded
-    if (!cvUpload.files.length) {
-        formMessage.textContent = 'Please upload your CV before submitting'
-        return false;
+    // Check if all required fields are filled
+    if (!firstName || !lastName || !email || !contactNo || !degree || !university || !gender) {
+        isValid = false;
+        errorMessage = 'Please fill in all required fields.';
+    } else if (!validateEmail(email)) {
+        isValid = false;
+        errorMessage = 'Invalid email address.';
+    } else if (!cvFile) {
+        isValid = false;
+        errorMessage = 'Please upload a CV.';
+    } else if (!validateCV(cvFile)) {
+        isValid = false;
+        errorMessage = 'Invalid CV file type. Only .pdf, .docx, .doc, and .txt are allowed.';
     }
 
-    // clear the message if validation passes
-    formMessage.textContent = '';
-    return true;
+    if (isValid) {
+        document.getElementById('formMessage').innerHTML = ''; // Clear any previous error message
+        submitForm(); // Call the function to submit the form
+    } else {
+        document.getElementById('formMessage').innerHTML = `<p class="text-danger">${errorMessage}</p>`;
+    }
+});
+
+// Validate Email
+function validateEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
 }
+
+// Validate CV File
+function validateCV(file) {
+    const allowedExtensions = ['pdf', 'docx', 'doc', 'txt'];
+    const fileExtension = file.name.split('.').pop().toLowerCase();
+    return allowedExtensions.includes(fileExtension);
+}
+
+function submitForm() {
+    const formData = new FormData(document.getElementById('myForm'));
+
+    // AJAX submission
+    $.ajax({
+        url: '/CreateRequest/SubmitRequest',
+        type: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (response) {
+            document.getElementById('errorDiv').style.display = 'none';
+            document.getElementById('successDiv').style.display = 'block';
+            // Clear the form
+            document.getElementById('myForm').reset();
+        },
+        error: function (xhr, status, error) {
+            document.getElementById('successDiv').style.display = 'none';
+            document.getElementById('errorDiv').innerHTML = '<p>Error: ' + error + '</p>';
+            document.getElementById('errorDiv').style.display = 'block';
+        }
+    });
+}
+
 
 const universities = [
     "University of Colombo",
@@ -241,3 +263,21 @@ document.addEventListener("click", function (e) {
 });
 
 
+// Function to update degreeName input and degree input
+function updateDegreeName() {
+    var degreeType = document.getElementById('degreeType').value;
+    var degreeName = document.getElementById('degreeName').value;
+
+    // Combine degreeType and degreeName
+    if (degreeType && degreeName) {
+        var concatenatedDegree = degreeType + '. ' + degreeName;
+
+
+        // Update degree input
+        document.getElementById('degree').value = concatenatedDegree;
+    }
+}
+
+// Event listeners for changes
+document.getElementById('degreeType').addEventListener('change', updateDegreeName);
+document.getElementById('degreeName').addEventListener('input', updateDegreeName);
