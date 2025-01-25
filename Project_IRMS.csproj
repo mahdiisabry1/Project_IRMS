@@ -235,6 +235,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\Bootstrap\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Success\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
