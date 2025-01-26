@@ -147,6 +147,8 @@ function validateCV(file) {
     return allowedExtensions.includes(fileExtension);
 }
 
+document.getElementById('successDiv').style.display = 'none';
+
 function submitForm() {
     const formData = new FormData(document.getElementById('myForm'));
 
@@ -170,6 +172,16 @@ function submitForm() {
         }
     });
 }
+
+// Select the "Later" button
+const laterButton = document.getElementById("laterButton");
+// Select the successDiv
+const successDiv = document.getElementById("successDiv");
+
+// Add an event listener to hide the successDiv on button click
+laterButton.addEventListener("click", () => {
+    successDiv.style.display = "none";
+});
 
 
 const universities = [
@@ -281,3 +293,4 @@ function updateDegreeName() {
 // Event listeners for changes
 document.getElementById('degreeType').addEventListener('change', updateDegreeName);
 document.getElementById('degreeName').addEventListener('input', updateDegreeName);
+

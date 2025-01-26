@@ -1,7 +1,14 @@
-﻿@{
+﻿@using System.Linq
+
+@{
     ViewBag.Title = "View Request";
 
     var interns = ViewBag.Interns as List<Project_IRMS.Models.Intern>;
+
+    if (interns != null)
+    {
+        interns.Reverse(); 
+    }
 
 }
 ﻿
@@ -35,7 +42,7 @@
             <div class="card-body">
                 <div class="row custom-row">
                     <!-- Cards start -->
-                    @if (interns != null)
+                    @if (interns != null && interns.Any())
                     {
                         foreach (var intern in interns)
                         {
@@ -57,14 +64,16 @@
                                             View
                                         </button>
                                         <button class="button edit" data-id="@intern.InternID" data-firstname="@intern.FirstName"
-                                                                    data-lastname="@intern.LastName"
-                                                                    data-degree="@intern.Degree"
-                                                                    data-university="@intern.University"
-                                                                    data-gender="@intern.Gender"
-                                                                    data-division="@intern.Division"
-                                                                    data-email="@intern.Email"  
-                                                                    data-contact="@intern.ContactNo"    
-                                                                    data-profileimage="@(intern.ProfileImage != null ? Convert.ToBase64String(intern.ProfileImage) : string.Empty)">Edit</button>
+                                                data-lastname="@intern.LastName"
+                                                data-degree="@intern.Degree"
+                                                data-university="@intern.University"
+                                                data-gender="@intern.Gender"
+                                                data-division="@intern.Division"
+                                                data-email="@intern.Email"
+                                                data-contact="@intern.ContactNo"
+                                                data-profileimage="@(intern.ProfileImage != null ? Convert.ToBase64String(intern.ProfileImage) : string.Empty)">
+                                            Edit
+                                        </button>
                                     </div>
                                     <div class="profile-pic">
                                         @if (intern.ProfileImage != null)
@@ -72,7 +81,7 @@
                                             string base64Image = "data:image/png;base64," + Convert.ToBase64String(intern.ProfileImage);
                                             <img src="@base64Image" alt="Profile picture of the intern" height="98" width="98" />
                                         }
-                                        else 
+                                        else
                                         {
                                             <img src="~/Images/Group 1000002769.png" alt="Default profile picture" height="98" width="98" />
                                         }
@@ -170,9 +179,10 @@
                 </div>
                 
                 <div class="modal-body">
-                    <div class="gradient-line"></div>
-                    <img alt="Profile picture" id="popupProfileImage" height="120" src="https://placehold.co/115x117" width="120" class="position-relative rounded-circle" style="left:50%; transform:translate(-50%); border:8px solid white; top:-18px;" />
+                   
                     <form action="/UpdateRequest/SubmitRequest" method="post" enctype="multipart/form-data">
+                        <div class="gradient-line"></div>
+                        <img alt="Profile picture" id="popupProfileImage" height="120" src="https://placehold.co/115x117" width="120" class="position-relative rounded-circle" style="left:50%; transform:translate(-50%); border:8px solid white; top:-18px;" />
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <label for="firstName" class="form-label">First Name</label>

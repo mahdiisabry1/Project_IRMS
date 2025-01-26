@@ -165,6 +165,7 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\createdIcon.png" />
     <Content Include="Images\femaleimg.png" />
     <Content Include="Images\Group 1000002769.png" />
     <Content Include="Images\IT_System_Logo.png" />
