@@ -145,21 +145,44 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
+
 // Add click event to "Edit" button (You may need to update this with actual functionality)
-document.querySelectorAll('.button.edit').forEach(editButton => {
-    editButton.addEventListener('click', (event) => {
-        const internId = event.target.getAttribute('data-id'); // Get the Intern ID
-        if (internId) {
-            const popupOverlay = document.getElementById('popupOverlayUpdate');
-            if (popupOverlay) {
-                // Display the popup
-                popupOverlay.style.display = 'block';
-                popupOverlay.setAttribute('data-intern-id', internId); // Store the ID
-                console.log('Editing Intern ID:', internId); // Debugging purpose
-            } else {
-                console.error('Popup overlay element not found.');
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.button.edit').forEach(editButton => {
+        editButton.addEventListener('click', function () {
+            // Get data attributes
+            const firstName = this.getAttribute('data-firstname') || '';
+            const lastName = this.getAttribute('data-lastname') || '';
+            const degree = this.getAttribute('data-degree') || '';
+            const university = this.getAttribute('data-university') || '';
+            const gender = this.getAttribute('data-gender');
+            const division = this.getAttribute('data-division') || '';
+            const email = this.getAttribute('data-email') || '';
+            const contact = this.getAttribute('data-contact') || '';
+
+            // Update modal content
+            document.getElementById('firstName').value = firstName;
+            document.getElementById('lastName').value = lastName;
+            document.getElementById('degree').value = degree;
+            document.getElementById('university').value = university;
+            document.getElementById('email').value = email;
+            document.getElementById('contactNo').value = contact;
+
+            // Update division dropdown
+            const divisionDropdown = document.getElementById('division');
+            divisionDropdown.value = division;
+
+            // Update gender radio buttons
+            if (gender === 'male') {
+                document.getElementById('male').checked = true;
+            } else if (gender === 'female') {
+                document.getElementById('female').checked = true;
             }
-        }
+
+            // Show modal
+            document.getElementById('popupOverlayUpdate').style.display = 'block';
+        });
     });
 });
 
@@ -233,8 +256,10 @@ const universities = [
     "Asia Pacific Institute of Information Technology (APIIT)"
 ];
 
-const searchInput = document.getElementById("searchInput");
+const searchInput = document.querySelector(".searchInput");
 const dropdownList = document.getElementById("dropdownList");
+
+console.log(searchInput)
 
 // Function to match from the start of each word
 function matchesQuery(word, query) {

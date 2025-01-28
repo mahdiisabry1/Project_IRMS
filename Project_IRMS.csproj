@@ -165,6 +165,7 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\createdIcon.png" />
     <Content Include="Images\femaleimg.png" />
     <Content Include="Images\Group 1000002769.png" />
     <Content Include="Images\IT_System_Logo.png" />
@@ -235,6 +236,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\Bootstrap\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Success\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -8,7 +8,7 @@ hr {
 
 /* Title Styling */
 h3 {
-    color: #474747 !important;
+    color: #474747;
     font-size: 25px !important;
     font-weight:500 !important;
 }
@@ -17,19 +17,17 @@ h3 {
 .card{
     border-radius: 10px;
 }
+
+
+
 /* Profile picture positioning */
 .box-card {
-    height: 80px;
-    position: relative;
-    overflow: visible;
-    background: linear-gradient(to bottom, #838383, #464646);
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
 
     .box-card img {
         position: absolute;
-        top: 30px;
         left: 50%;
         transform: translateX(-50%);
         width: 100px;
@@ -39,7 +37,11 @@ h3 {
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
-/* Styling the text*/ 
+
+
+
+
+/* Styling the text*/
 .text-secondary {
     margin-top: 50px;
 }
@@ -172,3 +174,4 @@ label {
     background-color:white;
 }
    
+
