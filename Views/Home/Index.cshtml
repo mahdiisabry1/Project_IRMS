@@ -1,31 +1,134 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿
+@{ ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+
+@section CustomPageStyles {
+
+    <link href="~/Content/Dashboard/Dashboard.css" rel="stylesheet" />
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+        <!-- Header Section with Statistics Cards -->
+        <div class="row mb-4">
+            <div class="col-md-6 text-end search-bar">
+                <input type="text" class="form-control" placeholder="Search...">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-6">
+                <div class="small-box bg-primary">
+                    <div class="inner">
+                        <h3>20</h3>
+                        <p>New Requests</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-download"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-6">
+                <div class="small-box bg-warning">
+                    <div class="inner">
+                        <h3>20</h3>
+                        <p>Approval Pending</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-hourglass-half"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-6">
+                <div class="small-box bg-success">
+                    <div class="inner">
+                        <h3>20</h3>
+                        <p>Approved Requests</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-6">
+                <div class="small-box bg-danger">
+                    <div class="inner">
+                        <h3>20</h3>
+                        <p>Rejected Requests</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-times-circle"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        <!-- Interns and Denied Items Section -->
+        <div class="row mt-3">
+            <div class="col-lg-6">
+                <div class="info-box">
+                    <span class="info-box-icon bg-primary elevation-1"><i class="fas fa-users"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">All Interns</span>
+                        <span class="info-box-number">20</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="info-box">
+                    <span class="info-box-icon bg-dark elevation-1"><i class="fas fa-ban"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">Denied Interns</span>
+                        <span class="info-box-number">20</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chart and Division Details -->
+        <div class="row mt-3">
+            <div class="col-lg-8">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="card-title">Total Number of Interns in Respective Divisions</h3>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="intern-chart" height="200"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="card-title">Division Details</h3>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item">AGS - Airport & Ground Service</li>
+                            <li class="list-group-item">CS - Cabin Services</li>
+                            <li class="list-group-item">CGO - Cargo</li>
+                            <li class="list-group-item">CO - Corporate Offices</li>
+                            <li class="list-group-item">ENG - Engineering</li>
+                            <li class="list-group-item">FIN - Finance</li>
+                            <li class="list-group-item">FO - Flight Operation</li>
+                            <li class="list-group-item">HR - Human Resources</li>
+                            <li class="list-group-item">IT - Information Technology</li>
+                            <li class="list-group-item">LP - Logistics & Properties</li>
+                            <li class="list-group-item">MAR - Marketing</li>
+                            <li class="list-group-item">RMP - Revenue Management & Planning</li>
+                            <li class="list-group-item">SO - Security Operations</li>
+                            <li class="list-group-item">SAC - SriLankan Aviation College</li>
+                            <li class="list-group-item">WSD - Worldwide Sales and Distribution</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+</section>
+
+
+@section Scripts {
+    <script src="~/Scripts/PageScript/Dashboard.js" type="text/javascript"></script>
+}

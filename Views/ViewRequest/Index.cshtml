@@ -1,0 +1,283 @@
+﻿@using System.Linq
+
+@{
+    ViewBag.Title = "View Request";
+
+    var interns = ViewBag.Interns as List<Project_IRMS.Models.Intern>;
+
+    if (interns != null)
+    {
+        interns.Reverse(); 
+    }
+
+}
+﻿
+@section CustomPageStyles {
+
+    <link href="~/Content/ViewRequest/ViewRequest.css" rel="stylesheet" />
+}
+
+
+<!-- Main content -->
+
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="card card-default">
+            <div class="card-header border-bottom-0">
+                <h3 class="card-title">View Requests</h3>
+                <div class="card-tools">
+                    <div class="search-container d-flex align-items-center">
+                        <input class="search-input" placeholder="Search Intern" type="text" />
+                        <i class="fas fa-search search-icon"></i>
+                        <i class="fas fa-filter filter-icon" onclick="toggleDropdown()"></i>
+                        <div class="dropdown-VR" id="dropdownVR">
+                            <a href="#">Option 1</a>
+                            <a href="#">Option 2</a>
+                            <a href="#">Option 3</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row custom-row">
+                    <!-- Cards start -->
+                    @if (interns != null && interns.Any())
+                    {
+                        foreach (var intern in interns)
+                        {
+                            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                                <div class="card card-details">
+                                    <div class="top-rectangle">
+                                        <button class="button view" data-id="@intern.InternID"
+                                                data-firstname="@intern.FirstName"
+                                                data-lastname="@intern.LastName"
+                                                data-degree="@intern.Degree"
+                                                data-university="@intern.University"
+                                                data-gender="@intern.Gender"
+                                                data-division="@intern.Division"
+                                                data-email="@intern.Email"
+                                                data-contact="@intern.ContactNo"
+                                                data-profileimage="@(intern.ProfileImage != null ? Convert.ToBase64String(intern.ProfileImage) : string.Empty)"
+                                                data-cv="@(intern.CV != null ? Convert.ToBase64String(intern.CV) : string.Empty)">
+
+                                            View
+                                        </button>
+                                        <button class="button edit" data-id="@intern.InternID" data-firstname="@intern.FirstName"
+                                                data-lastname="@intern.LastName"
+                                                data-degree="@intern.Degree"
+                                                data-university="@intern.University"
+                                                data-gender="@intern.Gender"
+                                                data-division="@intern.Division"
+                                                data-email="@intern.Email"
+                                                data-contact="@intern.ContactNo"
+                                                data-profileimage="@(intern.ProfileImage != null ? Convert.ToBase64String(intern.ProfileImage) : string.Empty)">
+                                            Edit
+                                        </button>
+                                    </div>
+                                    <div class="profile-pic">
+                                        @if (intern.ProfileImage != null)
+                                        {
+                                            string base64Image = "data:image/png;base64," + Convert.ToBase64String(intern.ProfileImage);
+                                            <img src="@base64Image" alt="Profile picture of the intern" height="98" width="98" />
+                                        }
+                                        else
+                                        {
+                                            <img src="~/Images/Group 1000002769.png" alt="Default profile picture" height="98" width="98" />
+                                        }
+                                        <div class="status-icon">
+                                            <i class="fas fa-times-circle"></i>
+                                        </div>
+                                    </div>
+                                    <h2>@intern.FirstName @intern.LastName</h2>
+                                    <p>@intern.Degree - @intern.University</p>
+                                    <hr class="hr" />
+                                    <div class="division">@intern.Division</div>
+                                </div>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <p>No interns found.</p>
+                    }
+                    <!-- Cards end -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<div class="popup-overlay" id="popupOverlay">
+    <div class="card_view w-50">
+        <div class="card_view-header">
+            <h2>Request Details</h2>
+            <span class="close">×</span>
+        </div>
+        <div class="gradient-line"></div>
+        <form action="/ViewRequest/SubmitRequest" method="post" enctype="multipart/form-data" id="requestForm">
+            <div class="card_view-body">
+                <div class="profile">
+                    <img alt="Profile picture" id="popupProfileImage" height="120" src="https://placehold.co/115x117" width="120" />
+                    <div class="profile-info"> 
+                        <h3>
+                            <span id="popupFirstName">Wimukthi</span>
+                            <span id="popupLastName">Manchanayaka</span>
+                        </h3>
+
+                        <p id="popupDegreeDivision">
+                            <span id="popupDegree">Degree Name</span> / <span id="popupDivision">Division Name</span>
+                        </p>
+                        <a href="#" id="editProfileLink">Edit Profile</a>
+                    </div>
+                </div>
+                <div class="details">
+                    <div class="info">
+                        <p id="popupRefNo"></p>
+                        <p><i class="fas fa-graduation-cap"></i><span id="popupUniversity"> National Institute of Business Management</span></p>
+                        <p><i class="fas fa-phone"></i><span id="popupGender"> xxx</span></p>
+                        <p><i class="fas fa-phone"></i><span id="popupContactNo"> 0765630062</span></p>
+                        <p><i class="fas fa-envelope"></i><span id="popupEmail"> wimukthimanchanayaka@gmail.com</span></p>
+                    </div>
+                    <a class="view-cv" href="#" id="viewCVLink" target="_blank">View CV</a>
+                </div>
+                <div class="horizontal-line"></div>
+                <div class="card_view-footer">
+                    <button type="submit">Send</button>
+                </div>
+            </div>
+            <!-- Hidden Inputs -->
+            <input type="hidden" id="hiddenID" name="id" />
+            <input type="hidden" id="hiddenFirstName" name="firstName" />
+            <input type="hidden" id="hiddenLastName" name="lastName" />
+            <input type="hidden" id="hiddenUniversity" name="university" />
+            <input type="hidden" id="hiddenGender" name="gender" />
+            <input type="hidden" id="hiddenContactNo" name="contactNo" />
+            <input type="hidden" id="hiddenEmail" name="email" />
+            <input type="hidden" id="hiddenDegree" name="degree" />
+            <input type="hidden" id="hiddenDivision" name="division" />
+            <input type="hidden" id="hiddenProfileImage" name="profileImage" />
+            <input type="hidden" id="hiddenCV" name="cv" />
+        </form>
+    </div>
+</div>
+
+
+
+@*// Edit Interns Section*@
+<div class="update-popup-overlay popup-overlay" style="display:none" id="popupOverlayUpdate">
+    <div class="d-flex justify-content-center align-items-center h-100 w-100">
+        <div class="visible-container" style="background:white; width:75%;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div>
+                        <h5 class="modal-title">Update Profile Details</h5>
+                    </div>
+                    <div onclick="closePopup()" style="cursor:pointer;">X</div>
+                </div>
+                
+                <div class="modal-body">
+                    <form action="/UpdateRequest/SubmitRequest" method="post" enctype="multipart/form-data">
+                        <div class="gradient-line"></div>
+                        <img alt="Profile picture" id="popupProfileImage" height="120" src="https://placehold.co/115x117" width="120" class="position-relative rounded-circle" style="left:50%; transform:translate(-50%); border:8px solid white; top:-18px;" />
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="firstName" class="form-label">First Name</label>
+                                <input type="text" class="form-control" id="firstName" name="FirstName" value="Wimukthi">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="lastName" class="form-label">Last Name</label>
+                                <input type="text" class="form-control" id="lastName" name="LastName" value="LastName">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <div>
+                                    <label for="university" class="form-label">University</label>
+                                </div>
+                                <div class="w-100 position-relative">
+                                    <input type="text"
+                                           id="university"
+                                           class="form-control w-100 searchInput"
+                                           name="University"
+                                           value="University"
+                                           autocomplete="off" />
+                                    <ul id="dropdownList" class="list-group position-absolute w-100" style="z-index: 1000; display: none;"></ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Gender</label>
+                                <div class="d-flex">
+                                    <div class="form-check me-3">
+                                        <input class="form-check-input" type="radio" name="Gender" id="male" value="Male">
+                                        <label class="form-check-label" for="male">Male</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="Gender" id="female" value="Female">
+                                        <label class="form-check-label" for="female">Female</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="email" class="form-label">Personal Email</label>
+                                <input type="email" class="form-control" id="email" name="Email" value="Email">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="contactNo" class="form-label">Contact No</label>
+                                <input type="tel" class="form-control" id="contactNo" name="ContactNo" placeholder="ContactNo">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <div>
+                                    <label for="degree" class="form-label">Degree</label>
+                                </div>
+                                <div class="w-100 p-2">
+                                    <div class="w-100 position-relative">
+                                        <input type="text"
+                                               id="degree"
+                                               class="form-control w-100"
+                                               name="Degree"
+                                               value=""
+                                               autocomplete="off" />
+                                        <ul id="dropdownListDegree" class="list-group position-absolute w-100" style="z-index: 1000; display: none;"></ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div>
+                                    <label for="division" class="form-label">Division</label>
+                                </div>
+                                <div class="w-100 p-2">
+                                    <div class="w-100 position-relative">
+                                        <select id="division" class="form-control w-100" name="Division">
+                                            <option value="IT">IT</option>
+                                            <option value="Division B">Division B</option>
+                                            <option value="division c">Division C</option>
+                                            <option value="division d">Division D</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-end">
+                            <button type="submit" class="btn btn-primary">Update</button>
+                        </div>
+                    </form>
+                </div>
+                    
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    <script src="~/Scripts/PageScript/ViewRequest.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+}

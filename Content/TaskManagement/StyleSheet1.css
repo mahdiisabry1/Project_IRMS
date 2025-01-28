@@ -1,0 +1,12 @@
+﻿.card-header {
+    border-bottom: 2px solid #ccc; /* Adds a gray line below the header */
+}
+
+.card {
+    border: none; /* Removes the border around the card */
+}
+
+/* Optional: Remove background color if necessary */
+.card-primary {
+    background-color: transparent; /* Removes any default background color */
+}

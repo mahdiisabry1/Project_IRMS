@@ -45,7 +45,23 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>packages\iTextSharp.5.5.13.3\lib\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Office.Interop.Word.15.0.4797.1004\lib\net20\Microsoft.Office.Interop.Word.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="PdfSharp, Version=1.32.3057.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>packages\PDFsharp.1.32.3057.0\lib\net20\PdfSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp.Charting, Version=1.32.3057.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>packages\PDFsharp.1.32.3057.0\lib\net20\PdfSharp.Charting.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -102,6 +118,9 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Tesseract, Version=3.0.2.0, Culture=neutral, PublicKeyToken=ebeb3d86bef60cbe, processorArchitecture=MSIL">
+      <HintPath>packages\Tesseract.3.0.2.0\lib\net451\Tesseract.dll</HintPath>
+    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -120,9 +139,12 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ApprovedRequestController.cs" />
     <Compile Include="Controllers\CreateRequestController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\TaskManagementController.cs" />
+    <Compile Include="Controllers\ViewRequestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -130,23 +152,51 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\adminlte\adminlte.min.css" />
+    <Content Include="Content\ApprovedRequest\ApprovedRequest.css" />
     <Content Include="Content\CreateRequest\CreateRequest.css" />
+    <Content Include="Content\Dashboard\Dashboard.css" />
+    <Content Include="Content\Dropzone\dropzone.min.css" />
     <Content Include="Content\fontawesome\all.min.css" />
+    <Content Include="Content\Login\Login.css" />
     <Content Include="Content\MainCSS\Site.css" />
     <Content Include="Content\overlayScrollbars\OverlayScrollbars.min.css" />
+    <Content Include="Content\TaskManagement\StyleSheet1.css" />
+    <Content Include="Content\ViewRequest\ViewRequest.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\createdIcon.png" />
+    <Content Include="Images\femaleimg.png" />
     <Content Include="Images\Group 1000002769.png" />
+    <Content Include="Images\IT_System_Logo.png" />
+    <Content Include="Images\LOGIN_Bg.png" />
     <Content Include="Images\Logo.png" />
+    <Content Include="Images\Logo1.png" />
     <Content Include="Images\Logo2.png" />
     <Content Include="Images\LogoIcon.png" />
+    <Content Include="Images\profilepic.png" />
     <Content Include="Images\Srilankan-white 1.png" />
     <Content Include="Images\Srilankan-white-logo-part.png" />
     <Content Include="Images\Srilankan-white-logo-part2.png" />
     <Content Include="Scripts\AdminLTE\adminlte.min.js" />
+    <Content Include="Scripts\Chartjs\Chart.min.js" />
+    <Content Include="Scripts\PageScript\ApprovedRequest.js" />
+    <Content Include="Scripts\PageScript\Dashboard.js" />
+    <Content Include="x64\liblept172.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="x64\libtesseract304.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="x86\liblept172.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="x86\libtesseract304.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Scripts\JqueryMaster\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\Bootstrap\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\Dropzone\dropzone.min.js" />
     <Content Include="Scripts\JqueryMaster\jquery-3.4.1.js" />
     <Content Include="Scripts\JqueryMaster\jquery-3.4.1.min.js" />
     <Content Include="Scripts\JqueryMaster\jquery-3.4.1.slim.js" />
@@ -159,6 +209,9 @@
     <Content Include="Scripts\JqueryMaster\modernizr-2.8.3.js" />
     <Content Include="Scripts\Jquery\jquery.min.js" />
     <Content Include="Scripts\Jquery\jquery.overlayScrollbars.min.js" />
+    <Content Include="Scripts\MainJS\Site.js" />
+    <Content Include="Scripts\PageScript\CreateRequest.js" />
+    <Content Include="Scripts\PageScript\ViewRequest.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -175,11 +228,15 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\CreateRequest\Index.cshtml" />
     <Content Include="Views\TaskManagement\Index.cshtml" />
+    <Content Include="Views\ViewRequest\Index.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\ApprovedRequest\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Bootstrap\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Success\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -189,6 +246,16 @@
     <None Include="packages.config" />
     <Content Include="Scripts\JqueryMaster\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\JqueryMaster\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Project_IRMS.Buisness\Project_IRMS.Buisness.csproj">
+      <Project>{de4fee3d-d119-45fa-81ad-20702a1d591b}</Project>
+      <Name>Project_IRMS.Buisness</Name>
+    </ProjectReference>
+    <ProjectReference Include="Project_IRMS.Models\Project_IRMS.Models.csproj">
+      <Project>{ae826ec1-89cd-4fff-b612-c7d7affe70ea}</Project>
+      <Name>Project_IRMS.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

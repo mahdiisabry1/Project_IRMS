@@ -1,174 +1,177 @@
-﻿* {
-    font-family: 'Inter', sans-serif;
+﻿
+
+hr {
+    border: none; /* Remove default border */
+    height: 5px; /* Set the height of the <hr> */
+    background-color: #474747; /* Set the color to red */
 }
 
-
-
-
-
-.custom-title {
-    font-weight: 600; /* Semibold */
+/* Title Styling */
+h3 {
     color: #474747;
-    margin-bottom: 10px;
+    font-size: 25px !important;
+    font-weight:500 !important;
+}
+
+
+.card{
+    border-radius: 10px;
 }
 
 
 
-label {
-    font-size: 16px;
-    font-weight: normal; /* Regular font weight */
+/* Profile picture positioning */
+.box-card {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
-input.form-control, select.form-select {
-    height: 50px;
-    border: 1px solid #767575; /* Stroke color */
-    border-radius: 8px; /* Rounded edges */
-}
-
-::placeholder, .form-select {
-    font-weight: normal; /* Regular font weight */
-    font-size: 16px; /* Font size 16px */
-}
-
-.form-control, .form-select {
-    background-color: #F2F5FA;
-}
-
-
-
-/* Container style for the gender buttons */
-.gender-group {
-    display: flex; /* Align buttons horizontally */
-    border: 1px solid #767575; /* Stroke color */
-    border-radius: 8px; /* Rounded corners for the entire group */
-    overflow: hidden; /* Ensure rounded edges work correctly */
-    background-color: #f7f9fc; /* Background color matching the design */
-}
-
-/* Common styles for the gender buttons */
-.gender-btn {
-    flex: 1; /* Equal width for both buttons */
-    text-align: center; /* Center align the text */
-    padding: 12px 0; /* Add vertical spacing */
-    font-size: 16px; /* Font size */
-    color: #767575; /* Default font color */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions */
-    background-color: transparent; /* Transparent by default */
-    border: none; /* Remove border around individual buttons */
-}
-
-    /* Vertical dividing line */
-    .gender-btn:last-child {
-        border-left: 1px solid #767575; /* Add a vertical dividing line */
+    .box-card img {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border: 3px solid #fff;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
-/* Rounded corners for the Male button */
-.left-rounded {
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
-}
-
-/* Rounded corners for the Female button */
-.right-rounded {
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
-}
 
 
-/* Active state for selected buttons */
-.btn-check:checked + .gender-btn {
-    background: linear-gradient(to right, #324AAB, #5188D6); /* Gradient background */
-    color: white; /* White text for selected state */
-}
 
 
-@media (max-width: 768px) {
-    .col-md-7, .col-md-5 {
-        width: 100%;
-    }
-}
-
-
-/* Entire Card */
-
-/* For the Profile Image */
-.header img {
-    width: 98px;
-    height: 98px;
-    bottom: -49px;
-    left: 50%;
-    transform: translateX(-50%);
-    border: 3px solid #fff;
-    border-radius: 50%; /* Ensure the profile image itself is round */
-}
-
-/* For the Upload CV Heading */
-.content h2 {
+/* Styling the text*/
+.text-secondary {
     margin-top: 50px;
 }
 
-/* Rounded container with hidden overflow */
-.rounded-container {
-    border-radius: 10px; /* Ensures the container has rounded corners */
-    overflow: hidden; /* Ensures that content inside respects the rounded corners */
-}
-
-/* Upload Card Styling */
-.upload-card {
-    width: 100%;
-    border-radius: 10px !important; /* Ensures the card's edges are rounded */
-    overflow: hidden; /* Ensures content inside respects the rounded corners */
-    margin-left: 15px;
-}
-
-/* Header Section */
-.header {
-    height: 80px;
-    background: linear-gradient(to bottom, #838383, #464646);
-    position: relative;
-    border-top-left-radius: 10px !important;
-    border-top-right-radius: 10px !important;
-}
-
-/* Upload Box Styling */
+/* Upload box adjustments */
 .upload-box {
-    display: flex; /* Enable Flexbox */
-    flex-direction: column; /* Stack the icon and text vertically */
-    justify-content: center; /* Vertically center the content */
-    align-items: center; /* Horizontally center the content */
-    height: 120px; /* Reduced height of the box */
-    border-radius: 10px; /* Rounded corners */
-    border: 2px dashed #6c757d !important;
-    padding: 20px; /* Adjust padding as needed */
-    margin-left: 0;
+    border: 3px dashed #6c757d; 
+    padding: 20px;
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f9fa;
     cursor: pointer;
+    margin: 10px auto;  /*Center the box horizontally */
 }
-
-
+.dz-message {
+    color: #6c757d;
+    font-size: 16px;
+}
+    .upload-box i {
+        font-size: 1.5rem; 
+        color: #6c757d; /* Match the icon color to the text color*/ 
+        margin-bottom: 0 !important; /* Reduce the gap between the icon and the text */
+    }
 
     .upload-box p {
-        font-size: 1rem; /* Adjust text size */
-        margin-top: 10px; /* Space between icon and text */
+        font-size: 1rem; /* Adjust font size */
+        color: #6c757d;  /*Ensure text color matches */
+        margin-top: 35px;
     }
-
-
-
-
-.create-request-btn {
-    background: linear-gradient(90deg, #5188D6, #324AAB); /* Gradient from #5188D6 to #324AAB */
-    width: 290px; /* Button width */
-    height: 39px; /* Button height */
-    border-radius: 8px; /* Rounded edges */
-    color: white; /* White text color */
-    border: none; /* Remove default border */
-    font-size: 16px; /* Optional: adjust font size */
-    transition: none;
+/* Styling for uploaded files */
+.uploaded-file {
+    position: relative;
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px 15px;
+    margin-top: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-    .create-request-btn:hover, .create-request-btn:focus, .create-request-btn:active {
-        background: linear-gradient(90deg, #5188D6, #324AAB); /* Keep the same gradient on hover/focus/click */
-        color: white; /* Keep text color white */
-        outline: none; /* Remove focus outline */
-        box-shadow: none; /* Remove box-shadow on active */
+    .uploaded-file i {
+        color: #dc3545;
+        font-size: 20px;
+        cursor: pointer;
     }
+
+    .uploaded-file .file-info {
+        font-size: 14px;
+        color: #333;
+    }
+
+        .uploaded-file .file-info span {
+            font-weight: bold;
+        }
+
+
+
+/*
+ Input, Select, and Gender Buttons */
+.form-control,
+.btn-group-toggle .btn,
+select {
+    border: 1px solid #767575;  /*Stroke color */
+    border-radius: 8px;  /*Rounded edges */
+    background-color: #F2F5FA; /* Background color */
+    padding: 0.5rem; /* Padding for consistency */
+    color: #333; /* Text color */
+    height: 50px;  /*Uniform height*/ 
+}
+
+    /* Focus State */
+    .form-control:focus,
+    select:focus,
+    .btn-group-toggle .btn:focus {
+        border-color: #1570CF; /* Change stroke color on focus */
+        outline: none; /* Remove outline */
+    }
+/*
+ Gender button styles */
+.btn-group-toggle .btn {
+    border: 1px solid #767575; /* Stroke color */
+    border-radius: 8px;  /*Round edge*/ 
+    background-color: #F2F5FA;  /*Inside color */
+    color: #767575; /* Text color */
+}
+
+ /*    Active state for selected gender buttons */
+    .btn-group-toggle .btn.active,
+    .btn-group-toggle .btn:active {
+        background: linear-gradient(to right, #324AAB, #5188D6);  /*Gradient background */
+        color: white; /* Text color when active */
+        border-color: #5188D6;  /*Border color on active state */
+    }
+
+     /*Focus state: Change border color*/ 
+    .btn-group-toggle .btn:focus {
+        border-color: #1570CF; /* Border color on focus */
+        outline: none;  /*Remove default outline */
+    }
+/* Label Styling */
+label {
+    font-size: 16px !important;
+    font-weight: 400 !important;
+   
+}
+
+/*
+ Custom button style*/
+.btn-custom {
+    background: linear-gradient(to right, #324AAB, #5188D6);
+    color: white; /*Button text color*/
+    width: 320px; /* Button width */
+    height: 40px; /*Button height*/
+    border: none; /* Remove border*/
+    border-radius: 8px; /* Rounded corners for the button */
+    justify-content: right !important;
+    margin-right: 60px;
+}
+    .btn-custom:hover {
+       
+        color: white;  /*Ensure text color remains white on hover 
+*/    }
+.card-footer{
+    background-color:white;
+}
+   
+

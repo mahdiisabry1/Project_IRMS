@@ -1,24 +1,81 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿/* Default state */
+/*default side bar text and colour and when hover sidebar colour*/
+/*.sidebar .nav-link {
+    color: white;
+   
+}/*
+
+    .sidebar .nav-link i,
+    .sidebar .nav-link p {
+        color: white;
+        font-weight:bold;
+        font-size:large;
+        margin-top: 10px;
+       
+    }
+
+    /* Hover or active state */
+    /*.sidebar .nav-link:hover,
+    .sidebar .nav-link.active {
+        color: #007BFF;*/ /* Blue */
+    /*}
+
+        .sidebar .nav-link:hover i,
+        .sidebar .nav-link:hover p,
+        .sidebar .nav-link.active i,
+        .sidebar .nav-link.active p {
+            color: #007BFF;*/ /* Blue */
+        /*}*/
+        /**/
+/*sidebar */
+#accordionSidebar {
+    background: linear-gradient(to bottom, #1D76B5, #09325E);
+    border-top-right-radius: 40px; /* Round the top-right corner */
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+.sidebar .nav-link i,
+.sidebar .nav-link p {
+  
+    font-weight:bold;
+    font-size: large;
+    margin-top: 10px;
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
+
+
+
+/*navbar top right coner */
+.text-container {
+    display: flex;
+    flex-direction: column;
+    text-align:center;
+    line-height: 1.2; /* Adjust spacing between lines */
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+.img-profile {
+    width: 40px; /* Set a fixed width for the image */
+    height: 40px; /* Set a fixed height for the image */
+    object-fit: cover; /* Ensure consistent sizing for all images */
 }
+/*navbar top right coner */
+
+/*sidebar footer company logo*/
+.sidebar-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    border-top-right-radius: 30px; /* Round the top-right corner */
+    box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.2); /* Top shadow effect */
+    border-top: 2px solid rgba(0, 0, 0, 0.2); /* Top border for footer */
+    
+}
+    .sidebar-footer img {
+        width: 200px;
+        height: 27px;
+        object-fit: contain;
+       
+        
+    }
+/**/
+

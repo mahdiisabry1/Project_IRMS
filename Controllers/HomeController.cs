@@ -26,5 +26,18 @@ namespace Project_IRMS.Controllers
 
             return View();
         }
+
+        // Logout action to clear session and redirect to login page
+        public ActionResult Logout()
+        {
+            // Clear session
+            Session.Clear();
+
+            // Optionally, also abandon the session
+            Session.Abandon();
+
+            // Redirect to the Login page
+            return RedirectToAction("Index", "Login");
+        }
     }
 }
