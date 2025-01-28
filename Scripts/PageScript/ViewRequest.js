@@ -148,36 +148,41 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 // Add click event to "Edit" button (You may need to update this with actual functionality)
-document.querySelectorAll('.button.edit').forEach(editButton => {
-    editButton.addEventListener('click', function () {
-        //const internID = this.getAttribute('data-id');
-        const firstName = this.getAttribute('data-firstname');
-        const lastName = this.getAttribute('data-lastname');
-        const degree = this.getAttribute('data-degree');
-        const university = this.getAttribute('data-university');
-        const gender = this.getAttribute('data-gender');
-        const division = this.getAttribute('data-division');
-        const email = this.getAttribute('data-email');
-        const contact = this.getAttribute('data-contact');
-        const profileImage = this.getAttribute('data-profileimage');
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.button.edit').forEach(editButton => {
+        editButton.addEventListener('click', function () {
+            // Get data attributes
+            const firstName = this.getAttribute('data-firstname') || '';
+            const lastName = this.getAttribute('data-lastname') || '';
+            const degree = this.getAttribute('data-degree') || '';
+            const university = this.getAttribute('data-university') || '';
+            const gender = this.getAttribute('data-gender');
+            const division = this.getAttribute('data-division') || '';
+            const email = this.getAttribute('data-email') || '';
+            const contact = this.getAttribute('data-contact') || '';
 
-        // Update modal content
-        document.getElementById('popupProfileImage').src = profileImage ? `data:image/png;base64,${profileImage}` : 'https://placehold.co/115x117';
-        document.getElementById('firstName').value = firstName || '';
-        document.getElementById('lastName').value = lastName || '';
-        document.getElementById('degree').value = degree || '';
-        document.getElementById('university').value = university || '';
-        document.getElementById('division').value = division || '';
-        document.getElementById('email').value = email || '';
-        document.getElementById('contactNo').value = contact || '';
-        if (gender === 'Male') {
-            document.getElementById('male').checked = true;
-        } else if (gender === 'Female') {
-            document.getElementById('female').checked = true;
-        }
+            // Update modal content
+            document.getElementById('firstName').value = firstName;
+            document.getElementById('lastName').value = lastName;
+            document.getElementById('degree').value = degree;
+            document.getElementById('university').value = university;
+            document.getElementById('email').value = email;
+            document.getElementById('contactNo').value = contact;
 
-        // Show the modal
-        document.getElementById('popupOverlayUpdate').style.display = 'block';
+            // Update division dropdown
+            const divisionDropdown = document.getElementById('division');
+            divisionDropdown.value = division;
+
+            // Update gender radio buttons
+            if (gender === 'male') {
+                document.getElementById('male').checked = true;
+            } else if (gender === 'female') {
+                document.getElementById('female').checked = true;
+            }
+
+            // Show modal
+            document.getElementById('popupOverlayUpdate').style.display = 'block';
+        });
     });
 });
 

@@ -111,7 +111,7 @@
 
 
 <div class="popup-overlay" id="popupOverlay">
-    <div class="card_view">
+    <div class="card_view w-50">
         <div class="card_view-header">
             <h2>Request Details</h2>
             <span class="close">×</span>
@@ -179,7 +179,6 @@
                 </div>
                 
                 <div class="modal-body">
-                   
                     <form action="/UpdateRequest/SubmitRequest" method="post" enctype="multipart/form-data">
                         <div class="gradient-line"></div>
                         <img alt="Profile picture" id="popupProfileImage" height="120" src="https://placehold.co/115x117" width="120" class="position-relative rounded-circle" style="left:50%; transform:translate(-50%); border:8px solid white; top:-18px;" />
@@ -256,9 +255,8 @@
                                 <div class="w-100 p-2">
                                     <div class="w-100 position-relative">
                                         <select id="division" class="form-control w-100" name="Division">
-                                            <option value="">Select an option</option>
-                                            <option value="itDivision">IT</option>
-                                            <option value="division b">Division B</option>
+                                            <option value="IT">IT</option>
+                                            <option value="Division B">Division B</option>
                                             <option value="division c">Division C</option>
                                             <option value="division d">Division D</option>
                                         </select>
