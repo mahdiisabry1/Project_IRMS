@@ -165,10 +165,10 @@
 </div>
 
 
-
 @*// Edit Interns Section*@
 <div class="update-popup-overlay popup-overlay" style="display:none" id="popupOverlayUpdate">
-    <div class="d-flex justify-content-center align-items-center h-100 w-100">
+    <div class="d-flex justify-content-center align-items-center h-100 w-100" style="overflow:scroll;
+}">
         <div class="visible-container" style="background:white; width:75%;">
             <div class="modal-content">
                 <div class="modal-header">
@@ -181,7 +181,7 @@
                 <div class="modal-body">
                     <form action="/UpdateRequest/SubmitRequest" method="post" enctype="multipart/form-data">
                         <div class="gradient-line"></div>
-                        <img alt="Profile picture" id="popupProfileImage" height="120" src="https://placehold.co/115x117" width="120" class="position-relative rounded-circle" style="left:50%; transform:translate(-50%); border:8px solid white; top:-18px;" />
+                        <img alt="Profile picture" id="profileImage" height="120" src="https://placehold.co/115x117" width="120" class="position-relative rounded-circle" style="left:50%; transform:translate(-50%); border:8px solid white; top:-18px;" />
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <label for="firstName" class="form-label">First Name</label>

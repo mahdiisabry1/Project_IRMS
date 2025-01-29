@@ -147,11 +147,12 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-// Add click event to "Edit" button (You may need to update this with actual functionality)
+// Add click event to "Edit" button
 document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.button.edit').forEach(editButton => {
         editButton.addEventListener('click', function () {
             // Get data attributes
+
             const firstName = this.getAttribute('data-firstname') || '';
             const lastName = this.getAttribute('data-lastname') || '';
             const degree = this.getAttribute('data-degree') || '';
@@ -160,6 +161,9 @@ document.addEventListener('DOMContentLoaded', function () {
             const division = this.getAttribute('data-division') || '';
             const email = this.getAttribute('data-email') || '';
             const contact = this.getAttribute('data-contact') || '';
+            const internProfileaImage = 'data:image/png;base64,' + this.getAttribute('data-profileimage');
+
+            console.log(internProfileaImage)
 
             // Update modal content
             document.getElementById('firstName').value = firstName;
@@ -168,6 +172,15 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById('university').value = university;
             document.getElementById('email').value = email;
             document.getElementById('contactNo').value = contact;
+
+            //Update Profile Image
+            const profileImageElement = document.getElementById('profileImage');
+            if (internProfileaImage) {
+                profileImageElement.src = internProfileaImage;
+                profileImageElement.style.display = 'block';
+            } else {
+                profileImageElement.style.display = 'none'
+            }
 
             // Update division dropdown
             const divisionDropdown = document.getElementById('division');
