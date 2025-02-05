@@ -98,7 +98,6 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
 
-        //
         // Convert Base64 to Blob and handle errors
         try {
             const byteCharacters = atob(base64CV); // Decode Base64
@@ -206,23 +205,6 @@ function closePopup() {
         popupOverlay.style.display = 'none'; // Hide the popup
     }
 }
-
-//for cv view 
-// Function to dynamically set CV URL and ensure it opens in a new tab
-//document.getElementById('viewCVLink').addEventListener('click', function (event) {
-//    event.preventDefault(); // Prevent the default behavior
-
-//    const internCV = this.getAttribute('viewCVLink'); // Fetch the href (CV URL) dynamically
-//    if (internCV) {
-//        const link = document.createElement('a'); // Create a new anchor element
-//        link.href = internCV; // Set the href to the CV URL
-//        link.target = '_blank'; // Open the link in a new tab
-//        link.rel = 'noopener noreferrer'; // Enhance security by preventing tab hijacking
-//        link.click(); // Programmatically click the link
-//    } else {
-//        alert("No CV available to view.");
-//    }
-//});
 
 const universities = [
     "University of Colombo",
