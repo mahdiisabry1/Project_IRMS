@@ -6,6 +6,10 @@
     background-color: red;
 }*/
 
+::-webkit-scrollbar {
+    display: none;
+}
+
 .search-input-container {
     display: flex;
     align-items: center;

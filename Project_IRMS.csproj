@@ -144,6 +144,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\TaskManagementController.cs" />
+    <Compile Include="Controllers\UpdateRequestController.cs" />
     <Compile Include="Controllers\ViewRequestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -237,6 +238,7 @@
     <Folder Include="Content\Bootstrap\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Success\" />
+    <Folder Include="Views\UpdateRequest\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

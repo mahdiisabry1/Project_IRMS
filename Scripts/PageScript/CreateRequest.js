@@ -164,6 +164,23 @@ function submitForm() {
             document.getElementById('successDiv').style.display = 'block';
             // Clear the form
             document.getElementById('myForm').reset();
+            // Start the countdown timer
+            let countdown = 5;
+            const countdownElement = document.createElement('p');
+            countdownElement.id = 'countdown';
+            countdownElement.innerHTML = `Closing in ${countdown} seconds...`;
+            successDiv.appendChild(countdownElement);
+
+            const timer = setInterval(() => {
+                countdown--;
+                countdownElement.innerHTML = `Closing in ${countdown} seconds...`;
+
+                if (countdown <= 0) {
+                    clearInterval(timer);
+                    successDiv.style.display = 'none';
+                    successDiv.removeChild(countdownElement); // Remove the countdown element
+                }
+            }, 1000); // Update every second
         },
         error: function (xhr, status, error) {
             document.getElementById('successDiv').style.display = 'none';

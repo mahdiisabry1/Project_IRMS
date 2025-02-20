@@ -98,7 +98,6 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
 
-        //
         // Convert Base64 to Blob and handle errors
         try {
             const byteCharacters = atob(base64CV); // Decode Base64
@@ -147,11 +146,12 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-// Add click event to "Edit" button (You may need to update this with actual functionality)
+// Add click event to "Edit" button
 document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.button.edit').forEach(editButton => {
         editButton.addEventListener('click', function () {
             // Get data attributes
+
             const firstName = this.getAttribute('data-firstname') || '';
             const lastName = this.getAttribute('data-lastname') || '';
             const degree = this.getAttribute('data-degree') || '';
@@ -160,6 +160,9 @@ document.addEventListener('DOMContentLoaded', function () {
             const division = this.getAttribute('data-division') || '';
             const email = this.getAttribute('data-email') || '';
             const contact = this.getAttribute('data-contact') || '';
+            const internProfileaImage = 'data:image/png;base64,' + this.getAttribute('data-profileimage');
+
+            console.log(internProfileaImage)
 
             // Update modal content
             document.getElementById('firstName').value = firstName;
@@ -168,6 +171,15 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById('university').value = university;
             document.getElementById('email').value = email;
             document.getElementById('contactNo').value = contact;
+
+            //Update Profile Image
+            const profileImageElement = document.getElementById('profileImage');
+            if (internProfileaImage) {
+                profileImageElement.src = internProfileaImage;
+                profileImageElement.style.display = 'block';
+            } else {
+                profileImageElement.style.display = 'none'
+            }
 
             // Update division dropdown
             const divisionDropdown = document.getElementById('division');
@@ -193,23 +205,6 @@ function closePopup() {
         popupOverlay.style.display = 'none'; // Hide the popup
     }
 }
-
-//for cv view 
-// Function to dynamically set CV URL and ensure it opens in a new tab
-//document.getElementById('viewCVLink').addEventListener('click', function (event) {
-//    event.preventDefault(); // Prevent the default behavior
-
-//    const internCV = this.getAttribute('viewCVLink'); // Fetch the href (CV URL) dynamically
-//    if (internCV) {
-//        const link = document.createElement('a'); // Create a new anchor element
-//        link.href = internCV; // Set the href to the CV URL
-//        link.target = '_blank'; // Open the link in a new tab
-//        link.rel = 'noopener noreferrer'; // Enhance security by preventing tab hijacking
-//        link.click(); // Programmatically click the link
-//    } else {
-//        alert("No CV available to view.");
-//    }
-//});
 
 const universities = [
     "University of Colombo",
