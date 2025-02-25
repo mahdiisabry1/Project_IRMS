@@ -45,7 +45,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApprovedInternDetails.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="Common\CommonConfig.cs" />
     <Compile Include="Common\SqlServerHelper.cs" />
     <Compile Include="InternDetailsData.cs" />
