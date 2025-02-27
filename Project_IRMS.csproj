@@ -234,9 +234,7 @@
     <Content Include="Views\ApprovedRequest\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Content\Bootstrap\" />
-    <Folder Include="Models\" />
     <Folder Include="Views\Success\" />
     <Folder Include="Views\UpdateRequest\" />
   </ItemGroup>
