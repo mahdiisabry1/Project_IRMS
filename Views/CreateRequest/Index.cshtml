@@ -1,6 +1,8 @@
 ﻿@{
     ViewBag.Title = "Create Request";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var username = Session["Username"] as string;
+    var Role = Session["Role"] as string;
 }
 
 
@@ -25,9 +27,9 @@
                 <p class="mb-0">The Request has been created succefully</p>
                 <p class="">You can send it to the division now or later</p>
             </div>
-            <div class="">
+            <div class="d-flex align-items-center justify-content-center">
                 <button class="pr-3 pl-3 rounded bg-green border">Send</button>
-                <button  id="laterButton" class="pr-3 pl-3 rounded bg-red border">Later</button>
+                <button  id="laterButton" class="pr-3 pl-3 rounded bg-red border">Continue without sending</button>
             </div>
         </div>
     </div>
@@ -153,9 +155,40 @@
                                     <div class="form-group">
                                         <label for="division">Division</label>
                                         <select class="form-control" id="division" name="division">
-                                            <option selected>Select Division</option>
-                                            <option>IT</option>
-                                            <option>Division B</option>
+                                            @if (Role == "HR")
+                                            {
+                                                <option disabled>HR Division</option>
+                                                <option>AGS - Airport & Ground Service</option>
+                                                <option>CS - Cabin Service</option>
+                                                <option>CGO - Cargo</option>
+                                                <option>CO - Corporate Offices</option>
+                                                <option>ENG - Engineering</option>
+                                                <option>FIN - Finance</option>
+                                                <option>FO - Flight Operation</option>
+                                                <option>HR - Human Resource</option>
+                                                <option value="IT">IT - Information Technology</option>
+                                                <option>LP - Logistics and properties</option>
+                                                <option>MAR - Marketing</option>
+                                                <option>RMP - Revenue Management & Planning</option>
+                                                <option>SO - Security Operations</option>
+                                                <option>SAC - SriLankan Aviation College</option>
+                                                <option>WSD - Worldwide Sales and Distribution</option>
+                                            }
+                                            else if (Role == "IT")
+                                            {
+                                                <option disabled>IT Department</option>
+                                                <option>DT&ITBR - Digital Transformation & IT Business Relations</option>
+                                                <option>GDP&C - Graph Data Protection & Compliance</option>
+                                                <option>ITBS - IT Business System</option>
+                                                <option>ITO&SM - IT Operations & Services Management</option>
+                                                <option>ITPS&CS - IT Passenger Service & Cargo System</option>
+                                                <option>ITP&SI - IT Projects & System Integration</option>
+                                                <option>OHIT - Office of Head of Information Technology</option>
+                                            }
+                                            else
+                                            {
+                                                <option selected>Select Division</option>
+                                            }
                                         </select>
                                     </div>
                                     <!-- /.form-group -->
