@@ -1,19 +1,14 @@
-﻿﻿@{
+﻿@{
     ViewBag.Title = "Approved Request";
 
     var interns = ViewBag.Interns as List<Project_IRMS.Models.Intern>;
-
 }
-﻿
-@section CustomPageStyles {
 
+@section CustomPageStyles {
     <link href="~/Content/ApprovedRequest/ApprovedRequest.css" rel="stylesheet" />
 }
 
-
 <!-- Main content -->
-
-
 <section class="content">
     <div class="container-fluid">
         <div class="card card-default">
@@ -35,7 +30,7 @@
             <div class="card-body">
                 <div class="row custom-row">
                     <!-- Cards start -->
-                    @if (interns != null)
+                    @if (interns != null && interns.Any())
                     {
                         foreach (var intern in interns)
                         {
@@ -53,7 +48,6 @@
                                                 data-contact="@intern.ContactNo"
                                                 data-profileimage="@(intern.ProfileImage != null ? Convert.ToBase64String(intern.ProfileImage) : string.Empty)"
                                                 data-cv="@Convert.ToBase64String(intern.CV)">
-
                                             View
                                         </button>
                                         <button class="button edit" data-id="@intern.InternID">Edit</button>
@@ -91,8 +85,7 @@
     </div>
 </section>
 
-
-<!--popup for view-->
+<!-- Popup for view -->
 <div class="popup-overlay" id="popupOverlay">
     <div class="card_view">
         <div class="card_view-header">
@@ -109,7 +102,6 @@
                             <span id="popupFirstName">Wimukthi</span>
                             <span id="popupLastName">Manchanayaka</span>
                         </h3>
-
                         <p id="popupDegreeDivision">
                             <span id="popupDegree">Degree Name</span> / <span id="popupDivision">Division Name</span>
                         </p>
@@ -143,12 +135,11 @@
             <input type="hidden" id="hiddenDivision" name="division" />
             <input type="hidden" id="hiddenProfileImage" name="profileImage" />
             <input type="hidden" id="hiddenCV" name="cv" />
-
         </form>
     </div>
 </div>
 <!--end-->
-<!--popup for edit-->
+<!-- Popup for edit -->
 <div class="popup-overlay" id="popupOverlayEdit">
     <div class="card_view">
         <div class="card_view-header">
@@ -156,31 +147,30 @@
             <span class="close">×</span>
         </div>
         <div class="gradient-line"></div>
-        <form action="/ViewRequest/SubmitRequest" method="post" enctype="multipart/form-data" id="requestForm">
+        <form action="/ViewRequest/SubmitRequest" method="post" enctype="multipart/form-data" id="requestFormEdit">
             <div class="card_view-body">
                 <div class="profile">
-                    <img alt="Profile picture" id="popupProfileImage" height="120" src="https://placehold.co/115x117" width="120" />
+                    <img alt="Profile picture" id="popupProfileImageEdit" height="120" src="https://placehold.co/115x117" width="120" />
                     <div class="profile-info">
                         <h3>
-                            <span id="popupFirstName">Wimukthi</span>
-                            <span id="popupLastName">Manchanayaka</span>
+                            <span id="popupFirstNameEdit">Wimukthi</span>
+                            <span id="popupLastNameEdit">Manchanayaka</span>
                         </h3>
-
-                        <p id="popupDegreeDivision">
-                            <span id="popupDegree">Degree Name</span> / <span id="popupDivision">Division Name</span>
+                        <p id="popupDegreeDivisionEdit">
+                            <span id="popupDegreeEdit">Degree Name</span> / <span id="popupDivisionEdit">Division Name</span>
                         </p>
-                        <a href="#" id="editProfileLink">Edit Profile</a>
+                        <a href="#" id="editProfileLinkEdit">Edit Profile</a>
                     </div>
                 </div>
                 <div class="details">
                     <div class="info">
-                        <p id="popupRefNo"></p>
-                        <p><i class="fas fa-graduation-cap"></i><span id="popupUniversity"> National Institute of Business Management</span></p>
-                        <p><i class="fas fa-phone"></i><span id="popupGender"> xxx</span></p>
-                        <p><i class="fas fa-phone"></i><span id="popupContactNo"> 0765630062</span></p>
-                        <p><i class="fas fa-envelope"></i><span id="popupEmail"> wimukthimanchanayaka@gmail.com</span></p>
+                        <p id="popupRefNoEdit"></p>
+                        <p><i class="fas fa-graduation-cap"></i><span id="popupUniversityEdit"> National Institute of Business Management</span></p>
+                        <p><i class="fas fa-phone"></i><span id="popupGenderEdit"> xxx</span></p>
+                        <p><i class="fas fa-phone"></i><span id="popupContactNoEdit"> 0765630062</span></p>
+                        <p><i class="fas fa-envelope"></i><span id="popupEmailEdit"> wimukthimanchanayaka@gmail.com</span></p>
                     </div>
-                    <a class="view-cv" href="#" id="viewCVLink" target="_blank">View CV</a>
+                    <a class="view-cv" href="#" id="viewCVLinkEdit" target="_blank">View CV</a>
                 </div>
                 <div class="horizontal-line"></div>
                 <div class="card_view-footer">
@@ -188,18 +178,17 @@
                 </div>
             </div>
             <!-- Hidden Inputs -->
-            <input type="hidden" id="hiddenID" name="id" />
-            <input type="hidden" id="hiddenFirstName" name="firstName" />
-            <input type="hidden" id="hiddenLastName" name="lastName" />
-            <input type="hidden" id="hiddenUniversity" name="university" />
-            <input type="hidden" id="hiddenGender" name="gender" />
-            <input type="hidden" id="hiddenContactNo" name="contactNo" />
-            <input type="hidden" id="hiddenEmail" name="email" />
-            <input type="hidden" id="hiddenDegree" name="degree" />
-            <input type="hidden" id="hiddenDivision" name="division" />
-            <input type="hidden" id="hiddenProfileImage" name="profileImage" />
-            <input type="hidden" id="hiddenCV" name="cv" />
-
+            <input type="hidden" id="hiddenIDEdit" name="id" />
+            <input type="hidden" id="hiddenFirstNameEdit" name="firstName" />
+            <input type="hidden" id="hiddenLastNameEdit" name="lastName" />
+            <input type="hidden" id="hiddenUniversityEdit" name="university" />
+            <input type="hidden" id="hiddenGenderEdit" name="gender" />
+            <input type="hidden" id="hiddenContactNoEdit" name="contactNo" />
+            <input type="hidden" id="hiddenEmailEdit" name="email" />
+            <input type="hidden" id="hiddenDegreeEdit" name="degree" />
+            <input type="hidden" id="hiddenDivisionEdit" name="division" />
+            <input type="hidden" id="hiddenProfileImageEdit" name="profileImage" />
+            <input type="hidden" id="hiddenCVEdit" name="cv" />
         </form>
     </div>
 </div>

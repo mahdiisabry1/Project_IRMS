@@ -143,6 +143,7 @@
     <Compile Include="Controllers\CreateRequestController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\SentRequestController.cs" />
     <Compile Include="Controllers\TaskManagementController.cs" />
     <Compile Include="Controllers\ViewRequestController.cs" />
     <Compile Include="Global.asax.cs">
@@ -166,6 +167,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Images\femaleimg.png" />
+    <Content Include="Images\Group 1000002755.png" />
     <Content Include="Images\Group 1000002769.png" />
     <Content Include="Images\IT_System_Logo.png" />
     <Content Include="Images\LOGIN_Bg.png" />
@@ -230,11 +232,11 @@
     <Content Include="Views\ViewRequest\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\ApprovedRequest\Index.cshtml" />
+    <Content Include="Views\SentRequest\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Bootstrap\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

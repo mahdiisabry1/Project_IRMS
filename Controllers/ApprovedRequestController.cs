@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Web;
 using System.Web.Mvc;
 using Project_IRMS.Buisness;
 using Project_IRMS.Models;
@@ -23,7 +21,8 @@ namespace Project_IRMS.Controllers
             var tableName = Session["Tablename"]?.ToString();
             if (string.IsNullOrEmpty(tableName))
             {
-                return Json(new { success = false, message = "Table name is missing." }, JsonRequestBehavior.AllowGet);
+                ModelState.AddModelError("", "Table name is missing.");
+                return View(); // Return the view with an error message
             }
 
             // Fetch interns from the business layer
