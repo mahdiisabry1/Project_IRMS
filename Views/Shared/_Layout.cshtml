@@ -1,5 +1,5 @@
 ﻿@{ var username = Session["Username"];
-    var role = Session["Role"];
+    var role = Session["Role"] as string;
    
    
 
@@ -105,31 +105,45 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                <li class="nav-item ">
-                                    <a href="@Url.Action("Index","CreateRequest")" class="nav-link">
-                                        <i class="fa-solid fa-chevron-right nav-icon"></i>
-                                        <p> Create Requests</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="~/ViewRequest/Index" class="nav-link">
-                                        <i class="fa-solid fa-chevron-right nav-icon"></i>
-                                        <p>View Requests</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="~/ApprovedRequest/Index" class="nav-link">
-                                        <i class="fa-solid fa-chevron-right nav-icon"></i>
-                                        <p>Approved Requests</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../../index3.html" class="nav-link">
-                                        <i class="fa-solid fa-chevron-right nav-icon"></i>
-                                        <p>Sent Requests</p>
-                                    </a>
-                                </li>
+                                @if (role == "HR" || role == "IT")
+                                {
+                                    <li class="nav-item">
+                                        <a href="@Url.Action("Index","CreateRequest")" class="nav-link">
+                                            <i class="fa-solid fa-chevron-right nav-icon"></i>
+                                            <p>Create Requests</p>
+                                        </a>
+                                    </li>
+                                }
 
+                                @if (role == "HR" || role == "IT" || role == "DM")
+                                {
+                                    <li class="nav-item">
+                                        <a href="~/ViewRequest/Index" class="nav-link">
+                                            <i class="fa-solid fa-chevron-right nav-icon"></i>
+                                            <p>View Requests</p>
+                                        </a>
+                                    </li>
+                                }
+
+                                @if (role == "HR" || role == "IT")
+                                {
+                                    <li class="nav-item">
+                                        <a href="~/ApprovedRequest/Index" class="nav-link">
+                                            <i class="fa-solid fa-chevron-right nav-icon"></i>
+                                            <p>Approved Requests</p>
+                                        </a>
+                                    </li>
+                                }
+
+                                @if (role == "HR")
+                                {
+                                    <li class="nav-item">
+                                        <a href="/" class="nav-link">
+                                            <i class="fa-solid fa-chevron-right nav-icon"></i>
+                                            <p>Sent Requests</p>
+                                        </a>
+                                    </li>
+                                }
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -137,7 +151,6 @@
                                 <i class="nav-icon fa-solid fa-user"></i>
                                 <p>
                                     User Profiles
-
                                 </p>
                             </a>
                         </li>
