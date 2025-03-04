@@ -1,6 +1,9 @@
 ﻿
 @{ ViewBag.Title = "Dashboard";
-    Layout = "~/Views/Shared/_Layout.cshtml"; }
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var username = Session["username"] as string;
+    var role = Session["Role"] as string;
+    }
 
 
 @section CustomPageStyles {
@@ -105,21 +108,34 @@
                     </div>
                     <div class="card-body">
                         <ul class="list-group">
-                            <li class="list-group-item">AGS - Airport & Ground Service</li>
-                            <li class="list-group-item">CS - Cabin Services</li>
-                            <li class="list-group-item">CGO - Cargo</li>
-                            <li class="list-group-item">CO - Corporate Offices</li>
-                            <li class="list-group-item">ENG - Engineering</li>
-                            <li class="list-group-item">FIN - Finance</li>
-                            <li class="list-group-item">FO - Flight Operation</li>
-                            <li class="list-group-item">HR - Human Resources</li>
-                            <li class="list-group-item">IT - Information Technology</li>
-                            <li class="list-group-item">LP - Logistics & Properties</li>
-                            <li class="list-group-item">MAR - Marketing</li>
-                            <li class="list-group-item">RMP - Revenue Management & Planning</li>
-                            <li class="list-group-item">SO - Security Operations</li>
-                            <li class="list-group-item">SAC - SriLankan Aviation College</li>
-                            <li class="list-group-item">WSD - Worldwide Sales and Distribution</li>
+                            @if (role == "HR")
+                            {
+                                <li class="list-group-item">AGS - Airport & Ground Service</li>
+                                <li class="list-group-item">CS - Cabin Services</li>
+                                <li class="list-group-item">CGO - Cargo</li>
+                                <li class="list-group-item">CO - Corporate Offices</li>
+                                <li class="list-group-item">ENG - Engineering</li>
+                                <li class="list-group-item">FIN - Finance</li>
+                                <li class="list-group-item">FO - Flight Operation</li>
+                                <li class="list-group-item">HR - Human Resources</li>
+                                <li class="list-group-item">IT - Information Technology</li>
+                                <li class="list-group-item">LP - Logistics & Properties</li>
+                                <li class="list-group-item">MAR - Marketing</li>
+                                <li class="list-group-item">RMP - Revenue Management & Planning</li>
+                                <li class="list-group-item">SO - Security Operations</li>
+                                <li class="list-group-item">SAC - SriLankan Aviation College</li>
+                                <li class="list-group-item">WSD - Worldwide Sales and Distribution</li>
+                            }
+                            else if (role == "IT")
+                            {
+                                <li class="list-group-item">DT&ITBR - Digital Transformation & IT Business Relations</li>
+                                <li class="list-group-item">GDP&C - Graph Data Protection & Compliance</li>
+                                <li class="list-group-item">ITBS - IT Business System</li>
+                                <li class="list-group-item">ITO&SM - IT Operations & Services Management</li>
+                                <li class="list-group-item">ITPS&CS - IT Passenger Service & Cargo System</li>
+                                <li class="list-group-item">ITP&SI - IT Projects & System Integration</li>
+                                <li class="list-group-item">OHIT - Office of Head of Information Technology</li>
+                            }
                         </ul>
                     </div>
                 </div>

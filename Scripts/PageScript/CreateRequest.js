@@ -152,6 +152,10 @@ document.getElementById('successDiv').style.display = 'none';
 function submitForm() {
     const formData = new FormData(document.getElementById('myForm'));
 
+    // Store the CV and image values
+    const cvFile = document.getElementById('cvUpload').files[0];
+    const profileImage = document.getElementById('imageUpload').files[0];
+
     // AJAX submission
     $.ajax({
         url: '/CreateRequest/SubmitRequest',
@@ -162,8 +166,23 @@ function submitForm() {
         success: function (response) {
             document.getElementById('errorDiv').style.display = 'none';
             document.getElementById('successDiv').style.display = 'block';
-            // Clear the form
+
+            // Clear the form except for CV and image
             document.getElementById('myForm').reset();
+
+            // Restore the CV and image values
+            if (cvFile) {
+                const dataTransfer = new DataTransfer();
+                dataTransfer.items.add(cvFile);
+                document.getElementById('cvUpload').files = dataTransfer.files;
+            }
+
+            if (profileImage) {
+                const dataTransfer = new DataTransfer();
+                dataTransfer.items.add(profileImage);
+                document.getElementById('imageUpload').files = dataTransfer.files;
+            }
+
             // Start the countdown timer
             let countdown = 5;
             const countdownElement = document.createElement('p');
