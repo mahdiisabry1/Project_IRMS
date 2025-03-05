@@ -167,21 +167,20 @@ function submitForm() {
             document.getElementById('errorDiv').style.display = 'none';
             document.getElementById('successDiv').style.display = 'block';
 
-            // Clear the form except for CV and image
+            // Clear the form including for CV and image
             document.getElementById('myForm').reset();
 
-            // Restore the CV and image values
-            if (cvFile) {
-                const dataTransfer = new DataTransfer();
-                dataTransfer.items.add(cvFile);
-                document.getElementById('cvUpload').files = dataTransfer.files;
-            }
+            // Reset profile image preview
+            const profilePreview = document.getElementById('profileImage');
+            profilePreview.src = "~/Images/Group 1000002769.png"; // Reset to default image
 
-            if (profileImage) {
-                const dataTransfer = new DataTransfer();
-                dataTransfer.items.add(profileImage);
-                document.getElementById('imageUpload').files = dataTransfer.files;
-            }
+            // Clear CV file preview
+            const filePreviewContainer = document.getElementById('filePreviewContainer');
+            filePreviewContainer.innerHTML = ''; // Clear any preview content
+
+            // Clear validation states
+            document.querySelectorAll('.is-invalid').forEach(el => el.classList.remove('is-invalid'));
+            document.getElementById('formMessage').innerHTML = '';
 
             // Start the countdown timer
             let countdown = 5;

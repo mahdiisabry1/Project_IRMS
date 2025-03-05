@@ -14,31 +14,6 @@ document.addEventListener('click', function (event) {
     }
 });
 
-$(document).ready(function () {
-    $('#requestForm').on('submit', function (event) {
-        event.preventDefault(); // Prevent the default form submission
-
-        // Collect form data
-        var formData = new FormData(this);
-
-        // Send AJAX request
-        $.ajax({
-            url: '/ViewRequest/SubmitRequest', // The URL to submit the form to
-            type: 'POST',
-            data: formData,
-            processData: false, // Prevent jQuery from processing the data
-            contentType: false, // Prevent jQuery from setting contentType
-            success: function (response) {
-                // Display the response in the div
-                $('#responseMessage').html(response.message).show();
-            },
-            error: function (xhr, status, error) {
-                // Display the error message in the div
-                $('#responseMessage').html('Form submission failed: ' + error).show();
-            }
-        });
-    });
-});
 
 //----------------------------------------------------------------------------------------------------
 
