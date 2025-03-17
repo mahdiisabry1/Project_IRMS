@@ -15,7 +15,7 @@ namespace Project_IRMS.Buisness
 
         public ViewInternDetailsService()
         {
-            _dataAccess = new ViewInternDetails(); //connecting businesslayer with datalayer 
+            _dataAccess = new ViewInternDetails(); 
         }
         public List<Intern> GetAllInterns(string tablename)
         {
