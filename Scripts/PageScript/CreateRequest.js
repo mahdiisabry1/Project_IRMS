@@ -54,7 +54,6 @@ Dropzone.options.uploadBox = {
             }
         });
 
-
         // Event listener for file upload errors
         this.on("error", function (file, errorMessage) {
             console.log("File upload error:", errorMessage);  // Log error message
