@@ -179,11 +179,12 @@
                 </div>
                 
                 <div class="modal-body">
-                    <form action="/UpdateRequest/SubmitRequest" method="post" enctype="multipart/form-data">
+                    <form id="updateForm" action="/UpdateRequest/SubmitRequest" method="post" enctype="multipart/form-data">
                         <div class="gradient-line"></div>
                         <img alt="Profile picture" id="profileImage" height="120" src="https://placehold.co/115x117" width="120" class="position-relative rounded-circle" style="left:50%; transform:translate(-50%); border:8px solid white; top:-18px;" />
                         <div class="row mb-3">
                             <div class="col-md-6">
+                                <input type="text" class="hide" id="intern-id" name="InternID" value="123"  />
                                 <label for="firstName" class="form-label">First Name</label>
                                 <input type="text" class="form-control" id="firstName" name="FirstName" value="Wimukthi">
                             </div>
@@ -209,14 +210,14 @@
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Gender</label>
-                                <div class="d-flex">
-                                    <div class="form-check me-3">
-                                        <input class="form-check-input" type="radio" name="Gender" id="male" value="Male">
-                                        <label class="form-check-label" for="male">Male</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="Gender" id="female" value="Female">
-                                        <label class="form-check-label" for="female">Female</label>
+                                <div class="form-group">
+                                    <div class="btn-group btn-group-toggle w-100" data-toggle="buttons">
+                                        <label class="btn btn-outline-secondary">
+                                            <input type="radio" name="gender" id="male" autocomplete="off" /> Male
+                                        </label>
+                                        <label class="btn btn-outline-secondary">
+                                            <input type="radio" name="gender" id="female" autocomplete="off" value="Female"/> Female
+                                        </label>
                                     </div>
                                 </div>
                             </div>
@@ -266,6 +267,7 @@
                         </div>
                         <div class="text-end">
                             <button type="submit" class="btn btn-primary">Update</button>
+                            <button type="button" class="btn btn-warning">Delete</button>
                         </div>
                     </form>
                 </div>

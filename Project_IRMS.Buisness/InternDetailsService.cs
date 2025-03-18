@@ -15,5 +15,10 @@ namespace Project_IRMS.Buisness
         {
             _internData.InsertInternDetails(tableName, firstName, lastName, university, gender, email, contactNo, degree, division, profileImage, cv, status);
         }
+
+        public void UpdateInternDetails(string tablename, string internId, string firstName, string lastName, string university, string gender, string email, string contactNo, string degree, string division, string status)
+        {
+            _internData.UpdateInternDetails(tablename, internId, firstName, lastName, university, gender, email, contactNo, degree, division, status);
+        }
     }
 }

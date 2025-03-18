@@ -1,4 +1,5 @@
-﻿// Function to toggle the dropdown VR
+﻿
+// Function to toggle the dropdown VR
 function toggleDropdown() {
     const dropdown = document.getElementById('dropdownVR');
     dropdown.classList.toggle('show-dropdown-VR');
@@ -14,6 +15,25 @@ document.addEventListener('click', function (event) {
     }
 });
 
+
+$(document).ready(function () {
+    $("#updateForm").on("submit", function (e) {
+        e.preventDefault();
+        var formData = new FormData(this);
+
+        $.ajax({
+            url: "/UpdateRequest/SubmitRequest",
+            type: "POST",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (res) {
+                console.log("Form updated successfully");
+                alert("Form updated");
+            }
+        })
+    })
+})
 
 //----------------------------------------------------------------------------------------------------
 
@@ -154,6 +174,7 @@ document.addEventListener('DOMContentLoaded', function () {
         editButton.addEventListener('click', function () {
             // Get data attributes
 
+            const internId = this.getAttribute('data-id') || '';
             const firstName = this.getAttribute('data-firstname') || '';
             const lastName = this.getAttribute('data-lastname') || '';
             const degree = this.getAttribute('data-degree') || '';
@@ -167,6 +188,7 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log(internProfileaImage)
 
             // Update modal content
+            document.getElementById('intern-id').value = internId
             document.getElementById('firstName').value = firstName;
             document.getElementById('lastName').value = lastName;
             document.getElementById('degree').value = degree;
