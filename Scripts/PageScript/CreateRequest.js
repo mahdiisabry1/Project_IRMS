@@ -169,6 +169,10 @@ function submitForm() {
             // Clear the form including for CV and image
             document.getElementById('myForm').reset();
 
+            // Manually clear file inputs
+            document.getElementById('cvUpload').value = '';
+            document.getElementById('imageUpload').value = '';
+
             // Reset profile image preview
             const profilePreview = document.getElementById('profileImage');
             profilePreview.src = "~/Images/Group 1000002769.png"; // Reset to default image
