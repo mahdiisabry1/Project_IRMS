@@ -15,7 +15,6 @@ document.addEventListener('click', function (event) {
     }
 });
 
-
 $(document).ready(function () {
     $("#updateForm").on("submit", function (e) {
         e.preventDefault();
@@ -36,7 +35,6 @@ $(document).ready(function () {
 })
 
 //----------------------------------------------------------------------------------------------------
-
 document.addEventListener('DOMContentLoaded', function () {
     // Get all cards and popup elements
     const cards = document.querySelectorAll('.card-details'); // All cards

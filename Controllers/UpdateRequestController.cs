@@ -61,6 +61,5 @@ namespace Project_IRMS.Controllers
                 return Json(new { success = false, message = "An error occurred: " + ex.Message });
             }
         }
-
-        }
+    }
 }
