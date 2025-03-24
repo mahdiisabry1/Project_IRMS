@@ -141,6 +141,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ApprovedRequestController.cs" />
     <Compile Include="Controllers\CreateRequestController.cs" />
+    <Compile Include="Controllers\DeleteRequestController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
@@ -239,6 +240,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Bootstrap\" />
+    <Folder Include="Views\DeleteRequest\" />
     <Folder Include="Views\Success\" />
   </ItemGroup>
   <ItemGroup>

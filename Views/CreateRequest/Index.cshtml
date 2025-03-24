@@ -153,7 +153,16 @@
                                 <!-- /.col -->
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
-                                        <label for="division">Division</label>
+                                        @if (Role == "HR")
+                                        {
+                                            <label for="division">Division</label>
+                                        }
+                                        else if (Role == "IT")
+                                        {
+                                            <label for="division">Department</label>
+
+                                        }
+
                                         <select class="form-control" id="division" name="division">
                                             @if (Role == "HR")
                                             {

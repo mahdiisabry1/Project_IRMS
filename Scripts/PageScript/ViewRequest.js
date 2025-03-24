@@ -38,6 +38,31 @@ $(document).ready(function () {
     })
 })
 
+document.getElementById("deleteButton").addEventListener("click", function () {
+    const internId = document.getElementById('intern-id').value;
+    if (confirm('Are you sure you want to delete this record?')) {
+        fetch('/DeleteRequest/DeleteIntern', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ internId: internId }),
+        })
+            .then(response => {
+                if (response.ok) {
+                    alert('Record deleted successfully!');
+                    window.location.href = '/'; // Redirect after deletion
+                } else {
+                    alert('Failed to delete the record.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while deleting the record.');
+            });
+    }
+})
+
 //----------------------------------------------------------------------------------------------------
 document.addEventListener('DOMContentLoaded', function () {
     // Get all cards and popup elements
@@ -73,7 +98,6 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('popupRefNo').textContent = profileID // Use the intern ID for Ref No
         document.getElementById('popupProfileImage').src = internProfileImage;
 
-        //
         document.getElementById("requestForm").addEventListener("submit", function (event) {
             // Copy values to hidden inputs
             document.getElementById("hiddenID").value = document.getElementById("popupRefNo").innerText.trim();
