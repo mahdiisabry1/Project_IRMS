@@ -83,5 +83,20 @@ namespace Project_IRMS.Data
 
             _sqlHelper.ExecuteNonQuery(query, CommandType.Text, parameters);
         }
+
+        public void DeleteIntern(string tablename, string internId)
+        {
+            string[] allowedTables = { "InternDetails", "hr", "it" };
+            if (!allowedTables.Contains(tablename))
+                throw new ArgumentException("Invalid table name.");
+
+            string query = $@"Delete from {tablename}
+                             Where InternId = @InternId";
+            SqlParameter[] parameters =
+            {
+                new SqlParameter("@InternId", internId)
+            };
+            _sqlHelper.ExecuteNonQuery(query, CommandType.Text, parameters);
+        }
     }
 }

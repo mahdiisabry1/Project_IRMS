@@ -20,5 +20,9 @@ namespace Project_IRMS.Buisness
         {
             _internData.UpdateInternDetails(tablename, internId, firstName, lastName, university, gender, email, contactNo, degree, division, status);
         }
+        public void DeleteIntern(string tablename, string internId)
+        {
+            _internData.DeleteIntern(tablename, internId);
+        }
     }
 }

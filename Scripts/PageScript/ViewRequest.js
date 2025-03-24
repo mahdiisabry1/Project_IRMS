@@ -27,8 +27,12 @@ $(document).ready(function () {
             processData: false,
             contentType: false,
             success: function (res) {
-                console.log("Form updated successfully");
-                alert("Form updated");
+                // console.log("Response : ", res);
+                location.reload();
+            },
+            error: function (xhr, status, error) {
+                console.error("Error : ", error)
+                console.log(status, "Error Occured When Updating")
             }
         })
     })

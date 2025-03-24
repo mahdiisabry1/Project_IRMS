@@ -172,13 +172,13 @@
                     <div>
                         <h5 class="modal-title">Update Profile Details</h5>
                     </div>
-                    <div onclick="closePopup()" style="cursor:pointer;">X</div>
+                    <span class="close" onclick="closePopup()" style="cursor: pointer;">×</span>
                 </div>
                 
                 <div class="modal-body">
                     <form id="updateForm" action="/UpdateRequest/SubmitRequest" method="post" enctype="multipart/form-data">
                         <div class="gradient-line"></div>
-                        <img alt="Profile picture" id="profileImage" height="120" src="https://placehold.co/115x117" width="120" class="position-relative rounded-circle" style="left:50%; transform:translate(-50%); border:8px solid white; top:-18px;" />
+                        <img alt="Profile picture" id="profileImage" height="120" src="/Images/Group 1000002769.png?1742784561998" width="120" class="position-relative rounded-circle" style="left:50%; transform:translate(-50%); border:8px solid white; top:-18px;" />
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <input type="text" class="hide" id="intern-id" name="InternID" value="123" style="display: none;" />
@@ -209,8 +209,8 @@
                                 <label class="form-label">Gender</label>
                                 <div class="form-group">
                                     <div class="btn-group btn-group-toggle w-100" data-toggle="buttons">
-                                        <label class="btn btn-outline-secondary">
-                                            <input type="radio" name="gender" id="male" autocomplete="off" /> Male
+                                        <label class="btn btn-outline-secondary active">
+                                            <input type="radio" name="gender" id="male" autocomplete="off" checked/> Male
                                         </label>
                                         <label class="btn btn-outline-secondary">
                                             <input type="radio" name="gender" id="female" autocomplete="off" value="Female"/> Female
