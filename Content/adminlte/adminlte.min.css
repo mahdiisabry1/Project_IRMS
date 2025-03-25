@@ -10279,7 +10279,6 @@ html {
 }
 
 .layout-navbar-fixed.sidebar-collapse .wrapper .brand-link {
-    height: calc(3.5rem + 1px);
     width: 4.6rem
 }
 
@@ -12748,7 +12747,7 @@ body.sidebar-collapse:not(.sidebar-mini-md):not(.sidebar-mini) .content-wrapper,
 
         .sidebar-mini.sidebar-collapse .main-sidebar, .sidebar-mini.sidebar-collapse .main-sidebar::before {
             margin-left: 0;
-            width: 4.6rem
+            width: 4.9rem
         }
 
             .sidebar-mini.sidebar-collapse .main-sidebar .user-panel .image {
