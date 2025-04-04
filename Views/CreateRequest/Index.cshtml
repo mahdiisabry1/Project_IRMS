@@ -5,13 +5,9 @@
     var Role = Session["Role"] as string;
 }
 
-
 @section CustomPageStyles {
     <link href="~/Content/CreateRequest/CreateRequest.css" rel="stylesheet" />
-
 }
-
-
 
 <!-- Main content -->
 <section class="content pt-3 d-flex justify-content-center align-items-center" style="height: 100% !important;">
@@ -65,7 +61,6 @@
                                     <!-- /.form-group -->
                                 </div>
                                 <!-- /.col -->
-
                             </div>
                             <!-- /.row -->
                             <div class="row">
@@ -160,9 +155,7 @@
                                         else if (Role == "IT")
                                         {
                                             <label for="division">Department</label>
-
                                         }
-
                                         <select class="form-control" id="division" name="division">
                                             @if (Role == "HR")
                                             {
@@ -239,7 +232,6 @@
                                             <p class="text-secondary">Choose a file or drag & drop it here</p>
                                         </div>
                                     </div>
-
                                     <!-- Hidden File Input for CV -->
                                     <input type="file"
                                            id="cvUpload"
