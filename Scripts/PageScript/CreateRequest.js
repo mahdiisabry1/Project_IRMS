@@ -221,7 +221,6 @@ laterButton.addEventListener("click", () => {
     successDiv.style.display = "none";
 });
 
-
 const universities = [
     "University of Colombo",
     "University of Peradeniya",
@@ -327,7 +326,6 @@ function updateDegreeName() {
         document.getElementById('degree').value = concatenatedDegree;
     }
 }
-
 // Event listeners for changes
 document.getElementById('degreeType').addEventListener('change', updateDegreeName);
 document.getElementById('degreeName').addEventListener('input', updateDegreeName);
