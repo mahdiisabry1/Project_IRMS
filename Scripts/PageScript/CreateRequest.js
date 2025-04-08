@@ -39,7 +39,7 @@ Dropzone.options.uploadBox = {
         this.on("success", function (file, response) {
             console.log(response);  // Log the response for debugging purposes
 
-            if (response.success) {
+            if (response.success) {  
                 // Store cvBytes globally (as Base64)
                 cvBytes = response.cvBytes;  // Assuming response.cvBytes is already Base64 encoded.
 
