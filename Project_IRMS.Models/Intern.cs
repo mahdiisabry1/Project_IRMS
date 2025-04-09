@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Project_IRMS.Models
+﻿namespace Project_IRMS.Models
 {
-   public class Intern
+    public class Intern
     {
         public int InternID { get; set; }
         public string FirstName { get; set; }

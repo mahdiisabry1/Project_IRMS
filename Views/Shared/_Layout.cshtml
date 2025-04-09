@@ -1,8 +1,5 @@
 ﻿@{ var username = Session["Username"];
-    var role = Session["Role"];
-   
-   
-
+    var role = Session["Role"] as string;
     }
 
 <!DOCTYPE html>
@@ -31,7 +28,6 @@
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="#" class="nav-link">@ViewBag.Title</a>
                 </li>
-
             </ul>
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
@@ -50,7 +46,7 @@
                     <!-- Dropdown - User Information -->
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                          aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="/Profile/Index">
                             <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                             Profile
                         </a>
@@ -70,7 +66,7 @@
         </nav>
         <!-- /.navbar -->
         <!-- Main Sidebar Container -->
-        <aside class="main-sidebar  elevation-4 " id="accordionSidebar">
+        <aside class="main-sidebar elevation-4" id="accordionSidebar">
             <a href="/Home" class="brand-link d-flex align-items-center mt-1">
                 <img src="~/Images/LogoIcon.png" alt="Logo Icon" style="width: 70px; height: 70px !important; object-fit: contain;">
 
@@ -80,8 +76,7 @@
             </a>
 
             <!-- Sidebar -->
-            <div class="sidebar  ">
-
+            <div class="sidebar">
                 <!-- Sidebar Menu -->
                 <nav class="sidebar-menu mt-lg-5">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -93,7 +88,6 @@
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Dashboard
-
                                 </p>
                             </a>
                         </li>
@@ -106,31 +100,45 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                <li class="nav-item ">
-                                    <a href="@Url.Action("Index","CreateRequest")" class="nav-link">
-                                        <i class="fa-solid fa-chevron-right nav-icon"></i>
-                                        <p> Create Requests</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="~/ViewRequest/Index" class="nav-link">
-                                        <i class="fa-solid fa-chevron-right nav-icon"></i>
-                                        <p>View Requests</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="~/ApprovedRequest/Index" class="nav-link">
-                                        <i class="fa-solid fa-chevron-right nav-icon"></i>
-                                        <p>Approved Requests</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../../index3.html" class="nav-link">
-                                        <i class="fa-solid fa-chevron-right nav-icon"></i>
-                                        <p>Sent Requests</p>
-                                    </a>
-                                </li>
+                                @if (role == "HR" || role == "IT")
+                                {
+                                    <li class="nav-item">
+                                        <a href="@Url.Action("Index","CreateRequest")" class="nav-link">
+                                            <i class="fa-solid fa-chevron-right nav-icon"></i>
+                                            <p>Create Requests</p>
+                                        </a>
+                                    </li>
+                                }
 
+                                @if (role == "HR" || role == "IT" || role == "DM")
+                                {
+                                    <li class="nav-item">
+                                        <a href="~/ViewRequest/Index" class="nav-link">
+                                            <i class="fa-solid fa-chevron-right nav-icon"></i>
+                                            <p>View Requests</p>
+                                        </a>
+                                    </li>
+                                }
+
+                                @if (role == "HR" || role == "IT")
+                                {
+                                    <li class="nav-item">
+                                        <a href="~/ApprovedRequest/Index" class="nav-link">
+                                            <i class="fa-solid fa-chevron-right nav-icon"></i>
+                                            <p>Approved Requests</p>
+                                        </a>
+                                    </li>
+                                }
+
+                                @if (role == "HR")
+                                {
+                                    <li class="nav-item">
+                                        <a href="/" class="nav-link">
+                                            <i class="fa-solid fa-chevron-right nav-icon"></i>
+                                            <p>Sent Requests</p>
+                                        </a>
+                                    </li>
+                                }
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -138,7 +146,6 @@
                                 <i class="nav-icon fa-solid fa-user"></i>
                                 <p>
                                     User Profiles
-
                                 </p>
                             </a>
                         </li>

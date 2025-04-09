@@ -1,15 +1,13 @@
 ﻿@{
     ViewBag.Title = "Create Request";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var username = Session["Username"] as string;
+    var Role = Session["Role"] as string;
 }
-
 
 @section CustomPageStyles {
     <link href="~/Content/CreateRequest/CreateRequest.css" rel="stylesheet" />
-
 }
-
-
 
 <!-- Main content -->
 <section class="content pt-3 d-flex justify-content-center align-items-center" style="height: 100% !important;">
@@ -25,9 +23,9 @@
                 <p class="mb-0">The Request has been created succefully</p>
                 <p class="">You can send it to the division now or later</p>
             </div>
-            <div class="">
+            <div class="d-flex align-items-center justify-content-center">
                 <button class="pr-3 pl-3 rounded bg-green border">Send</button>
-                <button  id="laterButton" class="pr-3 pl-3 rounded bg-red border">Later</button>
+                <button  id="laterButton" class="pr-3 pl-3 rounded bg-red border">Continue without sending</button>
             </div>
         </div>
     </div>
@@ -63,7 +61,6 @@
                                     <!-- /.form-group -->
                                 </div>
                                 <!-- /.col -->
-
                             </div>
                             <!-- /.row -->
                             <div class="row">
@@ -85,8 +82,8 @@
                                     <div class="form-group">
                                         <label>Gender</label>
                                         <div class="btn-group btn-group-toggle w-100" data-toggle="buttons">
-                                            <label class="btn btn-outline-secondary">
-                                                <input type="radio" name="gender" id="male" autocomplete="off" onchange="updateProfileImage()" /> Male
+                                            <label class="btn btn-outline-secondary active">
+                                                <input type="radio" name="gender" id="male" autocomplete="off" onchange="updateProfileImage()" checked/> Male
                                             </label>
                                             <label class="btn btn-outline-secondary">
                                                 <input type="radio" name="gender" id="female" autocomplete="off" onchange="updateProfileImage()" /> Female
@@ -151,11 +148,49 @@
                                 <!-- /.col -->
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
-                                        <label for="division">Division</label>
+                                        @if (Role == "HR")
+                                        {
+                                            <label for="division">Division</label>
+                                        }
+                                        else if (Role == "IT")
+                                        {
+                                            <label for="division">Department</label>
+                                        }
                                         <select class="form-control" id="division" name="division">
-                                            <option selected>Select Division</option>
-                                            <option>IT</option>
-                                            <option>Division B</option>
+                                            @if (Role == "HR")
+                                            {
+                                                <option disabled>HR Division</option>
+                                                <option>AGS - Airport & Ground Service</option>
+                                                <option>CS - Cabin Service</option>
+                                                <option>CGO - Cargo</option>
+                                                <option>CO - Corporate Offices</option>
+                                                <option>ENG - Engineering</option>
+                                                <option>FIN - Finance</option>
+                                                <option>FO - Flight Operation</option>
+                                                <option>HR - Human Resource</option>
+                                                <option value="IT">IT - Information Technology</option>
+                                                <option>LP - Logistics and properties</option>
+                                                <option>MAR - Marketing</option>
+                                                <option>RMP - Revenue Management & Planning</option>
+                                                <option>SO - Security Operations</option>
+                                                <option>SAC - SriLankan Aviation College</option>
+                                                <option>WSD - Worldwide Sales and Distribution</option>
+                                            }
+                                            else if (Role == "IT")
+                                            {
+                                                <option disabled>IT Department</option>
+                                                <option>DT&ITBR - Digital Transformation & IT Business Relations</option>
+                                                <option>GDP&C - Graph Data Protection & Compliance</option>
+                                                <option>ITBS - IT Business System</option>
+                                                <option>ITO&SM - IT Operations & Services Management</option>
+                                                <option>ITPS&CS - IT Passenger Service & Cargo System</option>
+                                                <option>ITP&SI - IT Projects & System Integration</option>
+                                                <option>OHIT - Office of Head of Information Technology</option>
+                                            }
+                                            else
+                                            {
+                                                <option selected>Select Division</option>
+                                            }
                                         </select>
                                     </div>
                                     <!-- /.form-group -->
@@ -172,7 +207,7 @@
                                     <img id="profileImage"
                                          alt="Profile icon"
                                          class="rounded-circle position-absolute"
-                                         src="~/Images/Group 1000002769.png"
+                                         src="/Images/Group 1000002769.png?1742784561998"
                                          onclick="document.getElementById('imageUpload').click()"
                                          style="cursor: pointer;" />
 
@@ -197,7 +232,6 @@
                                             <p class="text-secondary">Choose a file or drag & drop it here</p>
                                         </div>
                                     </div>
-
                                     <!-- Hidden File Input for CV -->
                                     <input type="file"
                                            id="cvUpload"

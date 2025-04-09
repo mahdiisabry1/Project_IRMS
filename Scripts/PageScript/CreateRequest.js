@@ -39,7 +39,7 @@ Dropzone.options.uploadBox = {
         this.on("success", function (file, response) {
             console.log(response);  // Log the response for debugging purposes
 
-            if (response.success) {
+            if (response.success) {  
                 // Store cvBytes globally (as Base64)
                 cvBytes = response.cvBytes;  // Assuming response.cvBytes is already Base64 encoded.
 
@@ -53,7 +53,6 @@ Dropzone.options.uploadBox = {
                 alert(response.message || "Failed to process the file.");
             }
         });
-
 
         // Event listener for file upload errors
         this.on("error", function (file, errorMessage) {
@@ -152,6 +151,10 @@ document.getElementById('successDiv').style.display = 'none';
 function submitForm() {
     const formData = new FormData(document.getElementById('myForm'));
 
+    // Store the CV and image values
+    const cvFile = document.getElementById('cvUpload').files[0];
+    const profileImage = document.getElementById('imageUpload').files[0];
+
     // AJAX submission
     $.ajax({
         url: '/CreateRequest/SubmitRequest',
@@ -162,8 +165,26 @@ function submitForm() {
         success: function (response) {
             document.getElementById('errorDiv').style.display = 'none';
             document.getElementById('successDiv').style.display = 'block';
-            // Clear the form
+
+            // Clear the form including for CV and image
             document.getElementById('myForm').reset();
+
+            // Manually clear file inputs
+            document.getElementById('cvUpload').value = '';
+            document.getElementById('imageUpload').value = '';
+
+            // Reset profile image preview
+            const profilePreview = document.getElementById('profileImage');
+            profilePreview.src = "~/Images/Group 1000002769.png"; // Reset to default image
+
+            // Clear CV file preview
+            const filePreviewContainer = document.getElementById('filePreviewContainer');
+            filePreviewContainer.innerHTML = ''; // Clear any preview content
+
+            // Clear validation states
+            document.querySelectorAll('.is-invalid').forEach(el => el.classList.remove('is-invalid'));
+            document.getElementById('formMessage').innerHTML = '';
+
             // Start the countdown timer
             let countdown = 5;
             const countdownElement = document.createElement('p');
@@ -199,7 +220,6 @@ const successDiv = document.getElementById("successDiv");
 laterButton.addEventListener("click", () => {
     successDiv.style.display = "none";
 });
-
 
 const universities = [
     "University of Colombo",
@@ -306,7 +326,6 @@ function updateDegreeName() {
         document.getElementById('degree').value = concatenatedDegree;
     }
 }
-
 // Event listeners for changes
 document.getElementById('degreeType').addEventListener('change', updateDegreeName);
 document.getElementById('degreeName').addEventListener('input', updateDegreeName);

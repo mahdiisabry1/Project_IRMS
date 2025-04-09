@@ -1,11 +1,4 @@
 ﻿
-/*.box {
-    border-radius: 10px;
-    padding: 10px;
-    height: 50vh;
-    background-color: red;
-}*/
-
 ::-webkit-scrollbar {
     display: none;
 }
@@ -40,15 +33,6 @@
     cursor: pointer;
 }
 
-
-/* Header styles */
-/*.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0;
-
-}*/
 .card-title {
     color: #474747 !important;
     font-size: 25px;
@@ -438,3 +422,5 @@
     overflow:hidden;
     z-index: 1001;
 }
+
+

@@ -2,9 +2,9 @@
 
 namespace Project_IRMS.Controllers
 {
-    public class TaskManagementController : Controller
+    public class SentRequestController : Controller
     {
-        // GET: TaskManagement
+        // GET: SentRequest
         public ActionResult Index()
         {
             return View();

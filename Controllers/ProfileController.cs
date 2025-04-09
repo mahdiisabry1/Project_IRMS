@@ -2,9 +2,9 @@
 
 namespace Project_IRMS.Controllers
 {
-    public class TaskManagementController : Controller
+    public class ProfileController : Controller
     {
-        // GET: TaskManagement
+        // GET: Ptofile
         public ActionResult Index()
         {
             return View();

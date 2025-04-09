@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data;
+﻿using System.Data;
 using System.Data.SqlClient;
 using Project_IRMS.Data.Common;
 
 
 namespace Project_IRMS.Data
 {
-   public class UserLoginData
+    public class UserLoginData
     {
         private readonly SqlServerHelper _sqlHelper;
 

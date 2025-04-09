@@ -7,9 +7,11 @@
 
     if (interns != null)
     {
-        interns.Reverse(); 
+        interns.Reverse();
     }
 
+    var username = Session["Username"] as string;
+    var role = Session["Role"] as string;
 }
 ﻿
 @section CustomPageStyles {
@@ -17,10 +19,7 @@
     <link href="~/Content/ViewRequest/ViewRequest.css" rel="stylesheet" />
 }
 
-
 <!-- Main content -->
-
-
 <section class="content">
     <div class="container-fluid">
         <div class="card card-default">
@@ -108,8 +107,6 @@
     </div>
 </section>
 
-
-
 <div class="popup-overlay" id="popupOverlay">
     <div class="card_view w-50">
         <div class="card_view-header">
@@ -123,12 +120,12 @@
                     <img alt="Profile picture" id="popupProfileImage" height="120" src="https://placehold.co/115x117" width="120" />
                     <div class="profile-info"> 
                         <h3>
-                            <span id="popupFirstName">Wimukthi</span>
-                            <span id="popupLastName">Manchanayaka</span>
+                            <span id="popupFirstName"></span>
+                            <span id="popupLastName"></span>
                         </h3>
 
                         <p id="popupDegreeDivision">
-                            <span id="popupDegree">Degree Name</span> / <span id="popupDivision">Division Name</span>
+                            <span id="popupDegree">Degree Name</span> / <span id="popupDivision"></span>
                         </p>
                         <a href="#" id="editProfileLink">Edit Profile</a>
                     </div>
@@ -136,10 +133,10 @@
                 <div class="details">
                     <div class="info">
                         <p id="popupRefNo"></p>
-                        <p><i class="fas fa-graduation-cap"></i><span id="popupUniversity"> National Institute of Business Management</span></p>
-                        <p><i class="fas fa-phone"></i><span id="popupGender"> xxx</span></p>
-                        <p><i class="fas fa-phone"></i><span id="popupContactNo"> 0765630062</span></p>
-                        <p><i class="fas fa-envelope"></i><span id="popupEmail"> wimukthimanchanayaka@gmail.com</span></p>
+                        <p><i class="fas fa-graduation-cap"></i><span id="popupUniversity"></span></p>
+                        <p><i class="fas fa-phone"></i><span id="popupGender"> </span></p>
+                        <p><i class="fas fa-phone"></i><span id="popupContactNo"> </span></p>
+                        <p><i class="fas fa-envelope"></i><span id="popupEmail"> </span></p>
                     </div>
                     <a class="view-cv" href="#" id="viewCVLink" target="_blank">View CV</a>
                 </div>
@@ -164,26 +161,26 @@
     </div>
 </div>
 
-
 @*// Edit Interns Section*@
 <div class="update-popup-overlay popup-overlay" style="display:none" id="popupOverlayUpdate">
     <div class="d-flex justify-content-center align-items-center h-100 w-100" style="overflow:scroll;
 }">
-        <div class="visible-container" style="background:white; width:75%;">
+        <div class="visible-container mb-5" style="background:white; margin-top: 12rem;">
             <div class="modal-content">
                 <div class="modal-header">
                     <div>
                         <h5 class="modal-title">Update Profile Details</h5>
                     </div>
-                    <div onclick="closePopup()" style="cursor:pointer;">X</div>
+                    <span class="close" onclick="closePopup()" style="cursor: pointer;">×</span>
                 </div>
                 
                 <div class="modal-body">
-                    <form action="/UpdateRequest/SubmitRequest" method="post" enctype="multipart/form-data">
+                    <form id="updateForm" action="/UpdateRequest/SubmitRequest" method="post" enctype="multipart/form-data">
                         <div class="gradient-line"></div>
-                        <img alt="Profile picture" id="profileImage" height="120" src="https://placehold.co/115x117" width="120" class="position-relative rounded-circle" style="left:50%; transform:translate(-50%); border:8px solid white; top:-18px;" />
+                        <img alt="Profile picture" id="profileImage" height="120" src="/Images/Group 1000002769.png?1742784561998" width="120" class="position-relative rounded-circle" style="left:50%; transform:translate(-50%); border:8px solid white; top:-18px;" />
                         <div class="row mb-3">
                             <div class="col-md-6">
+                                <input type="text" class="hide" id="intern-id" name="InternID" value="123" style="display: none;" />
                                 <label for="firstName" class="form-label">First Name</label>
                                 <input type="text" class="form-control" id="firstName" name="FirstName" value="Wimukthi">
                             </div>
@@ -209,14 +206,14 @@
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Gender</label>
-                                <div class="d-flex">
-                                    <div class="form-check me-3">
-                                        <input class="form-check-input" type="radio" name="Gender" id="male" value="Male">
-                                        <label class="form-check-label" for="male">Male</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="Gender" id="female" value="Female">
-                                        <label class="form-check-label" for="female">Female</label>
+                                <div class="form-group">
+                                    <div class="btn-group btn-group-toggle w-100" data-toggle="buttons">
+                                        <label class="btn btn-outline-secondary active">
+                                            <input type="radio" name="gender" id="male" autocomplete="off" checked /> Male
+                                        </label>
+                                        <label class="btn btn-outline-secondary">
+                                            <input type="radio" name="gender" id="female" autocomplete="off" value="Female" /> Female
+                                        </label>
                                     </div>
                                 </div>
                             </div>
@@ -255,25 +252,69 @@
                                 <div class="w-100 p-2">
                                     <div class="w-100 position-relative">
                                         <select id="division" class="form-control w-100" name="Division">
-                                            <option value="IT">IT</option>
-                                            <option value="Division B">Division B</option>
-                                            <option value="division c">Division C</option>
-                                            <option value="division d">Division D</option>
+                                            <option disabled>HR Division</option>
+                                            <option>AGS - Airport & Ground Service</option>
+                                            <option>CS - Cabin Service</option>
+                                            <option>CGO - Cargo</option>
+                                            <option>CO - Corporate Offices</option>
+                                            <option>ENG - Engineering</option>
+                                            <option>FIN - Finance</option>
+                                            <option>FO - Flight Operation</option>
+                                            <option>HR - Human Resource</option>
+                                            <option value="IT">IT - Information Technology</option>
+                                            <option>LP - Logistics and properties</option>
+                                            <option>MAR - Marketing</option>
+                                            <option>RMP - Revenue Management & Planning</option>
+                                            <option>SO - Security Operations</option>
+                                            <option>SAC - SriLankan Aviation College</option>
+                                            <option>WSD - Worldwide Sales and Distribution</option>
                                         </select>
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                @if (role == "IT")
+                                {
+                                    <div>
+                                        <label for="department" class="form-label">Department</label>
+                                    </div>
+
+                                    <div class="w-100 p-2">
+                                        <div class="w-100 position-relative">
+                                            <select id="division" class="form-control w-100" name="Division">
+                                                <option disabled>IT Department</option>
+                                                <option>DT&ITBR - Digital Transformation & IT Business Relations</option>
+                                                <option>GDP&C - Graph Data Protection & Compliance</option>
+                                                <option>ITBS - IT Business System</option>
+                                                <option>ITO&SM - IT Operations & Services Management</option>
+                                                <option>ITPS&CS - IT Passenger Service & Cargo System</option>
+                                                <option>ITP&SI - IT Projects & System Integration</option>
+                                                <option>OHIT - Office of Head of Information Technology</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
                         </div>
                         <div class="text-end">
                             <button type="submit" class="btn btn-primary">Update</button>
+                            <button type="button" onclick="openDeletePopup()" class="btn btn-warning">Delete</button>
                         </div>
+                        <div id="deletePopup" class="popup-overlay">
+                        <div class="popup-content">
+                             <h3 class="popup-title">Confirm Deletion</h3>
+                             <p class="popup-message">Are you sure you want to delete this item? This action cannot be undone.</p>
+                            <div class="popup-buttons">
+                                <button type="button" onclick="confirmDelete()" class="btn btn-danger">Delete</button>
+                                <button type="button" onclick="closeDeletePopup()" class="btn btn-secondary">Close</button>
+                            </div>
+                        </div>
+                    </div>
                     </form>
                 </div>
-                    
             </div>
         </div>
     </div>
-
 </div>
 
 @section Scripts {

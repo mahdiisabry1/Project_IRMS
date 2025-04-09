@@ -1,4 +1,5 @@
-﻿// Function to toggle the dropdown VR
+﻿
+// Function to toggle the dropdown VR
 function toggleDropdown() {
     const dropdown = document.getElementById('dropdownVR');
     dropdown.classList.toggle('show-dropdown-VR');
@@ -14,8 +15,30 @@ document.addEventListener('click', function (event) {
     }
 });
 
-//----------------------------------------------------------------------------------------------------
+$(document).ready(function () {
+    $("#updateForm").on("submit", function (e) {
+        e.preventDefault();
+        var formData = new FormData(this);
 
+        $.ajax({
+            url: "/UpdateRequest/SubmitRequest",
+            type: "POST",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (res) {
+                // console.log("Response : ", res);
+                location.reload();
+            },
+            error: function (xhr, status, error) {
+                console.error("Error : ", error)
+                console.log(status, "Error Occured When Updating")
+            }
+        })
+    })
+})
+
+//----------------------------------------------------------------------------------------------------
 document.addEventListener('DOMContentLoaded', function () {
     // Get all cards and popup elements
     const cards = document.querySelectorAll('.card-details'); // All cards
@@ -50,7 +73,6 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('popupRefNo').textContent = profileID // Use the intern ID for Ref No
         document.getElementById('popupProfileImage').src = internProfileImage;
 
-        //
         document.getElementById("requestForm").addEventListener("submit", function (event) {
             // Copy values to hidden inputs
             document.getElementById("hiddenID").value = document.getElementById("popupRefNo").innerText.trim();
@@ -146,12 +168,14 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+
 // Add click event to "Edit" button
 document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.button.edit').forEach(editButton => {
         editButton.addEventListener('click', function () {
             // Get data attributes
 
+            const internId = this.getAttribute('data-id') || '';
             const firstName = this.getAttribute('data-firstname') || '';
             const lastName = this.getAttribute('data-lastname') || '';
             const degree = this.getAttribute('data-degree') || '';
@@ -165,6 +189,7 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log(internProfileaImage)
 
             // Update modal content
+            document.getElementById('intern-id').value = internId
             document.getElementById('firstName').value = firstName;
             document.getElementById('lastName').value = lastName;
             document.getElementById('degree').value = degree;
@@ -295,3 +320,5 @@ document.addEventListener("click", function (e) {
         dropdownList.style.display = "none";
     }
 });
+
+

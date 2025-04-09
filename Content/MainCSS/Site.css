@@ -35,7 +35,6 @@
 
 .sidebar .nav-link i,
 .sidebar .nav-link p {
-  
     font-weight:bold;
     font-size: large;
     margin-top: 10px;
@@ -74,8 +73,6 @@
         width: 200px;
         height: 27px;
         object-fit: contain;
-       
-        
     }
-/**/
+
 
