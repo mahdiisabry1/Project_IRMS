@@ -36,7 +36,6 @@ namespace Project_IRMS.Buisness
                     CV = row.IsNull("CV") ? null : (byte[])row["CV"]
                 });
             }
-
             return internList;
         }
     }
